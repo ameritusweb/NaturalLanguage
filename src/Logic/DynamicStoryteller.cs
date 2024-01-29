@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NaturalLanguageProcess.Logic
+﻿namespace NaturalLanguageProcess.Logic
 {
     public class DynamicStoryteller
     {
         private StoryContext Context;
-        private SentenceBuilder Builder;
 
-        public DynamicStoryteller(StoryContext context, SentenceBuilder builder)
+        public DynamicStoryteller(StoryContext context)
         {
             Context = context;
-            Builder = builder;
         }
 
         public string GenerateNextSentence()

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NaturalLanguageProcess.Logic
+﻿namespace NaturalLanguageProcess.Logic
 {
-    class CompositeLogicalRule : ILogicalRule
+    class OrCombinedLogicalRule : ILogicalRule
     {
         private List<ILogicalRule> Rules;
 
-        public CompositeLogicalRule()
+        public OrCombinedLogicalRule()
         {
             Rules = new List<ILogicalRule>();
         }
@@ -22,14 +16,17 @@ namespace NaturalLanguageProcess.Logic
 
         public bool Evaluate(StoryContext context)
         {
-            return Rules.All(rule => rule.Evaluate(context));
+            return Rules.Any(rule => rule.Evaluate(context));
         }
 
         public void Apply(StoryContext context)
         {
             foreach (var rule in Rules)
             {
-                rule.Apply(context);
+                if (rule.Evaluate(context))
+                {
+                    rule.Apply(context);
+                }
             }
         }
     }
