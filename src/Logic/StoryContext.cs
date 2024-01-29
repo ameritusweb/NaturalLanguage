@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NaturalLanguageProcess
+namespace NaturalLanguageProcess.Logic
 {
-    internal class InferenceData
+    public class StoryContext
     {
+
     }
 }
