@@ -8,6 +8,7 @@
         public Dictionary<StoryWord, List<(NounRelationshipType, StoryWord)>> NounPairRelationships { get; set; }
         public List<RuleRelation> RuleRelations { get; set; }
         public List<ILogicalRule> Rules { get; set; }
+        public List<Entity> Entities { get; set; }
 
         public StoryContext()
         {
@@ -16,6 +17,15 @@
             ObjectRelatedActions = new Dictionary<StoryWord, List<(StoryWord, StoryWord)>>();
             RuleRelations = new List<RuleRelation>();
             Rules = new List<ILogicalRule>();
+            Entities = new List<Entity>();
+        }
+
+        public void AddEntity(Entity entity)
+        {
+            if (!Entities.Contains(entity))
+            {
+                Entities.Add(entity);
+            }
         }
 
         public void AddRule(ILogicalRule rule)

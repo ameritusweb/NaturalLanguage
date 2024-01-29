@@ -9,7 +9,7 @@ namespace NaturalLanguageProcess
     public enum CharacterType
     {
         None = 0,
-        Protagnist,
+        Protagonist,
         Antagonist,
         ComicRelief,
         LoveInterest,
