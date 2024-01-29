@@ -1,6 +1,6 @@
 ﻿namespace NaturalLanguageProcess.Logic
 {
-    class ActionRule : ILogicalRule
+    public class ActionRule : ILogicalRule
     {
         public StoryWord Subject { get; set; }
         public StoryWord Verb { get; set; }

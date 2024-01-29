@@ -5,6 +5,7 @@
         public Dictionary<StoryWord, List<StoryWord>> NounAdjectives { get; set; }
         public Dictionary<StoryWord, List<StoryWord>> CompletedActions { get; set; }
         public Dictionary<StoryWord, List<(StoryWord, StoryWord)>> ObjectRelatedActions { get; set; }
+        public Dictionary<StoryWord, List<(NounRelationshipType, StoryWord)>> NounPairRelationships { get; set; }
         public List<RuleRelation> RuleRelations { get; set; }
         public List<ILogicalRule> Rules { get; set; }
 
@@ -91,6 +92,23 @@
             {
                 NounAdjectives[noun].Add(adjective);
             }
+        }
+
+        public void RecordNounPairRelationship(StoryWord noun, NounRelationshipType relationship, StoryWord @object)
+        {
+            if (!NounPairRelationships.ContainsKey(noun))
+            {
+                NounPairRelationships[noun] = new List<(NounRelationshipType, StoryWord)>();
+            }
+            if (!NounPairRelationships[noun].Contains((relationship, @object)))
+            {
+                NounPairRelationships[noun].Add((relationship, @object));
+            }
+        }
+
+        public bool HasNounPairRelationshipOccurred(StoryWord noun, NounRelationshipType relationship, StoryWord @object)
+        {
+            return NounPairRelationships.TryGetValue(noun, out var relationships) && relationships.Contains((relationship, @object));
         }
 
         public bool HasActionOccurred(StoryWord noun, StoryWord verb)

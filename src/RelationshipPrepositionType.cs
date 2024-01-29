@@ -13,6 +13,8 @@ namespace NaturalLanguageProcess
         For,
         To,
         AwayFrom,
+        Like,
+        As,
         By,
         With,
         Without
