@@ -1,4 +1,6 @@
-﻿namespace NaturalLanguageProcess
+﻿using Newtonsoft.Json;
+
+namespace NaturalLanguageProcess
 {
     public class StoryWord
     {
@@ -31,6 +33,12 @@
         public VividEmotionalEvocationType VividEmotionalEvocation { get; set; }
 
         public VividAuditoryImageryType VividAuditoryImagery { get; set; }
+
+        [JsonConstructor]
+        public StoryWord()
+        {
+
+        }
 
         public StoryWord(Word word, Guid groupId)
         {
