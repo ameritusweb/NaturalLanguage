@@ -2,16 +2,16 @@
 {
     public class RuleRelationChain
     {
-        private List<ILogicalRule> rules;
+        private List<RuleRelation> rules;
 
-        public IReadOnlyList<ILogicalRule> Rules => rules;
+        public IReadOnlyList<RuleRelation> Rules => rules;
 
         public RuleRelationChain()
         {
-            rules = new List<ILogicalRule>();
+            rules = new List<RuleRelation>();
         }
 
-        public void AddRule(ILogicalRule rule)
+        public void AddRule(RuleRelation rule)
         {
             rules.Add(rule);
         }
