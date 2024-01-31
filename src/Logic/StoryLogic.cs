@@ -1,4 +1,6 @@
-﻿namespace NaturalLanguageProcess.Logic
+﻿using System.Linq;
+
+namespace NaturalLanguageProcess.Logic
 {
     /// <summary>
     /// The story logic
@@ -35,7 +37,17 @@
 
         public Dictionary<ILogicalRule, List<ILogicalRule>> IfFalseProgressions { get; set; }
 
+        public List<ILogicalRule> TemporaryFoci { get; set; }
+
         public List<RuleRelation> TemporaryConclusions { get; set; }
+
+        public List<RuleRelationChain> NewFacts { get; set; }
+
+        public Dictionary<ILogicalRule, List<ILogicalRule>> NewProgression { get; set; }
+
+        public Dictionary<ILogicalRule, List<ILogicalRule>> NewTrueDiscovery { get; set; }
+
+        public Dictionary<ILogicalRule, List<ILogicalRule>> NewIfTrueProgressions { get; set; }
 
         public List<RuleRelation> Conclusions { get; set; }
 
@@ -183,19 +195,75 @@
             }
         }
 
-        public void GenerateTemporaryConclusions()
+        public void GenerateTemporaryFocus(List<Entity> entities)
         {
+            List<RuleRelation> assumptions = new List<RuleRelation>();
+            foreach (var entity in entities)
+            {
+                var a = Assumptions[entity];
+                assumptions.AddRange(a);
+            }
 
+            foreach (var fact in Facts)
+            {
+                ILogicalRule? focus = null;
+                var lastRule = fact.Rules.Last();
+                foreach (var relation in Enumerable.Reverse(fact.Rules))
+                {
+                    if (FalseDiscovery.ContainsKey(relation.Antecedent))
+                    {
+                        focus = relation.Consequent;
+                        break;
+                    }
+                }
+                if (focus != null)
+                {
+                    var associatedAssumption = assumptions.FirstOrDefault(x => x.Antecedent == lastRule.Consequent);
+                    var temporaryConclusion = new RuleRelation()
+                    {
+                        Antecedent = associatedAssumption.Antecedent,
+                        Consequent = associatedAssumption.Consequent,
+                        IsNegative = true
+                    };
+                    TemporaryConclusions.Add(temporaryConclusion);
+                    TemporaryFoci.Add(focus);
+                }
+            }
         }
 
-        public void GenerateNewAssumptionsFactsDiscoveryAndProgressions()
+        public void GenerateNewFactsDiscoveryAndProgressions()
         {
+            foreach (var temporaryFocus in TemporaryFoci)
+            {
+                var first = temporaryFocus;
+                RuleRelationChain chain = new RuleRelationChain();
+                int randomCount = this.random.Next(5, 7);
+                ILogicalRule antecedent = new LogicRulePlaceholder() { LogicRule = LogicRuleType.ActionRule, IsHypothetical = true };
+                for (int i = 0; i < randomCount; ++i)
+                {
+                    RuleRelation ruleRelation = new RuleRelation()
+                    {
+                        Antecedent = antecedent,
+                        Consequent = new LogicRulePlaceholder() { LogicRule = LogicRuleType.ActionRule, IsHypothetical = true }
+                    };
+                    chain.AddRule(ruleRelation);
+                    antecedent = ruleRelation.Consequent;
+                }
+                RuleRelation final = new RuleRelation()
+                {
+                    Antecedent = antecedent,
+                    Consequent = first
+                };
+                chain.AddRule(final);
+                NewFacts.Add(chain);
+            }
 
+            // TODO: Create new discovery and progressions
         }
 
         public void GenerateConclusions()
         {
-
+            // TODO: Find the root cause and generate the conclusion
         }
 
         public StoryLogic()
@@ -209,6 +277,10 @@
             IfTrueProgressions = new Dictionary<ILogicalRule, List<ILogicalRule>>();
             IfFalseProgressions = new Dictionary<ILogicalRule, List<ILogicalRule>>();
             TemporaryConclusions = new List<RuleRelation>();
+            NewFacts = new List<RuleRelationChain>();
+            NewProgression = new Dictionary<ILogicalRule, List<ILogicalRule>>();
+            NewTrueDiscovery = new Dictionary<ILogicalRule, List<ILogicalRule>>();
+            NewIfTrueProgressions = new Dictionary<ILogicalRule, List<ILogicalRule>>();
             Conclusions = new List<RuleRelation>();
         }
     }

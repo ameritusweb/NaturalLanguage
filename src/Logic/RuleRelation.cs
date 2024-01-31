@@ -4,6 +4,7 @@
     {
         public ILogicalRule Antecedent { get; set; }
         public ILogicalRule Consequent { get; set; }
+        public bool IsNegative { get; set; }
 
         public RuleRelation()
         {
