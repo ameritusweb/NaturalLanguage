@@ -38,6 +38,7 @@
         Confess,
         Accuse,
         Investigate,
+        Interrogate,
         Explain,
         Inquire,
         Seduce,

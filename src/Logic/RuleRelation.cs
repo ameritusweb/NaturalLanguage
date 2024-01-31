@@ -1,6 +1,6 @@
 ﻿namespace NaturalLanguageProcess.Logic
 {
-    public class RuleRelation
+    public class RuleRelation : IRuleRelation
     {
         public ILogicalRule Antecedent { get; set; }
         public ILogicalRule Consequent { get; set; }
