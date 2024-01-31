@@ -9,12 +9,14 @@ namespace NaturalLanguageProcess
         private StoryContext storyContext;
         private Dictionary<string, Word> wordMap;
         private Dictionary<string, StoryWord> storyWordMap;
+        private Random random;
 
         public StoryGenerator()
         {
             this.storyContext = new StoryContext();
             this.wordMap = new Dictionary<string, Word>();
             this.storyWordMap = new Dictionary<string, StoryWord>();
+            this.random = new Random(Guid.NewGuid().GetHashCode());
             var text = File.ReadAllText("E:\\alphabet\\wordsphere.json");
             var words = JsonConvert.DeserializeObject<List<SerializableWord>>(text, new ListStringToSerializableWordConverter());
             var wordsMap = Word.DeserializePartial(words);
@@ -34,12 +36,13 @@ namespace NaturalLanguageProcess
         public StoryWord StoryWordSearch(PartOfSpeech? partOfSpeech, StoryThemeType? theme, SentimentType? sentiment, VividVisualImageryType? visual, VividEmotionalEvocationType? emotional, VividAuditoryImageryType? auditory)
         {
             var storyWords = this.storyWordMap.Values.ToList();
-            var storyWord = storyWords.Where(x => x.PartOfSpeech == partOfSpeech.GetValueOrDefault() 
+            var storyWordList = storyWords.Where(x => x.PartOfSpeech == partOfSpeech.GetValueOrDefault() 
             && x.StoryTheme == theme.GetValueOrDefault() 
             && x.Sentiment == sentiment.GetValueOrDefault() 
             && x.VividVisualImagery == visual.GetValueOrDefault() 
             && x.VividEmotionalEvocation == emotional.GetValueOrDefault() 
-            && x.VividAuditoryImagery == auditory.GetValueOrDefault()).FirstOrDefault();
+            && x.VividAuditoryImagery == auditory.GetValueOrDefault()).ToList();
+            var storyWord = storyWordList[this.random.Next(storyWordList.Count)];
             return storyWord;
         }
 
