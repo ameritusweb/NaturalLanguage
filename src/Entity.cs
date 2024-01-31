@@ -13,5 +13,7 @@ namespace NaturalLanguageProcess
         public TitleType Skill { get; set; }
 
         public MoodType Mood { get; set; }
+
+        public VillainType Villain { get; set; }
     }
 }

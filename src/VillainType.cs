@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NaturalLanguageProcess
+{
+    public enum VillainType
+    {
+        None = 0,
+        Zombie,
+        MobBoss,
+        Witch,
+        Warlock,
+        Vampire,
+        Werewolf,
+        Ghost,
+        Demon,
+        Dragon,
+        Alien,
+        RogueAI,
+        MadScientist,
+        Tyrant,
+        Pirate,
+        Thief,
+        Assassin,
+        CultLeader,
+        CorruptPolitician,
+        CorporateMogul,
+        Hacker,
+        Terrorist,
+        Monster,
+        Giant,
+        Sorcerer,
+        DarkKnight,
+        EvilWizard,
+        Necromancer,
+        SerialKiller,
+        Cyborg,
+        RobotRebellionLeader,
+        Mutant,
+        SuperVillain,
+        Dictator,
+        SpacePirate,
+        TimeTraveler,
+        Anarchist,
+        Fanatic,
+        ConArtist,
+        PoisonMaster,
+        BeastMaster,
+        DarkElf,
+        OrcWarlord,
+        GoblinKing,
+        Siren,
+        MermaidQueen,
+        IceWizard,
+        FireLord,
+        EarthquakeMaster,
+        StormBringer,
+        PlagueDoctor,
+        ZombieApocalypseLeader,
+        AlienInvasionCommander,
+        DimensionalInvader,
+        ShadowEntity,
+        MindController,
+        Illusionist,
+        ShapeShifter,
+        Dinosaur,
+        GreekGod,
+        Other // For unspecified or custom villain types
+    }
+}

@@ -71,7 +71,7 @@ namespace NaturalLanguageProcess
 
             Entity antagonist = new Entity();
             antagonist.Role = CharacterType.Antagonist;
-            antagonist.Skill = TitleType.Veterinarian;
+            antagonist.Villain = VillainType.Giant;
             antagonist.Mood = MoodType.Sad;
             this.storyContext.AddEntity(antagonist);
         }
