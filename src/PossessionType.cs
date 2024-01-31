@@ -89,6 +89,12 @@
         Explosive,
         Poison,
         BattleAx,
+        Spear,
+        CrossBow,
+        Mace,
+        Gold,
+        Silver,
+        Diamond,
         Antidote,
         Artifact,
         Relic,
@@ -130,6 +136,7 @@
         Pet,
         Livestock,
         Wildlife,
+        Bow,
         Other
     }
 }

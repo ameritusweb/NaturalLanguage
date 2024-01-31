@@ -164,6 +164,7 @@
         Tundra,
         IceCap,
         DigitalSpace,
+        Dungeon,
         Other
     }
 }

@@ -67,13 +67,31 @@ namespace NaturalLanguageProcess
             protagonist.Role = CharacterType.Protagonist;
             protagonist.Skill = TitleType.Husband;
             protagonist.Mood = MoodType.Happy;
+            protagonist.Possessions.Add((PossessionType.Sword, CardinalityType.Singular));
+            protagonist.Locations.Add(LocationType.Forest);
             this.storyContext.AddEntity(protagonist);
+
+            Entity supportingCharacter = new Entity();
+            supportingCharacter.Role = CharacterType.SupportingCharacter;
+            supportingCharacter.Skill = TitleType.Wife;
+            supportingCharacter.Mood = MoodType.Happy;
+            supportingCharacter.Possessions.Add((PossessionType.Bow, CardinalityType.Singular));
+            supportingCharacter.Locations.Add(LocationType.Forest);
+            this.storyContext.AddEntity(supportingCharacter);
 
             Entity antagonist = new Entity();
             antagonist.Role = CharacterType.Antagonist;
             antagonist.Villain = VillainType.Giant;
             antagonist.Mood = MoodType.Sad;
+            antagonist.Possessions.Add((PossessionType.BattleAx, CardinalityType.Limited));
+            antagonist.Locations.Add(LocationType.Dungeon);
             this.storyContext.AddEntity(antagonist);
+
+            protagonist.Relationships.Add((supportingCharacter, CharacterRelationshipType.Spouse));
+            supportingCharacter.Relationships.Add((protagonist, CharacterRelationshipType.Spouse));
+            antagonist.Relationships.Add((protagonist, CharacterRelationshipType.Enemy));
+
+            // TODO: Work on conflicts and root causes and resolutions
         }
     }
 }
