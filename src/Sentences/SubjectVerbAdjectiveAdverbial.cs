@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NaturalLanguageProcess.Sentences
 {
-    public class SubjectVerbAdjectiveAdverbial
+    public class SubjectVerbAdjectiveAdverbial : SentenceBase
     {
         public StoryWord Subject { get; set; }
 

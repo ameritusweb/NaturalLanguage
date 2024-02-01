@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NaturalLanguageProcess.Sentences
 {
-    public class SubjectVerbIndirectDirect
+    public class SubjectVerbIndirectDirect : SentenceBase
     {
         public StoryWord Subject { get; set; }
 

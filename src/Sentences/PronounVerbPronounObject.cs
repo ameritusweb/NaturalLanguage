@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NaturalLanguageProcess.Sentences
 {
-    public class PronounVerbPronounObject
+    public class PronounVerbPronounObject : SentenceBase
     {
         public StoryWord Pronoun { get; set; }
 

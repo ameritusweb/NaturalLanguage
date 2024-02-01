@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NaturalLanguageProcess.Sentences
 {
-    public class AdverbVerbObject
+    public class AdverbVerbObject : SentenceBase
     {
         public StoryWord Adverb { get; set; }
 

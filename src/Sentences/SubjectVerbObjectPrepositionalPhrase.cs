@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NaturalLanguageProcess.Sentences
 {
-    public class SubjectVerbObjectPrepositionalPhrase
+    public class SubjectVerbObjectPrepositionalPhrase : SentenceBase
     {
         public StoryWord Subject { get; set; }
 
