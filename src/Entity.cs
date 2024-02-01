@@ -26,6 +26,7 @@ namespace NaturalLanguageProcess
         {
             Possessions = new List<(PossessionType, CardinalityType)>();
             Locations = new List<LocationType>();
+            Relationships = new List<(Entity, CharacterRelationshipType)>();
         }
     }
 }

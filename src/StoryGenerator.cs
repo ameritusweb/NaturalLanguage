@@ -95,7 +95,7 @@ namespace NaturalLanguageProcess
             antagonist.Relationships.Add((protagonist, CharacterRelationshipType.Enemy));
 
             StoryLogic storyLogic = new StoryLogic();
-
+            storyLogic.Generate(this.storyContext.Entities);
 
             // TODO: Work on conflicts and root causes and resolutions
             // Assumptions

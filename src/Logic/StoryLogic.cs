@@ -51,6 +51,19 @@ namespace NaturalLanguageProcess.Logic
 
         public List<RuleRelation> Conclusions { get; set; }
 
+        public void Generate(List<Entity> entities)
+        {
+            GenerateInitialActions(entities);
+            GenerateAssumptions(entities);
+            GenerateFacts(entities);
+            GenerateNarrativeProgression();
+            GenerateHypotheticalDiscovery();
+            GenerateHypotheticalProgressions();
+            GenerateTemporaryFocus(entities);
+            GenerateNewFactsDiscoveryAndProgressions();
+            GenerateConclusions();
+        }
+
         public void GenerateInitialActions(List<Entity> entities)
         {
             foreach (var entity in entities)
@@ -269,6 +282,7 @@ namespace NaturalLanguageProcess.Logic
         public StoryLogic()
         {
             this.random = new Random();
+            InitialActions = new List<ILogicalRule>();
             Assumptions = new Dictionary<Entity, List<RuleRelation>>();
             Facts = new List<RuleRelationChain>();
             Progression = new Dictionary<ILogicalRule, List<ILogicalRule>>();
