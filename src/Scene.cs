@@ -201,5 +201,9 @@
         public StoryWord TheMystery { get; set; }
         
         public StoryWord AWeakness { get; set; }
+
+        public StoryWord AnAlternativeStrategy { get; set; }
+
+        public StoryWord AnActionThatContributesToSafety { get; set; }
     }
 }

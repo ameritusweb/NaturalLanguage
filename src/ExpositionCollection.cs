@@ -4,12 +4,82 @@
     {
         private Dictionary<SentencePurposeType, List<Func<Scene, string>>> expositions;
         private Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> characterExpositions;
+        private List<Func<Scene, Character, (string, string)>> dialoguePairs;
 
         public ExpositionCollection()
         {
             expositions = new Dictionary<SentencePurposeType, List<Func<Scene, string>>>();
             characterExpositions = new Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>>();
+            dialoguePairs = new List<Func<Scene, Character, (string, string)>>();
             Initialize();
+            InitializeDialogue();
+        }
+
+        private void InitializeDialogue()
+        {
+            var pairs = new List<Func<Scene, Character, (string, string)>>
+            {
+                (scene, character) => (this.expositions[SentencePurposeType.ShareAnExperience][0](scene), this.expositions[SentencePurposeType.ExpressGratitude][7](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.GiveGuidance][0](scene), this.expositions[SentencePurposeType.ExpressUrgency][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.WarnOfImpendingDanger][0](scene), this.expositions[SentencePurposeType.ExpressConcern][13](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressConcern][0](scene), this.expositions[SentencePurposeType.ShareAnExperience][5](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressUrgency][0](scene), this.expositions[SentencePurposeType.Motivate][4](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Motivate][0](scene), this.expositions[SentencePurposeType.Persuade][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Motivate][0](scene), this.expositions[SentencePurposeType.ExpressUrgency][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Persuade][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ProvideInformation][0](scene), this.expositions[SentencePurposeType.AskAQuestion][7](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.SeekClarification][0](scene), this.expositions[SentencePurposeType.Reassure][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.OfferOpinion][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.MakeAPromise][0](scene), this.expositions[SentencePurposeType.ExpressCertainty][5](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Analyze][0](scene), this.expositions[SentencePurposeType.ProvokeThoughtOrProposeIdea][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Accuse][0](scene), this.expositions[SentencePurposeType.Apologize][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Apologize][0](scene), this.expositions[SentencePurposeType.Reassure][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Reassure][0](scene), this.expositions[SentencePurposeType.Acknowledge][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Acknowledge][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressDisdain][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.AskAQuestion][0](scene), this.expositions[SentencePurposeType.Suggest][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Suggest][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.GiveADirective][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Suggest][0](scene), this.expositions[SentencePurposeType.ExpressUncertainty][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressUncertainty][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressAgreement][0](scene), this.expositions[SentencePurposeType.ExpressGratitude][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressGratitude][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ProvokeThoughtOrProposeIdea][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ConveyAppreciation][0](scene), this.expositions[SentencePurposeType.ConveyRespect][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ConveyRespect][0](scene), this.expositions[SentencePurposeType.ChangeTheTopic][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ChangeTheTopic][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.AcceptResponsibility][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Criticize][0](scene), this.expositions[SentencePurposeType.AcceptResponsibility][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Praise][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Praise][0](scene), this.expositions[SentencePurposeType.ExpressGratitude][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.InspireACrowd][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.EngageInSmallTalk][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.EngageInSmallTalk][0](scene), this.expositions[SentencePurposeType.ChangeTheTopic][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Irony][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Irony][0](scene), this.expositions[SentencePurposeType.ChangeTheTopic][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Sarcasm][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.MakeAnObservation][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ProvideGoodNews][0](scene), this.expositions[SentencePurposeType.ExpressJoy][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressJoy][0](scene), this.expositions[SentencePurposeType.ExpressGratitude][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.TellAJoke][0](scene), this.expositions[SentencePurposeType.ExpressJoy][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.AcceptAChallenge][0](scene), this.expositions[SentencePurposeType.Acknowledge][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ShowSympathy][0](scene), this.expositions[SentencePurposeType.ExpressGratitude][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ElicitInformation][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ClarifyAStatement][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.NarrateAnEvent][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.DescribeASituation][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.RefuteAnArgument][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Persuade][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.MakeARequest][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressEmotion][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.IntroduceYourself][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ExpressSolidarity][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.SeekAdvice][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.Hypothesize][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                (scene, character) => (this.expositions[SentencePurposeType.ArgueAPoint][0](scene), this.expositions[SentencePurposeType.ExpressAgreement][0](scene)),
+                // TODO: Add more dialogue pairs
+            };
+            this.dialoguePairs.AddRange(pairs);
         }
 
         private void Initialize()
@@ -89,7 +159,13 @@
                 scene => $"But we must act swiftly.",
                 scene => $"Gather around, everyone! We need to act fast.",
                 scene => $"We need to act fast, or we'll be {scene.AFateIfTheMissionFails.WordText}!",
-                scene => $"We must act quicky to {scene.ActionThatContributesToTheMission} the {scene.ActionObjectThatContributesToTheMission}.",
+                scene => $"We must act quickly to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText}.",
+                scene => $"Time is slipping away. Every moment we delay, {scene.TheEnemy.WordText} gets closer to their goal.",
+                scene => $"The clock is ticking. We have only {scene.TheTimeLeftToCompleteTheMission.WordText} left to prevent {scene.AFateIfTheMissionFails.WordText}.",
+                scene => $"This is our critical moment. Delay is not an option, or {scene.LocationOfTheMission.WordText} will face {scene.TheChaosCausedByTheEnemy.WordText}.",
+                scene => $"Hurry! There isn't a second to waste. {scene.TheImmediateEffectsOfTheProblem.WordText} are already manifesting.",
+                scene => $"We're running out of time. {scene.TheGoalOfTheMission.WordText} must be achieved before {scene.TimeOfDay.WordText} ends.",
+                scene => $"Let's pick up the pace. {scene.TheEnemy.WordText} won't wait for us to make our move."
             };
             this.expositions.Add(SentencePurposeType.ExpressUrgency, expressUrgency);
 
@@ -97,11 +173,23 @@
             {
                 scene => $"We can do this!",
                 scene => $"We can do this! We've been through worse.",
-                scene => $"Let's move everyone! {scene.WhatHingesOnTheSuccessOfTheMission} is at stake.",
+                scene => $"Let's move everyone! {scene.WhatHingesOnTheSuccessOfTheMission.WordText} is at stake.",
                 scene => $"We can't let the {scene.AnEnemyOfTheMission.WordText} win.",
+                scene => $"We can do this! We can't let the {scene.AnEnemyOfTheMission.WordText} win.",
                 scene => $"That's the spirit! Let's do this!",
+                scene => $"Remember why we're here. {scene.TheGoalOfTheMission.WordText} is within our grasp.",
+                scene => $"We've got each other's backs. Together, there's nothing we can't overcome.",
+                scene => $"Keep pushing forward. For every challenge we face, remember {scene.TheAchievementsOfTheGroup.WordText}.",
+                scene => $"This is our time to shine. Let's show {scene.TheEnemy.WordText} what we're made of.",
+                scene => $"Our resolve will be our weapon against {scene.TheChaosCausedByTheEnemy.WordText}. Stand strong!",
+                scene => $"Each step forward is a step closer to victory. Let's make every action count.",
+                scene => $"Believe in our cause. Believe in each other. That's how we'll achieve {scene.TheIdealFutureStateOfTheMission.WordText}.",
+                scene => $"Our courage is our strength. Let's harness it and face {scene.AnObstacleToTheMission.WordText} head-on.",
+                scene => $"For {scene.VictimsOfTheEnemy.WordText}, for {scene.LocationOfTheMission.WordText}, we cannot falter now.",
+                scene => $"Eyes on the prize, team. {scene.TheGoalOfTheMission.WordText} is closer than it appears."
             };
             this.expositions.Add(SentencePurposeType.Motivate, motivating);
+
 
             var provideInformation = new List<Func<Scene, string>>
             {
@@ -234,6 +322,11 @@
             var askAQuestion = new List<Func<Scene, string>>
             {
                 scene => $"What's going on?",
+                scene => $"How can we leverage our strengths to reach our goal?",
+                scene => $"What's our next move?",
+                scene => $"How can we support each other effectively?",
+                scene => $"What's our approach to tackle {scene.AnObstacleToTheMission.WordText}?",
+                scene => $"How can we ensure we stay on the right path?",
                 scene => $"What's happening?",
                 scene => $"What's the plan?",
                 scene => $"What's the situation?",
@@ -267,7 +360,21 @@
                 scene => $"Get down! Stay quiet!",
                 scene => $"We need to move fast. Let's grab the {scene.ObjectYouAreLookingFor.WordText} and {scene.AWayToEscape.WordText}!",
                 scene => $"Do it quickly, and keep us updated.",
-                scene => $"Form {scene.AWeaponAgainstTheEnemy}!"
+                scene => $"Form {scene.AWeaponAgainstTheEnemy}!",
+                scene => $"We need to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText} and check for any {scene.PossibleProblemToAvoid.WordText}.",
+                scene => $"We've trained for this; stay disciplined.",
+                scene => $"Stay silent and avoid unnecessary risks.",
+                scene => $"We're in this together; let's support each other.",
+                scene => $"Stay united, and we'll emerge victorious.",
+                scene => $"Prepare for the worst, hope for the best.",
+                scene => $"We've faced tougher challenges before; stay determined.",
+                scene => $"This is a critical moment; stay on your guard.",
+                sceme => $"Stay sharp, everyone!",
+                scene => $"Stay calm and composed, we can overcome this.",
+                scene => $"Remember the plan and stick to it.",
+                scene => $"Keep an eye out for any unexpected obstacles.",
+                scene => $"Let's make sure we're well-prepared for any surprises.",
+                scene => $"Stay focused!",
             };
             this.expositions.Add(SentencePurposeType.GiveADirective, giveADirective);
 
@@ -275,6 +382,14 @@
             {
                 scene => $"We could {scene.ActionThatContributesToTheMission.WordText}.",
                 scene => $"We could {scene.ActionThatDetractsFromTheMission.WordText}.",
+                scene => $"Perhaps we should consider {scene.PossibleSolutionToConsider.WordText} as a viable option.",
+                scene => $"What if we tried {scene.AnAlternativeStrategy.WordText}? It might offer us a new perspective.",
+                scene => $"Could deploying {scene.ASecretWeapon.WordText} at {scene.LocationOfTheMission.WordText} turn the tide?",
+                scene => $"Maybe we should {scene.ActionThatContributesToSafety.WordText} to ensure everyone's well-being.",
+                scene => $"What about {scene.APlanToSucceedAtMission.WordText}? It could be our best shot.",
+                scene => $"Have we thought about {scene.AnUnexpectedAlly.WordText}? Their assistance could be crucial.",
+                scene => $"We might need to {scene.ActionThatContributesToTheMission.WordText} sooner rather than later.",
+                scene => $"It could be beneficial to {scene.ActionObjectThatContributesToTheMission.WordText} for added support."
             };
             this.expositions.Add(SentencePurposeType.Suggest, suggest);
 
@@ -283,8 +398,16 @@
                 scene => $"I don't think that's a good idea.",
                 scene => $"I don't think that's a good idea. We should {scene.ActionThatContributesToTheMission.WordText}.",
                 scene => $"I don't think that's a good idea. We should {scene.ActionThatContributesToTheMission.WordText} a {scene.ActionObjectThatContributesToTheMission.WordText} instead.",
+                scene => $"That approach seems risky. Wouldn't it be safer to {scene.ActionThatContributesToSafety.WordText}?",
+                scene => $"I'm not convinced. Have we considered the consequences of {scene.ActionThatDetractsFromTheMission.WordText}?",
+                scene => $"But how does that align with our goal to {scene.TheGoalOfTheMission.WordText}? We might lose focus.",
+                scene => $"Are we sure about this? It might lead to {scene.AFateIfTheMissionFails.WordText}, considering {scene.TheCurrentSituation.WordText}.",
+                scene => $"This could backfire. Remember what happened when we {scene.ARelatedNegativePastEvent.WordText}?",
+                scene => $"I see your point, but {scene.AnObstacleToTheMission.WordText} could complicate things. We need a plan B.",
+                scene => $"Isn't that exactly what {scene.TheEnemy.WordText} would expect us to do? We need a more unpredictable approach."
             };
             this.expositions.Add(SentencePurposeType.ArgueAPoint, argueAPoint);
+
 
             var expressAgreement = new List<Func<Scene, string>>
             {
@@ -355,15 +478,35 @@
                 scene => $"Thank you for your support.",
                 scene => $"I'm grateful for your support.",
                 scene => $"Thanks for your swift response.",
+                scene => $"Thanks for warning us.",
+                scene => $"Your efforts have made a significant difference.",
+                scene => $"I can't thank you enough for what you've done.",
+                scene => $"Your contribution has been invaluable to our success.",
+                scene => $"This wouldn't have been possible without you.",
+                scene => $"Your bravery and selflessness will not be forgotten.",
+                scene => $"We owe you a debt of gratitude for your courage.",
+                scene => $"Thank you for standing with us during these times.",
+                scene => $"Your actions have spoken louder than words. Thank you.",
+                scene => $"In appreciation of your unwavering support, thank you."
             };
             this.expositions.Add(SentencePurposeType.ExpressGratitude, expressGratitude);
+
 
             var expressDedication = new List<Func<Scene, string>>
             {
                 scene => $"I'm willing to take the risk.",
                 scene => $"I'm dedicated to making this right.",
+                scene => $"No matter the challenge, I'm here to stay.",
+                scene => $"I pledge my unwavering commitment to our cause.",
+                scene => $"My dedication to this mission is absolute.",
+                scene => $"I'm committed to seeing this through to the end.",
+                scene => $"Every step we take is a testament to our resolve.",
+                scene => $"I'm here for the long haul, no matter what it takes.",
+                scene => $"Our dedication is the key to overcoming these trials.",
+                scene => $"Let my actions reflect the depth of my commitment."
             };
             this.expositions.Add(SentencePurposeType.ExpressDedication, expressDedication);
+
 
             var revealSecrets = new List<Func<Scene, string>>
             {
@@ -378,6 +521,7 @@
                 scene => $"I'm certain.",
                 scene => $"I'm certain of it.",
                 scene => $"You can count on us.",
+                scene => $"I have no doubt we'll be able to utilize {scene.ObjectThatAssistsTheMission.WordText}.",
                 scene => $"Our dedication to {scene.ActionThatContributesToTheMission.WordText} will prevail.",
                 scene => $"I have no doubt we'll {scene.ActionThatContributesToTheMission.WordText}.",
                 scene => $"We won't {scene.ActionThatDetractsFromTheMission.WordText}.",
@@ -959,8 +1103,38 @@
             };
             this.expositions.Add(SentencePurposeType.ConveyAppreciation, conveyAppreciation);
 
+            var conveyRespect = new List<Func<Scene, string>>
+            {
+                scene => $"I respect your dedication to {scene.TheIdealStrategyForTheMission.WordText}.",
+                scene => $"Your courage at {scene.LocationOfTheMission.WordText} has earned you the highest esteem among {scene.ProtagonistsForTheMission.WordText}.",
+                scene => $"The wisdom you've shown in dealing with {scene.TheMainCauseOfTheProblem.WordText} commands respect from us all.",
+                scene => $"I've never seen anyone handle {scene.AnObstacleToTheMission.WordText} with such grace and effectiveness.",
+                scene => $"Your ability to remain calm in the face of {scene.AnImmediateDangerToTheMission.WordText} is truly admirable.",
+                scene => $"The respect I have for your leadership, especially during {scene.TheTimeLeftToCompleteTheMission.WordText}, knows no bounds.",
+                scene => $"Your insights into {scene.TheEnemy.WordText}'s tactics have been invaluable and have earned my deep respect.",
+                scene => $"Navigating the challenges of {scene.LocationOfTheMission.WordText} with such determination is worthy of the highest respect.",
+                scene => $"The compassion you've shown for {scene.VictimsOfTheEnemy.WordText} reflects the depth of your character.",
+                scene => $"Your relentless pursuit of {scene.TheGoalOfTheMission.WordText} despite {scene.TheChaosCausedByTheEnemy.WordText} is commendable.",
+                scene => $"I respect how you've always prioritized {scene.APriorityForTheMission.WordText} above personal gain.",
+                scene => $"Your mentorship has shaped many among {scene.ProtagonistsForTheMission.WordText}, a testament to your wisdom and patience.",
+                scene => $"Your tactical genius in orchestrating {scene.APlanToSucceedAtMission.WordText} has not gone unnoticed.",
+                scene => $"For your sacrifices and unwavering commitment to {scene.TheIdealFutureStateOfTheMission.WordText}, you have my utmost respect.",
+                scene => $"The way you rallied {scene.FriendsOfTheProtagonists.WordText} in our darkest hour was nothing short of inspiring."
+            };
+            this.expositions.Add(SentencePurposeType.ConveyRespect, conveyRespect);
+
+
             var provokeThought = new List<Func<Scene, string>>
             {
+                scene => $"Considering the analysis, we should start by {scene.APlanToSucceedAtMission.WordText}. This could help us mitigate {scene.AnObstacleToTheMission.WordText} effectively.",
+                scene => $"To avoid a repeat of {scene.ARelatedNegativePastEvent.WordText}, let's focus on {scene.ASuccessFactorOfTheMission.WordText}. Implementing this strategy could significantly improve our chances of success.",
+                scene => $"Given the assessment, it might be beneficial to {scene.AnActionThatContributesToSafety.WordText} to ensure the safety of our team during the mission.",
+                scene => $"The correlation between {scene.TheImmediateEffectsOfTheProblem.WordText} and {scene.TheChaosCausedByTheEnemy.WordText} suggests that we should consider {scene.PossibleSolutionToConsider.WordText} to address this issue proactively.",
+                scene => $"Taking into account the analysis, we should prioritize {scene.StatusOfTheMainCauseOfTheProblem.WordText}. This will likely lead to more efficient mission progress.",
+                scene => $"The evaluation of {scene.TheMentalStateOfTheEnemy.WordText} points to the need for a diplomatic approach. Let's explore options for negotiations or alliances.",
+                scene => $"Based on historical patterns, such as {scene.APastEventMirroringTheCurrentMission.WordText}, we could learn from past mistakes and implement {scene.AnAlternativeStrategy.WordText} for a better outcome.",
+                scene => $"The analysis highlights the importance of {scene.ASuccessFactorOfTheMission.WordText}. Let's develop a detailed plan to maximize its impact on our mission's success.",
+                scene => $"Considering the current situation, it's essential to {scene.ActionThatContributesToTheMission.WordText} and {scene.ActionThatDetractsFromTheMission.WordText} simultaneously. This balance will be key to our progress.",
                 scene => $"What if we approached {scene.TheIdealStrategyForTheMission.WordText} from a different angle?",
                 scene => $"Have we considered the long-term implications of {scene.TheMainCauseOfTheProblem.WordText}?",
                 scene => $"How can we address the root cause of {scene.TheImmediateEffectsOfTheProblem.WordText}?",
@@ -980,7 +1154,7 @@
                 scene => $"Have we considered the long-term implications of {scene.TheMainCauseOfTheProblem.WordText}?",
                 scene => $"How can we address the root cause of {scene.TheImmediateEffectsOfTheProblem.WordText}?",
             };
-            this.expositions.Add(SentencePurposeType.ProvokeThought, provokeThought);
+            this.expositions.Add(SentencePurposeType.ProvokeThoughtOrProposeIdea, provokeThought);
         }
     }
 }
