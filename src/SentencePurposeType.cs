@@ -70,7 +70,8 @@
         RejectAnIdea = 65,
         EngageInSmallTalk = 66,
         ChangeTheTopic = 67,
-        EndConversation = 68,
-        Other = 69 // For unspecified or custom sentence purposes
+        InspireACrowd = 68,
+        EndConversation = 69,
+        Other = 70 // For unspecified or custom sentence purposes
     }
 }
