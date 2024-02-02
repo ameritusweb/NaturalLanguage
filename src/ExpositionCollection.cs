@@ -6,7 +6,7 @@
 
         public ExpositionCollection()
         {
-            expositions = new Dictionary<SentencePurposeType, List<Func<Scene, string>>();
+            expositions = new Dictionary<SentencePurposeType, List<Func<Scene, string>>>();
             Initialize();
         }
 
