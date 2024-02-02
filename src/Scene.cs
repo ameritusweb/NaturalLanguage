@@ -189,5 +189,17 @@
         public StoryWord StatusOfTheMainCauseOfTheProblem { get; set; }
         
         public StoryWord AnUnexpectedEvent { get; set; }
+        
+        public StoryWord ANaturalPhenomenon { get; internal set; }
+        
+        public StoryWord APastEvent { get; set; }
+        
+        public StoryWord ASolution { get; set; }
+        
+        public StoryWord TheProblem { get; set; }
+        
+        public StoryWord TheMystery { get; set; }
+        
+        public StoryWord AWeakness { get; set; }
     }
 }

@@ -106,8 +106,18 @@
             var provideInformation = new List<Func<Scene, string>>
             {
                 scene => $"{scene.TheEnemy.WordText} has a {scene.AWeaponOfTheEnemy.WordText} at {scene.LocationOfTheEnemy.WordText}",
+                scene => $"Our latest intel suggests {scene.TheEnemy.WordText} is planning to attack {scene.LocationOfTheMission.WordText} by {scene.TimeOfDay.WordText}.",
+                scene => $"Reports indicate that {scene.VictimsOfTheEnemy.WordText} were last seen at {scene.LocationOfTheVictim.WordText}.",
+                scene => $"According to our sources, {scene.AnObstacleToTheMission.WordText} is currently {scene.StatusOfTheObstacleToTheMission.WordText}.",
+                scene => $"Surveillance footage shows a gathering of {scene.TheEnemy.WordText} near {scene.LocationOfTheEnemy.WordText}, possibly planning {scene.TheChaosCausedByTheEnemy.WordText}.",
+                scene => $"The {scene.TheMainCauseOfTheProblem.WordText} has been traced back to {scene.LocationOfTheMission.WordText}, requiring immediate attention.",
+                scene => $"An inside source revealed that {scene.TheEnemy.WordText}'s next target is {scene.LocationOfTheMission.WordText}, exploiting {scene.AWeakness.WordText}.",
+                scene => $"Our analysis confirms that {scene.ASolution.WordText} to {scene.TheProblem.WordText} is feasible with the resources currently at {scene.ASaferLocation.WordText}.",
+                scene => $"Historical records suggest that {scene.APastEvent.WordText} could shed light on {scene.TheMystery.WordText}, hinting at parallels with our current situation.",
+                scene => $"Weather forecasts predict {scene.ANaturalPhenomenon.WordText} in {scene.LocationOfTheMission.WordText}, which could impact our mission timelines."
             };
             this.expositions.Add(SentencePurposeType.ProvideInformation, provideInformation);
+
 
             var seekClarification = new List<Func<Scene, string>>
             {
@@ -151,6 +161,12 @@
                 scene => $"We need to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText} and check for any {scene.PossibleProblemToAvoid.WordText}.",
                 scene => $"We need to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText} and check for any {scene.PossibleProblemToAvoid.WordText}. We don't want another {scene.ARelatedNegativePastEvent.WordText}.",
                 scene => $"We're assessing it now.",
+                scene => $"A thorough analysis suggests that {scene.TheMainCauseOfTheProblem.WordText} is our primary concern. Prioritizing this could lead to significant advancements.",
+                scene => $"Considering the {scene.StatusOfTheMission.WordText}, our next steps should carefully address {scene.AnObstacleToTheMission.WordText}.",
+                scene => $"Historical patterns, such as {scene.APastEventMirroringTheCurrentMission.WordText}, offer valuable insights into our current predicament.",
+                scene => $"It's crucial we evaluate the {scene.TheMentalStateOfTheEnemy.WordText}. Understanding their motivations could reveal unexpected strategies.",
+                scene => $"Our data points to a correlation between {scene.TheImmediateEffectsOfTheProblem.WordText} and {scene.TheChaosCausedByTheEnemy.WordText}. Further investigation is warranted.",
+                scene => $"Reflection on {scene.ARelatedNegativePastEvent.WordText} has highlighted the importance of {scene.ASuccessFactorOfTheMission.WordText} in our strategic planning."
             };
             this.expositions.Add(SentencePurposeType.Analyze, analyze);
 
@@ -165,6 +181,12 @@
             var apologize = new List<Func<Scene, string>>
             {
                 scene => $"I'm sorry, I didn't mean to {scene.ActionThatDetractsFromTheMission.WordText}.",
+                scene => $"My apologies for {scene.ActionThatDetractsFromTheMission.WordText}. It was not my intention to hinder our progress.",
+                scene => $"I regret my oversight in {scene.ActionThatDetractsFromTheMission.WordText}. It's clear now how it affected {scene.TheGoalOfTheMission.WordText}.",
+                scene => $"Looking back, I realize how {scene.ActionThatDetractsFromTheMission.WordText} was a mistake. I'm truly sorry for the consequences.",
+                scene => $"I'm sorry for any confusion caused by my actions. In the future, I'll ensure to better align with {scene.ActionThatContributesToTheMission.WordText}.",
+                scene => $"I owe you an apology. My actions, specifically {scene.ActionThatDetractsFromTheMission.WordText}, were misguided.",
+                scene => $"I didn't foresee how {scene.ActionThatDetractsFromTheMission.WordText} would unfold. My apologies for the oversight."
             };
             this.expositions.Add(SentencePurposeType.Apologize, apologize);
 
@@ -185,8 +207,20 @@
                 scene => $"Acknowledged.",
                 scene => $"Understood.",
                 scene => $"Thanks for considering my suggestion.",
+                scene => $"Your point is well taken.",
+                scene => $"I see what you mean.",
+                scene => $"That's a good insight, thank you.",
+                scene => $"I appreciate the update.",
+                scene => $"Roger that. We'll proceed as advised.",
+                scene => $"Got it, we'll take it from here.",
+                scene => $"Your feedback is valuable, we'll act on it.",
+                scene => $"That clarifies a lot, thanks for the info.",
+                scene => $"Indeed, that's an interesting perspective.",
+                scene => $"Acknowledging your contribution to our strategy.",
+                scene => $"Duly noted, we'll adjust our plans accordingly."
             };
             this.expositions.Add(SentencePurposeType.Acknowledge, acknowledge);
+
 
             var expressDisdain = new List<Func<Scene, string>>
             {
@@ -287,12 +321,29 @@
             {
                 scene => $"I can't believe it!",
                 scene => $"I can't believe it! We actually did it!",
+                scene => $"This is beyond my wildest dreams!",
+                scene => $"Who would have thought? {scene.TheEnemy.WordText} defeated, against all odds!",
+                scene => $"Astounding! {scene.AnUnexpectedAlly.WordText} came through when we least expected.",
+                scene => $"Never in my life did I imagine we'd find {scene.ACriticalClue.WordText} here.",
+                scene => $"What a twist! {scene.TheMainCauseOfTheProblem.WordText} was right before our eyes.",
+                scene => $"Unbelievable! The {scene.AWeaponOfTheEnemy.WordText} was a decoy all along!",
+                scene => $"Shocking! To think {scene.TheChaosCausedByTheEnemy.WordText} could lead us here.",
+                scene => $"To see {scene.LocationOfTheMission.WordText} in peace again, it's nothing short of a miracle."
             };
             this.expositions.Add(SentencePurposeType.ConveySurprise, conveySurprise);
 
             var summarize = new List<Func<Scene, string>>
             {
                 scene => $"So, we'll {scene.ActionThatContributesToTheMission.WordText}, and {scene.AnotherActionThatContributesToTheMission}.",
+                scene => $"In summary, our next steps involve {scene.ActionThatContributesToTheMission.WordText} followed by {scene.AnotherActionThatContributesToTheMission}.",
+                scene => $"To wrap up, we've decided to {scene.ActionThatContributesToTheMission.WordText} and then tackle {scene.AnObstacleToTheMission.WordText}.",
+                scene => $"Quick recap: First {scene.ActionThatContributesToTheMission.WordText}, next {scene.AnotherActionThatContributesToTheMission}, and finally, ensure {scene.TheGoalOfTheMission.WordText}.",
+                scene => $"Ultimately, our plan is to {scene.ActionThatContributesToTheMission.WordText}, securing {scene.ASaferLocation.WordText} against {scene.AnImmediateDangerToTheMission.WordText}.",
+                scene => $"Summing up, we'll focus on {scene.ActionThatContributesToTheMission.WordText} to prevent {scene.TheChaosCausedByTheEnemy.WordText}, aiming for {scene.TheIdealFutureStateOfTheMission.WordText}.",
+                scene => $"Here's the gist: {scene.ActionThatContributesToTheMission.WordText} as our primary objective, followed by a strategic move to {scene.LocationOfTheMission.WordText}.",
+                scene => $"In essence, the mission boils down to {scene.ActionThatContributesToTheMission.WordText} and leveraging {scene.AnUnexpectedAlly.WordText} for our ultimate goal.",
+                scene => $"Overall, our strategy involves {scene.ActionThatContributesToTheMission.WordText} to counteract {scene.TheMainCauseOfTheProblem.WordText}, ensuring {scene.TheIdealFutureStateOfTheMission.WordText}.",
+                scene => $"To conclude, we're setting our sights on {scene.ActionThatContributesToTheMission.WordText}, with the aim of disrupting {scene.TheEnemy.WordText}'s plans."
             };
             this.expositions.Add(SentencePurposeType.Summarize, summarize);
 
