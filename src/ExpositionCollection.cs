@@ -5,14 +5,54 @@
         private Dictionary<SentencePurposeType, List<Func<Scene, string>>> expositions;
         private Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> characterExpositions;
         private List<Func<Scene, Character, (string, string)>> dialoguePairs;
+        private List<(SentencePurposeType, SentencePurposeType)> purposePairs;
+
+        public Dictionary<SentencePurposeType, List<Func<Scene, string>>> Expositions { get => expositions; }
+        public Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> CharacterExpositions { get => characterExpositions; }
 
         public ExpositionCollection()
         {
             expositions = new Dictionary<SentencePurposeType, List<Func<Scene, string>>>();
             characterExpositions = new Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>>();
             dialoguePairs = new List<Func<Scene, Character, (string, string)>>();
+            purposePairs = new List<(SentencePurposeType, SentencePurposeType)>();
             Initialize();
-            InitializeDialogue();
+            InitializePurposePairs();
+        }
+
+        private void InitializePurposePairs()
+        {
+            purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.SeekClarification));
+            purposePairs.Add((SentencePurposeType.SeekClarification, SentencePurposeType.ProvideInformation));
+            purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.OfferOpinion));
+            purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.Motivate));
+            purposePairs.Add((SentencePurposeType.Motivate, SentencePurposeType.ExpressUncertainty));
+            purposePairs.Add((SentencePurposeType.ExpressUncertainty, SentencePurposeType.Reassure));
+            purposePairs.Add((SentencePurposeType.Reassure, SentencePurposeType.AcceptAChallenge));
+            purposePairs.Add((SentencePurposeType.Reassure, SentencePurposeType.ProvideInformation));
+            purposePairs.Add((SentencePurposeType.AcceptAChallenge, SentencePurposeType.ExpressSolidarity));
+            purposePairs.Add((SentencePurposeType.GiveADirective, SentencePurposeType.ExpressConcern));
+            purposePairs.Add((SentencePurposeType.GiveADirective, SentencePurposeType.AskAQuestion));
+            purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressConfusion));
+            purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressDisbelief));
+            purposePairs.Add((SentencePurposeType.ExpressConfusion, SentencePurposeType.GiveGuidance));
+            purposePairs.Add((SentencePurposeType.GiveGuidance, SentencePurposeType.ExpressSolidarity));
+            purposePairs.Add((SentencePurposeType.ExpressSolidarity, SentencePurposeType.WarnOfImpendingDanger));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.MakeAPromise));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.DescribeASituation));
+            purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressCertainty));
+            purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressEmotion));
+            purposePairs.Add((SentencePurposeType.ExpressEmotion, SentencePurposeType.Reassure));
+            purposePairs.Add((SentencePurposeType.ExpressCertainty, SentencePurposeType.IssueAChallenge));
+            purposePairs.Add((SentencePurposeType.IssueAChallenge, SentencePurposeType.RejectAnIdea));
+            purposePairs.Add((SentencePurposeType.RejectAnIdea, SentencePurposeType.NarrateAnEvent));
+            purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.ExpressJoy));
+            purposePairs.Add((SentencePurposeType.ExpressJoy, SentencePurposeType.ExpressGratitude));
+            purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.GiveADirective));
+            purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.MakeAPromise));
         }
 
         private void InitializeDialogue()
@@ -105,9 +145,9 @@
                 scene => $"Please remain calm and stay in {scene.ASaferLocation.WordText}.",
                 scene => $"Make sure to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText} and check for any {scene.PossibleProblemToAvoid.WordText}. We don't want another {scene.ARelatedNegativePastEvent.WordText}.",
                 scene => $"Remember our {scene.PreparationForTheMission.WordText}, stay focused, and prioritize {scene.APriorityForTheMission.WordText}.",
-                scene => $"Please, follow {scene.HelpfulEntitiesForTheMission} instructions calmly and orderly.",
+                scene => $"Please, follow {scene.HelpfulEntitiesForTheMission.WordText} instructions calmly and orderly.",
                 scene => $"We should head for {scene.ASaferLocation.WordText}, away from the {scene.AnImmediateDangerToTheMission.WordText}.",
-                scene => $"{scene.ARejectedPlanOfTheMission.WordText} is not a good idea; some {scene.VictimsOfTheEnemy} are excellent {scene.ASkillOfTheEnemy.WordText}.",
+                scene => $"{scene.ARejectedPlanOfTheMission.WordText} is not a good idea; some {scene.VictimsOfTheEnemy.WordText} are excellent {scene.ASkillOfTheEnemy.WordText}.",
             };
             this.expositions.Add(SentencePurposeType.GiveGuidance, giveGuidance);
 
@@ -127,7 +167,7 @@
                 scene => $"We'll resort to {scene.AThreatOfTheEnemy.WordText} if {scene.TheNeedsOfTheEnemy.WordText} aren't met!",
                 scene => $"Time is running out!",
                 scene => $"{scene.ActionThatContributesToSafety.WordText}, everyone! We need to take action fast!",
-                scene => $"I hear {scene.TheSoundOfTheEnemy}! {scene.TheEnemy.WordText} are closing in!",
+                scene => $"I hear {scene.TheSoundOfTheEnemy.WordText}! {scene.TheEnemy.WordText} are closing in!",
                 scene => $"Attention, everyone! We have a {scene.AnImmediateDangerToTheMission.WordText} emergency in the {scene.LocationOfTheMission.WordText}",
             };
             this.expositions.Add(SentencePurposeType.WarnOfImpendingDanger, warnOfImpendingDanger);
@@ -140,7 +180,7 @@
                 scene => $"I hope it's not something dangerous.",
                 scene => $"Be careful, {scene.AnEnemyOfTheMission.WordText} can be {scene.ASkillOfTheEnemy.WordText}.",
                 scene => $"We need to take action immediately.",
-                scene => $"We can't afford to lose {scene.ASuccessFactorOfTheMission}.",
+                scene => $"We can't afford to lose {scene.ASuccessFactorOfTheMission.WordText}.",
                 scene => $"I hope we can {scene.ActionThatContributesToTheMission.WordText} soon.",
                 scene => $"I hope we can {scene.ActionThatContributesToTheMission.WordText} soon, or we'll be {scene.AFateIfTheMissionFails.WordText}.",
                 scene => $"I'm deeply concerned about the {scene.ANegativeFactorThatNecessitatedTheMission.WordText} in {scene.LocationOfTheMission.WordText}.",
@@ -331,7 +371,7 @@
                 scene => $"What's the plan?",
                 scene => $"What's the situation?",
                 scene => $"What's the status?",
-                scene => $"What's the status of {scene.ActionObjectThatContributesToTheMission}?",
+                scene => $"What's the status of {scene.ActionObjectThatContributesToTheMission.WordText}?",
             };
             this.expositions.Add(SentencePurposeType.AskAQuestion, askAQuestion);
 
@@ -340,10 +380,10 @@
                 scene => $"What should we do?",
                 scene => $"What do you think we should do?",
                 scene => $"What's the best course of action?",
-                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission}?",
-                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission} in the {scene.LocationOfTheMission.WordText}?",
-                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission} in the {scene.LocationOfTheMission.WordText} at {scene.TimeOfDay.WordText}?",
-                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission} in the {scene.LocationOfTheMission.WordText} at {scene.TimeOfDay.WordText} to {scene.ActionThatContributesToTheMission.WordText}?",
+                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission.WordText}?",
+                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission.WordText} in the {scene.LocationOfTheMission.WordText}?",
+                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission.WordText} in the {scene.LocationOfTheMission.WordText} at {scene.TimeOfDay.WordText}?",
+                scene => $"What's the best course of action for {scene.ActionObjectThatContributesToTheMission.WordText} in the {scene.LocationOfTheMission.WordText} at {scene.TimeOfDay.WordText} to {scene.ActionThatContributesToTheMission.WordText}?",
             };
             this.expositions.Add(SentencePurposeType.SeekAdvice, seekAdvice);
 
@@ -360,7 +400,7 @@
                 scene => $"Get down! Stay quiet!",
                 scene => $"We need to move fast. Let's grab the {scene.ObjectYouAreLookingFor.WordText} and {scene.AWayToEscape.WordText}!",
                 scene => $"Do it quickly, and keep us updated.",
-                scene => $"Form {scene.AWeaponAgainstTheEnemy}!",
+                scene => $"Form {scene.AWeaponAgainstTheEnemy.WordText}!",
                 scene => $"We need to {scene.ActionThatContributesToTheMission.WordText} the {scene.ActionObjectThatContributesToTheMission.WordText} and check for any {scene.PossibleProblemToAvoid.WordText}.",
                 scene => $"We've trained for this; stay disciplined.",
                 scene => $"Stay silent and avoid unnecessary risks.",
@@ -688,7 +728,7 @@
                 scene => $"I need advice on {scene.ASuccessFactorOfTheMission.WordText}. Can anyone offer guidance?",
                 scene => $"We need to make a decision about {scene.ARejectedPlanOfTheMission.WordText}. Thoughts?",
                 scene => $"Can someone verify the status of {scene.VictimsOfTheEnemy.WordText} at {scene.LocationOfTheMission.WordText}?",
-                scene => $"I'm having trouble with {scene.TheImmediateEffectsOfTheProblem}. Can someone assist?",
+                scene => $"I'm having trouble with {scene.TheImmediateEffectsOfTheProblem.WordText}. Can someone assist?",
                 scene => $"We need more resources for {scene.ActionThatContributesToTheMission.WordText}. Who can contribute?",
                 scene => $"Is there anyone experienced with {scene.ASkillOfTheProtagonists.WordText} who can lend a hand?",
                 scene => $"Can someone double-check the {scene.TheNeedsOfTheEnemy.WordText}? We need to be certain.",
@@ -1155,6 +1195,60 @@
                 scene => $"How can we address the root cause of {scene.TheImmediateEffectsOfTheProblem.WordText}?",
             };
             this.expositions.Add(SentencePurposeType.ProvokeThoughtOrProposeIdea, provokeThought);
+
+            var rejectAnIdea = new List<Func<Scene, string>>
+            {
+                scene => $"I'm not convinced that {scene.ActionThatDetractsFromTheMission.WordText} is the best course of action.",
+                scene => $"I'm hesitant to support {scene.ActionThatDetractsFromTheMission.WordText} without further analysis.",
+                scene => $"I have reservations about the potential risks of {scene.ActionThatDetractsFromTheMission.WordText}.",
+                scene => $"Considering {scene.TheMainCauseOfTheProblem.WordText}, I doubt {scene.ActionThatDetractsFromTheMission.WordText} will lead us to success.",
+                scene => $"Given the urgency of {scene.TheTimeLeftToCompleteTheMission.WordText}, {scene.ActionThatDetractsFromTheMission.WordText} seems like a distraction.",
+                scene => $"{scene.ActionThatDetractsFromTheMission.WordText} contradicts our objective of {scene.TheGoalOfTheMission.WordText}. We should reconsider.",
+                scene => $"In light of {scene.TheImmediateEffectsOfTheProblem.WordText}, pursuing {scene.ActionThatDetractsFromTheMission.WordText} could be detrimental.",
+                scene => $"From my perspective, {scene.ActionThatDetractsFromTheMission.WordText} doesn't align with {scene.TheIdealStrategyForTheMission.WordText}.",
+                scene => $"Given what's at stake with {scene.WhatHingesOnTheSuccessOfTheMission.WordText}, can we afford the risk of {scene.ActionThatDetractsFromTheMission.WordText}?",
+                scene => $"{scene.ActionThatDetractsFromTheMission.WordText} might backfire, considering {scene.TheChaosCausedByTheEnemy.WordText}. We need a safer approach.",
+                scene => $"Are we ignoring {scene.TheIdealFutureStateOfTheMission.WordText} by considering {scene.ActionThatDetractsFromTheMission.WordText}? It seems counterproductive.",
+                scene => $"The potential for {scene.TheChaosCausedByTheEnemy.WordText} makes {scene.ActionThatDetractsFromTheMission.WordText} a risky gamble.",
+                scene => $"Reflecting on {scene.ARelatedNegativePastEvent.WordText}, it's clear that {scene.ActionThatDetractsFromTheMission.WordText} could repeat past mistakes.",
+                scene => $"{scene.ActionThatDetractsFromTheMission.WordText} overlooks the crucial factor of {scene.ACriticalClue.WordText}, which could lead us astray.",
+                scene => $"Considering the complexity of {scene.TheMainCauseOfTheProblem.WordText}, jumping to {scene.ActionThatDetractsFromTheMission.WordText} seems premature."
+            };
+            this.expositions.Add(SentencePurposeType.RejectAnIdea, rejectAnIdea);
+
+            var expressConfusion = new List<Func<Scene, string>>
+            {
+                scene => $"I'm not sure I understand the connection between {scene.TheEnemy.WordText}'s actions and {scene.TheChaosCausedByTheEnemy.WordText}.",
+                scene => $"I'm having trouble grasping the implications of {scene.TheMainCauseOfTheProblem.WordText} on our mission.",
+                scene => $"I'm struggling to see how {scene.TheImmediateEffectsOfTheProblem.WordText} will impact our strategy.",
+                scene => $"I'm finding it hard to make sense of the relationship between {scene.TheEnemy.WordText}'s tactics and {scene.TheNeedsOfTheEnemy.WordText}.",
+                scene => $"How does {scene.TheGoalOfTheMission.WordText} align with {scene.TheImmediateEffectsOfTheProblem.WordText}? It's puzzling.",
+                scene => $"The strategy involving {scene.ACriticalClue.WordText} is baffling. How does it fit into our overall plan?",
+                scene => $"I can't wrap my head around {scene.TheMysteryUnfolding.WordText}. What are we missing?",
+                scene => $"The role of {scene.AnUnexpectedAlly.WordText} in this scenario is unclear. What's their endgame?",
+                scene => $"Why would {scene.TheEnemy.WordText} choose now to {scene.TheEnemyActions.WordText}? It doesn't add up.",
+                scene => $"The significance of {scene.TheBeforeAndAfter.WordText} escapes me. How does it change our perspective?"
+            };
+            this.expositions.Add(SentencePurposeType.ExpressConfusion, expressConfusion);
+
+            var expressDisbelief = new List<Func<Scene, string>>
+            {
+                scene => $"I can't believe {scene.TheEnemy.WordText} would resort to such tactics.",
+                scene => $"I'm shocked by the extent of {scene.TheChaosCausedByTheEnemy.WordText}.",
+                scene => $"I'm astonished by the audacity of {scene.AnEnemyOfTheMission.WordText}.",
+                scene => $"I'm appalled by the severity of {scene.TheImmediateEffectsOfTheProblem.WordText}.",
+                scene => $"I'm taken aback by the scale of {scene.TheMainCauseOfTheProblem.WordText}.",
+                scene => $"I'm stunned by the magnitude of {scene.TheEnemyActions.WordText}.",
+                scene => $"I'm amazed by the resilience of {scene.ProtagonistsForTheMission.WordText} in the face of {scene.AnObstacleToTheMission.WordText}.",
+                scene => $"I'm surprised by the complexity of {scene.TheMysteryUnfolding.WordText}.",
+                scene => $"To think {scene.TheEnemy.WordText} had the foresight to {scene.TheEnemyActions.WordText}, it's beyond belief.",
+                scene => $"That {scene.ASaferLocation.WordText} could be compromised by {scene.AnImmediateDangerToTheMission.WordText}, I never saw it coming.",
+                scene => $"The sudden turn of events with {scene.ATraitorInTheRanks.WordText} is hard to digest. How could they?",
+                scene => $"The idea that {scene.TheLossesWeHaveSuffered.WordText} could have been prevented is too much to bear.",
+                scene => $"I'm bewildered by how quickly {scene.TheCurrentSituation.WordText} has escalated. It seemed unthinkable before."
+            };
+            this.expositions.Add(SentencePurposeType.ExpressDisbelief, expressDisbelief);
+
         }
     }
 }
