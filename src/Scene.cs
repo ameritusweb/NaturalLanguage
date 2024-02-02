@@ -72,13 +72,21 @@
 
         public StoryWord LocationOfTheEnemy { get; set; }
 
+        public StoryWord ThePhysicalStateOfTheProtagonists { get; set; }
+
+        public StoryWord FriendsOfTheProtagonists { get; set; }
+
         public StoryWord LocationOfTheObjectThatAssistsTheMission { get; set; }
 
         public StoryWord ActionThatContributesToTheMission { get; set; }
 
+        public StoryWord AnotherActionThatContributesToTheMission { get; set; }
+
         public StoryWord ActionThatDetractsFromTheMission { get; set; }
 
         public StoryWord ASkillOfTheProtagonists { get; set; }
+
+        public StoryWord AHiddenActionOfTheProtagonists { get; set; }
 
         public StoryWord ActionThatContributesToSafety { get; set; }
 
@@ -86,7 +94,15 @@
 
         public StoryWord AThreatOfTheEnemy { get; set; }
 
+        public StoryWord AWeaponOfTheEnemy { get; set; }
+
+        public StoryWord AWeaponAgainstTheEnemy { get; set; }
+
         public StoryWord TheNeedsOfTheEnemy { get; set; }
+
+        public StoryWord CohortToBeRescuedFromTheEnemy { get; set; }
+
+        public StoryWord TheChaosCausedByTheEnemy { get; set; }
 
         public StoryWord TheEnemy { get; set; }
 
@@ -127,5 +143,51 @@
         public StoryWord APastEventMirroringTheCurrentMission { get; set; }
 
         public StoryWord ARelatedNegativePastEvent { get; set; }
+
+        public StoryWord TheBeforeAndAfter { get; set; }
+        
+        public StoryWord TheAchievementsOfTheGroup { get; set; }
+        
+        public StoryWord TheMysteryUnfolding { get; set; }
+        
+        public StoryWord TheSurvivors { get; set; }
+        
+        public StoryWord AnOverwhelmingChallenge { get; set; }
+        
+        public StoryWord TheInjusticeFaced { get; set; }
+        
+        public StoryWord TheLossesWeHaveSuffered { get; set; }
+        
+        public StoryWord TheUnsungHeroes { get; set; }
+        
+        public StoryWord APositiveTurnOfEvents { get; set; }
+        
+        public StoryWord ATraitorInTheRanks { get; set; }
+        
+        public StoryWord TheMissionObjective { get; set; }
+        
+        public StoryWord TheBurdenCarriedByTheProtagonists { get; set; }
+        
+        public StoryWord AMomentOfJoy { get; set; }
+        
+        public StoryWord TheCurrentSituation { get; set; }
+        
+        public StoryWord TheUnknownFactors { get; set; }
+        
+        public StoryWord TheHeroesOfTheStory { get; set; }
+        
+        public StoryWord TheEnemyActions { get; set; }
+
+        public StoryWord AnUnexpectedAlly { get; set; }
+        
+        public StoryWord ASecretWeapon { get; set; }
+        
+        public StoryWord ACriticalClue { get; set; }
+        
+        public StoryWord TheBattle { get; set; }
+        
+        public StoryWord StatusOfTheMainCauseOfTheProblem { get; set; }
+        
+        public StoryWord AnUnexpectedEvent { get; set; }
     }
 }
