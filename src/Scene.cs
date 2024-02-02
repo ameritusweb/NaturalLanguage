@@ -38,6 +38,8 @@
 
         public StoryWord ASuccessFactorOfTheMission { get; set; }
 
+        public StoryWord ANegativeFactorThatNecessitatedTheMission { get; set; }
+
         public StoryWord MissionComparison { get; set; }
 
         public StoryWord AnObstacleToTheMission { get; set; }
@@ -74,7 +76,13 @@
 
         public StoryWord ActionThatContributesToTheMission { get; set; }
 
+        public StoryWord ActionThatDetractsFromTheMission { get; set; }
+
+        public StoryWord ASkillOfTheProtagonists { get; set; }
+
         public StoryWord ActionThatContributesToSafety { get; set; }
+
+        public StoryWord TheDeedsOrActionsOfTheEnemy { get; set; }
 
         public StoryWord AThreatOfTheEnemy { get; set; }
 
@@ -108,7 +116,11 @@
 
         public StoryWord ARejectedPlanOfTheMission { get; set; }
 
+        public StoryWord WhatHingesOnTheSuccessOfTheMission { get; set; }
+
         public StoryWord ASkillOfTheEnemy { get; set; }
+
+        public StoryWord HowTheEnemyCouldTriggerFailureOfTheMission { get; set; }
 
         public StoryWord LocationOfTheVictim { get; set; }
         
