@@ -115,6 +115,10 @@
                 ARoleOfTheProtagonist = new StoryWord { WordText = "The bearers of the ancient peace treaty" },
                 ASecretHidingSpot = new StoryWord { WordText = "A cave within the DMZ, known only to the children" },
                 AStrategicMoveByTheEnemy = new StoryWord { WordText = "A false peace offering to lure the children into a trap" },
+                APossibleProblemToAvoid = new StoryWord { WordText = "Detainment by either faction" },
+                AMistakeMadeByTheProtagonists = new StoryWord { WordText = "A premature reveal of the peace treaty" },
+                ACriticalDetailMissed = new StoryWord { WordText = "The hidden message within the peace treaty" },
+                AControversialDecisionMade = new StoryWord { WordText = "The decision to trust a former enemy" },
             };
 
             var characters = new List<Character>

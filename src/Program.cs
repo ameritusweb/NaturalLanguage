@@ -7,8 +7,10 @@ namespace NaturalLanguageProcess
     {
         static void Main(string[] args)
         {
-            ChildrenOfTheDmz childrenOfTheDmz = new ChildrenOfTheDmz();
-            childrenOfTheDmz.Write();
+            BirthOfLucifer birthOfLucifer = new BirthOfLucifer();
+            birthOfLucifer.Write();
+            //ChildrenOfTheDmz childrenOfTheDmz = new ChildrenOfTheDmz();
+            //childrenOfTheDmz.Write();
             //OrbOfTime orbOfTime = new OrbOfTime();
             //orbOfTime.Write();
             //SeedsOfEden seedsOfEden = new SeedsOfEden();

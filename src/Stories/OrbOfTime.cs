@@ -115,6 +115,10 @@
                 AnActionToUncoverSecrets = new StoryWord { WordText = "Decrypting the Timeless Scrolls" },
                 ActionObjectThatContributesToTheMission = new StoryWord { WordText = "The Timekeeper's Compass" },
                 StatusOfTheMainCauseOfTheProblem = new StoryWord { WordText = "Worsening" },
+                APossibleProblemToAvoid = new StoryWord { WordText = "Triggering a Time Paradox" },
+                AMistakeMadeByTheProtagonists = new StoryWord { WordText = "The Unleashing of the Timeless One" },
+                ACriticalDetailMissed = new StoryWord { WordText = "The True Nature of the Time Devourer" },
+                AControversialDecisionMade = new StoryWord { WordText = "The Alliance with the Time Phantoms" },
             };
 
             Character aria = new Character

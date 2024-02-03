@@ -111,6 +111,10 @@
                 AWeakness = new StoryWord { WordText = "Scorcher dependency on fuel" },
                 AnAlternativeStrategy = new StoryWord { WordText = "Underground guerrilla tactics" },
                 AnActionThatContributesToSafety = new StoryWord { WordText = "Evacuation routes for non-combatants" },
+                APossibleProblemToAvoid = new StoryWord { WordText = "Triggering automated defenses" },
+                AMistakeMadeByTheProtagonists = new StoryWord { WordText = "Underestimating the enemy's strength" },
+                ACriticalDetailMissed = new StoryWord { WordText = "The presence of a Scorcher spy" },
+                AControversialDecisionMade = new StoryWord { WordText = "Negotiating with the Scorchers" },
             };
 
             Character leader = new Character

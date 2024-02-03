@@ -219,5 +219,13 @@
         public StoryWord AnActionThatLedToSuccess { get; internal set; }
         
         public StoryWord AnActionToUncoverSecrets { get; internal set; }
+        
+        public StoryWord APossibleProblemToAvoid { get; internal set; }
+        
+        public StoryWord AMistakeMadeByTheProtagonists { get; internal set; }
+        
+        public StoryWord ACriticalDetailMissed { get; internal set; }
+        
+        public StoryWord AControversialDecisionMade { get; internal set; }
     }
 }

@@ -329,6 +329,14 @@
                 scene => $"We'll be okay. We've been through worse.",
                 scene => $"Don't worry, we'll be careful.",
                 scene => $"No problem, we did the right thing.",
+                scene => $"Remember, we have {scene.HelpfulEntitiesForTheMission.WordText} on our side. Together, there's nothing we can't overcome.",
+                scene => $"This is just another challenge. Like all the others before, we'll meet it head-on and come out stronger.",
+                scene => $"Trust in our preparation. {scene.PreparationForTheMission.WordText} has equipped us well for moments like these.",
+                scene => $"Look how far we've come already. This is but one more hurdle on our path to {scene.TheGoalOfTheMission.WordText}.",
+                scene => $"Take a moment, breathe. We've navigated through {scene.AnOverwhelmingChallenge.WordText} before. This will be no different.",
+                scene => $"Our resolve has seen us through darker times than this. {scene.TheEnemy.WordText} won't change that.",
+                scene => $"We've got a plan, remember? {scene.APlanToSucceedAtMission.WordText} hasn't failed us yet.",
+                scene => $"There's strength in our unity. As long as we stand together, {scene.AnImmediateDangerToTheMission.WordText} can't break us."
             };
             this.expositions.Add(SentencePurposeType.Reassure, reassure);
 
@@ -352,13 +360,20 @@
             };
             this.expositions.Add(SentencePurposeType.Acknowledge, acknowledge);
 
-
             var expressDisdain = new List<Func<Scene, string>>
             {
                 scene => $"I can't believe this!",
                 scene => $"I can't believe this! We're in this mess because of you!",
                 scene => $"I can't believe this! You're the reason we're in this mess!",
                 scene => $"I can't believe you did that!",
+                scene => $"This is unfathomable! To think {scene.AnImmediateDangerToTheMission.WordText} could have been avoided with a bit of foresight.",
+                scene => $"How could you overlook {scene.APossibleProblemToAvoid.WordText}? It was right in front of us!",
+                scene => $"After everything, to be thwarted by {scene.AnObstacleToTheMission.WordText}? It's inexcusable!",
+                scene => $"To think that {scene.AMistakeMadeByTheProtagonists.WordText} could lead us here. What were we thinking?",
+                scene => $"All this effort, for what? To be caught unprepared by {scene.TheChaosCausedByTheEnemy.WordText}?",
+                scene => $"It's hard to believe {scene.TheEnemy.WordText} got the better of us. We should have seen this coming.",
+                scene => $"The oversight on {scene.ACriticalDetailMissed.WordText} is astounding. We're paying the price now.",
+                scene => $"Your decision to {scene.AControversialDecisionMade.WordText} has brought us nothing but trouble. I hope it was worth it."
             };
             this.expositions.Add(SentencePurposeType.ExpressDisdain, expressDisdain);
 
@@ -375,6 +390,26 @@
                 scene => $"What's the situation?",
                 scene => $"What's the status?",
                 scene => $"What's the status of {scene.ActionObjectThatContributesToTheMission.WordText}?",
+                scene => $"What do we know about {scene.TheEnemy.WordText}'s intentions?",
+                scene => $"Can someone explain why {scene.TheMainCauseOfTheProblem.WordText} is critical to our mission?",
+                scene => $"How close are we to achieving {scene.TheGoalOfTheMission.WordText}?",
+                scene => $"What risks are associated with {scene.APlanToSucceedAtMission.WordText}?",
+                scene => $"Are there any updates on {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}?",
+                scene => $"How can we counter {scene.AnEnemyOfTheMission.WordText}'s strategy?",
+                scene => $"What measures are in place to protect {scene.ProtagonistsForTheMission.WordText} from {scene.AnImmediateDangerToTheMission.WordText}?",
+                scene => $"How has {scene.TheMentalStateOfTheEnemy.WordText} influenced their tactics?",
+                scene => $"Is there a way to turn {scene.AnObstacleToTheMission.WordText} into an advantage?",
+                scene => $"What's the impact of {scene.TheImmediateEffectsOfTheProblem.WordText} on our current strategy?",
+                scene => $"How reliable is the information about {scene.LocationOfTheEnemy.WordText}?",
+                scene => $"What alternatives do we have if {scene.APlanToSucceedAtMission.WordText} fails?",
+                scene => $"How can we better understand {scene.VictimsOfTheEnemy.WordText}'s needs?",
+                scene => $"What's our contingency plan for dealing with {scene.AnImmediateDangerToTheProtagonists.WordText}?",
+                scene => $"How will {scene.TheTimeLeftToCompleteTheMission.WordText} affect our decision-making?",
+                scene => $"Can {scene.HelpfulEntitiesForTheMission.WordText} provide the support we need right now?",
+                scene => $"What's the significance of {scene.TheMysteryUnfolding.WordText} to our mission's success?",
+                scene => $"How can we mitigate the effects of {scene.TheChaosCausedByTheEnemy.WordText}?",
+                scene => $"What's the best way to approach {scene.TheSurvivors.WordText} for information?",
+                scene => $"How can we use {scene.TheAchievementsOfTheGroup.WordText} to inspire confidence in our team?"
             };
             this.expositions.Add(SentencePurposeType.AskAQuestion, askAQuestion);
 
