@@ -2,6 +2,8 @@
 {
     public class Scene
     {
+        public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
+
         public StoryWord ObjectYouAreLookingFor { get; set; }
 
         public StoryWord ObjectThatAssistsTheMission { get; set; }
@@ -234,7 +236,14 @@
             var properties = scene.GetType().GetProperties();
             for (int i = 0; i < properties.Length; i++)
             {
-                properties[i].SetValue(scene, new StoryWord { WordText = $"$S{i}$" });
+                var property = properties[i];
+                if (property.PropertyType != typeof(StoryWord))
+                {
+                    continue;
+                }
+                var text = $"$S{i}$";
+                scene.Placeholders.Add(text, properties[i].Name);
+                properties[i].SetValue(scene, new StoryWord { WordText = text });
             }
             return scene;
         }

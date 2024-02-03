@@ -18,8 +18,13 @@ namespace NaturalLanguageProcess
             Dictionary<string, string> scenePropertyNames = new Dictionary<string, string>();
             foreach (var sceneProperty in sceneProperties)
             {
+                if (sceneProperty.PropertyType != typeof(StoryWord))
+                {
+                    continue;
+                }
                 scenePropertyNames.Add((sceneProperty.GetValue(sceneWithPlaceholders) as StoryWord).WordText, sceneProperty.Name);
             }
+            List<string> sentencePairs = new List<string>();
 
             List<(SentencePurposeType, int, SentencePurposeType, int)> matchedPairs = new List<(SentencePurposeType, int, SentencePurposeType, int)>();
             HashSet<string> unmatched = new HashSet<string>();
@@ -45,6 +50,7 @@ namespace NaturalLanguageProcess
 
                                 if (firstMatches.Intersect(secondMatches).Any())
                                 {
+                                    sentencePairs.Add($"{ReplacePlaceholders(sceneWithPlaceholders, firstSentence)} || {ReplacePlaceholders(sceneWithPlaceholders, secondSentence)}");
                                     matchedPairs.Add((pair.Item1, i, pair.Item2, j));
                                     found = true;
                                 }
@@ -60,8 +66,22 @@ namespace NaturalLanguageProcess
             }
 
             File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
+            File.WriteAllLines("E:\\exposition\\pairs.txt", sentencePairs);
 
             return matchedPairs;
+        }
+
+        private string ReplacePlaceholders(Scene scene, string sentence)
+        {
+            var map = scene.Placeholders;
+            var matches = Regex.Matches(sentence, @"\$([S|C]\d+)\$");
+            foreach (Match match in matches)
+            {
+                var placeholder = match.Value;
+                var propertyName = map[placeholder];
+                sentence = sentence.Replace(placeholder, $"'{propertyName}'");
+            }
+            return sentence;
         }
 
         private HashSet<string> ExtractPlaceholders(string sentence)
