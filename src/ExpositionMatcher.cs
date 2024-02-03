@@ -22,7 +22,7 @@ namespace NaturalLanguageProcess
             }
 
             List<(SentencePurposeType, int, SentencePurposeType, int)> matchedPairs = new List<(SentencePurposeType, int, SentencePurposeType, int)>();
-            List<string> unmatched = new List<string>();
+            HashSet<string> unmatched = new HashSet<string>();
             foreach (var pair in expositionCollection.PurposePairs)
             {
                 if (expositionCollection.Expositions.ContainsKey(pair.Item1) && expositionCollection.Expositions.ContainsKey(pair.Item2))
@@ -59,7 +59,7 @@ namespace NaturalLanguageProcess
                 }
             }
 
-            File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched);
+            File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
 
             return matchedPairs;
         }

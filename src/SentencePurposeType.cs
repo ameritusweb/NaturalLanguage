@@ -82,9 +82,11 @@
         ExpressPersonalPeril = 79,
         ExpressDetermination = 80,
         Sing = 81,
-        CastASpell = 82,
-        EndConversation = 83,
-        StartConversation = 84,
-        Other = 85 // For unspecified or custom sentence purposes
+        InternalDialogue = 82,
+        ExpressRealization = 83,
+        CastASpell = 84,
+        EndConversation = 85,
+        StartConversation = 86,
+        Other = 87 // For unspecified or custom sentence purposes
     }
 }
