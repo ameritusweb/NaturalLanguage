@@ -190,7 +190,7 @@
         
         public StoryWord AnUnexpectedEvent { get; set; }
         
-        public StoryWord ANaturalPhenomenon { get; internal set; }
+        public StoryWord ANaturalPhenomenon { get; set; }
         
         public StoryWord APastEvent { get; set; }
         
@@ -205,5 +205,19 @@
         public StoryWord AnAlternativeStrategy { get; set; }
 
         public StoryWord AnActionThatContributesToSafety { get; set; }
+        
+        public StoryWord ARoleOfTheProtagonist { get; set; }
+        
+        public StoryWord AStrategicMoveByTheEnemy { get; set; }
+        
+        public StoryWord ASecretHidingSpot { get; set; }
+        
+        public StoryWord ATrapForTheProtagonists { get; internal set; }
+        
+        public StoryWord ASafeApproach { get; internal set; }
+        
+        public StoryWord AnActionThatLedToSuccess { get; internal set; }
+        
+        public StoryWord AnActionToUncoverSecrets { get; internal set; }
     }
 }

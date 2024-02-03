@@ -79,7 +79,8 @@
         AcceptResponsibility = 76,
         ProvideGoodNews = 77,
         ConveyRespect = 78,
-        EndConversation = 79,
-        Other = 80 // For unspecified or custom sentence purposes
+        ExpressPersonalPeril = 79,
+        EndConversation = 80,
+        Other = 81 // For unspecified or custom sentence purposes
     }
 }
