@@ -3,15 +3,18 @@
     public class ExpositionCollection
     {
         private Dictionary<SentencePurposeType, List<Func<Scene, string>>> expositions;
+        private Dictionary<SentencePurposeType, List<Func<MagicalScene, string>>> magicalExpositions;
         private Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> characterExpositions;
         private List<(SentencePurposeType, SentencePurposeType)> purposePairs;
 
         public Dictionary<SentencePurposeType, List<Func<Scene, string>>> Expositions { get => expositions; }
+        public Dictionary<SentencePurposeType, List<Func<MagicalScene, string>>> MagicalExpositions { get => magicalExpositions; }
         public Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> CharacterExpositions { get => characterExpositions; }
 
         public ExpositionCollection()
         {
             expositions = new Dictionary<SentencePurposeType, List<Func<Scene, string>>>();
+            magicalExpositions = new Dictionary<SentencePurposeType, List<Func<MagicalScene, string>>>();
             characterExpositions = new Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>>();
             purposePairs = new List<(SentencePurposeType, SentencePurposeType)>();
             Initialize();
@@ -33,14 +36,20 @@
             purposePairs.Add((SentencePurposeType.AcceptAChallenge, SentencePurposeType.ExpressSolidarity));
             purposePairs.Add((SentencePurposeType.GiveADirective, SentencePurposeType.ExpressConcern));
             purposePairs.Add((SentencePurposeType.GiveADirective, SentencePurposeType.AskAQuestion));
+            purposePairs.Add((SentencePurposeType.GiveADirective, SentencePurposeType.ExpressDetermination));
             purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.ProvideInformation));
+            purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.Reassure));
             purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressConfusion));
             purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressDisbelief));
             purposePairs.Add((SentencePurposeType.ExpressConfusion, SentencePurposeType.GiveGuidance));
             purposePairs.Add((SentencePurposeType.GiveGuidance, SentencePurposeType.ExpressSolidarity));
             purposePairs.Add((SentencePurposeType.ExpressSolidarity, SentencePurposeType.WarnOfImpendingDanger));
+            purposePairs.Add((SentencePurposeType.ExpressSolidarity, SentencePurposeType.ProvideInformation));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.MakeAPromise));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.DescribeASituation));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressSolidarity));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressCertainty));
             purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressCertainty));
             purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressEmotion));
             purposePairs.Add((SentencePurposeType.ExpressEmotion, SentencePurposeType.Reassure));
@@ -50,6 +59,7 @@
             purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.ExpressJoy));
             purposePairs.Add((SentencePurposeType.ExpressJoy, SentencePurposeType.ExpressGratitude));
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.GiveADirective));
+            purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.ExpressUrgency));
             purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.MakeAPromise));
         }
 
@@ -63,8 +73,18 @@
                 scene => $"I found some {scene.ObjectThatAssistsTheMission.WordText} in the {scene.LocationOfTheObjectThatAssistsTheMission.WordText}; it will be useful.",
                 scene => $"I heard about this in {scene.APastEventMirroringTheCurrentMission.WordText}, but never thought I'd experience it.",
                 scene => $"I've dealt with {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText} before.",
+                scene => $"Once, I barely escaped from {scene.AnImmediateDangerToTheMission.WordText}. That experience taught me to always be prepared.",
+                scene => $"During {scene.APastEventMirroringTheCurrentMission.WordText}, I discovered that {scene.APositiveTurnOfEvents.WordText} can emerge from the darkest moments.",
+                scene => $"I remember finding {scene.ObjectThatAssistsTheMission.WordText} under similar circumstances once. It proved indispensable against {scene.AnEnemyOfTheMission.WordText}.",
+                scene => $"There was a time when {scene.TheLossesWeHaveSuffered.WordText} seemed insurmountable. Yet, here we are, continuing the fight.",
+                scene => $"I've seen {scene.TheEnemy.WordText} use {scene.AWeaponOfTheEnemy.WordText} before. Knowing its weakness could turn the tide in our favor.",
+                scene => $"Reflecting on {scene.ARelatedNegativePastEvent.WordText}, I realize how far we've come and how much we've learned.",
+                scene => $"Encountering {scene.TheMysteryUnfolding.WordText} isn't new to me. Similar mysteries in the past have led to unexpected allies.",
+                scene => $"The last time I was in {scene.LocationOfTheMission.WordText}, I never imagined we'd face {scene.AnOverwhelmingChallenge.WordText}. Yet, we must overcome.",
+                scene => $"I recall training for moments like this, but facing {scene.AnImmediateDangerToTheMission.WordText} in reality is a whole different challenge."
             };
             this.expositions.Add(SentencePurposeType.ShareAnExperience, shareAnExperienceList);
+
 
             var giveGuidance = new List<Func<Scene, string>>
             {
@@ -227,7 +247,18 @@
                 scene => $"I promise we'll {scene.ActionThatContributesToTheMission.WordText} our {scene.ActionObjectThatContributesToTheMission.WordText}. We need to {scene.ActionThatContributesToSafety.WordText}. We don't want another {scene.ARelatedNegativePastEvent.WordText}.",
                 scene => $"I promise we'll {scene.ActionThatContributesToTheMission.WordText} for {scene.ActionThatContributesToTheMission.WordText}",
                 scene => $"I promise we won't {scene.ActionThatDetractsFromTheMission.WordText}.",
-                scene => $"I promise we won't {scene.ActionThatDetractsFromTheMission.WordText} again."
+                scene => $"I promise we won't {scene.ActionThatDetractsFromTheMission.WordText} again.",
+                scene => $"I promise to always stand by {scene.ProtagonistsForTheMission.WordText}, no matter the {scene.TheChaosCausedByTheEnemy.WordText} we face.",
+                scene => $"I promise to protect {scene.VictimsOfTheEnemy.WordText} from {scene.AnEnemyOfTheMission.WordText}, ensuring their safety at all costs.",
+                scene => $"I vow to never let {scene.TheMainCauseOfTheProblem.WordText} defeat us. We will overcome it together.",
+                scene => $"I commit to finding a solution to {scene.TheImmediateEffectsOfTheProblem.WordText}. Failure is not an option.",
+                scene => $"I assure you, we will reach {scene.ASaferLocation.WordText} before {scene.TheTimeLeftToCompleteTheMission.WordText} runs out. Trust in our resolve.",
+                scene => $"I pledge to honor the legacy of {scene.TheUnsungHeroes.WordText} by completing {scene.TheMissionObjective.WordText}, no matter what stands in our way.",
+                scene => $"I guarantee we'll uncover the truth behind {scene.TheMysteryUnfolding.WordText}. The answers lie just ahead.",
+                scene => $"I promise to always remember the lessons learned from {scene.ARelatedNegativePastEvent.WordText} and use them to guide our actions.",
+                scene => $"I swear that {scene.TheLossesWeHaveSuffered.WordText} will not be in vain. We'll make things right, for them and for us.",
+                scene => $"I commit to using every resource at our disposal, including {scene.ASecretWeapon.WordText}, to ensure our victory against {scene.TheEnemy.WordText}.",
+                scene => $"I vow to stay true to our cause, even when faced with {scene.AnOverwhelmingChallenge.WordText}. Together, we are unstoppable."
             };
             this.expositions.Add(SentencePurposeType.MakeAPromise, makeAPromise);
 
@@ -1278,6 +1309,57 @@
                 scene => $"As I navigate the treacherous terrain of {scene.LocationOfTheMission.WordText}, I can't shake the feeling that {scene.ATrapForTheProtagonists.WordText} lies in wait, ready to spring at the slightest misstep."
             };
             this.expositions.Add(SentencePurposeType.ExpressPersonalPeril, expressPersonalPeril);
+
+            var expressDetermination = new List<Func<Scene, string>>
+            {
+                scene => $"No matter what {scene.TheEnemy.WordText} throws at us, we will not falter. Our resolve is stronger than their malice.",
+                scene => $"We've come too far to give up now. {scene.TheGoalOfTheMission.WordText} is within our reach, and I'll see it through to the end.",
+                scene => $"The path ahead is fraught with {scene.AnObstacleToTheMission.WordText}, but I am undeterred. We will overcome.",
+                scene => $"I refuse to be intimidated by {scene.TheChaosCausedByTheEnemy.WordText}. Our cause is just, and our spirits are unbreakable.",
+                scene => $"Let {scene.TheEnemy.WordText} underestimate us. It will be their downfall. Our determination is our greatest weapon.",
+                scene => $"This mission, {scene.TheGoalOfTheMission.WordText}, it's more than a goal; it's a promise I intend to keep, no matter the cost.",
+                scene => $"Every challenge, every setback, has only strengthened my resolve. {scene.AnObstacleToTheMission.WordText} will not stop us.",
+                scene => $"We stand at the brink of {scene.TheIdealFutureStateOfTheMission.WordText}. I vow to lead us there, through every difficulty.",
+                scene => $"I am committed to {scene.ActionThatContributesToTheMission.WordText}, in the face of {scene.AnImmediateDangerToTheMission.WordText} or any threat. Our mission is too important.",
+                scene => $"Though {scene.AnImmediateDangerToTheMission.WordText} looms large, my determination is unwavering. We will secure {scene.TheGoalOfTheMission.WordText}, come what may.",
+                scene => $"I've seen what happens if we fail, and I refuse to let {scene.AFateIfTheMissionFails.WordText} become our reality. We will succeed.",
+                scene => $"Our journey has been marked by {scene.TheChaosCausedByTheEnemy.WordText}, but our resolve remains stronger than ever. We will prevail.",
+                scene => $"Let the history books show that when faced with {scene.AnOverwhelmingChallenge.WordText}, we did not back down. We stood tall and faced it head-on.",
+                scene => $"The stakes, {scene.WhatHingesOnTheSuccessOfTheMission.WordText}, have never been higher. But so too is our determination to triumph."
+            };
+            this.expositions.Add(SentencePurposeType.ExpressDetermination, expressDetermination);
+
+            var sing = new List<Func<Scene, string>>
+            {
+                scene => $"Beneath the {scene.TimeOfDay.WordText}, we stand united, our voices one,\n'Sing for the dawn, sing for the light, for {scene.TheGoalOfTheMission.WordText} we fight.'",
+                scene => $"In the shadow of {scene.AnObstacleToTheMission.WordText}, alone I stand,\n'A whisper in the dark, a flame from a spark, I hold {scene.TheIdealFutureStateOfTheMission.WordText} in my heart.'",
+                scene => $"Around the fire's glow, {scene.FriendsOfTheProtagonists.WordText} side by side,\n'Through trials and fears, through laughter and tears, on the wings of hope we ride.'",
+                scene => $"Facing {scene.TheEnemy.WordText}, with courage bold and true,\n'No night too dark, no path too stark, to {scene.ActionThatContributesToTheMission.WordText} we remain true.'",
+                scene => $"A solemn vow to {scene.TheLossesWeHaveSuffered.WordText}, a promise to keep,\n'For those we've lost, no matter the cost, their memories we'll always keep.'",
+                scene => $"With every step in {scene.LocationOfTheMission.WordText}, our journey sings,\n'A road untraveled, a mystery unraveled, to our dreams we spread our wings.'",
+                scene => $"In the heart of peril, {scene.TheSurvivors.WordText} raise a defiant tune,\n'Against the tide, together we ride, beneath the silver moon.'",
+                scene => $"As dawn breaks over {scene.LocationOfTheMission.WordText}, a new day's song,\n'From dusk till dawn, our hope reborn, in unity we're strong.'",
+                scene => $"A ballad for {scene.TheUnsungHeroes.WordText}, silent guardians brave and true,\n'In shadows deep, their watch they keep, unseen, unheard, they guide us through.'",
+                scene => $"A lullaby for peace, in the midst of {scene.TheChaosCausedByTheEnemy.WordText},\n'Softly we tread, with hope ahead, in our hearts a tranquil beat.'"
+            };
+            this.expositions.Add(SentencePurposeType.Sing, sing);
+
+            var castASpell = new List<Func<MagicalScene, string>>
+            {
+                scene => $"With a whispered incantation, I summon {scene.AMagicalElement.WordText}, weaving the energies to {scene.ActionThatContributesToTheMission.WordText}.",
+                scene => $"Hands outstretched, I call upon {scene.ASourceOfMagic.WordText}, channeling its power to {scene.AMagicalOutcome.WordText} against {scene.TheEnemy.WordText}.",
+                scene => $"Eyes closed, I focus deeply, invoking {scene.ASpell.WordText} to reveal the secrets of {scene.AMystery.WordText}.",
+                scene => $"The air crackles with energy as I cast {scene.ASpell.WordText}, a protective barrier forming around {scene.ProtectedEntities.WordText}.",
+                scene => $"Chanting the ancient words, I harness {scene.ASourceOfMagic.WordText} to heal {scene.AfflictedEntities.WordText}, their wounds mending before our eyes.",
+                scene => $"With a forceful gesture, I unleash {scene.AMagicalElement.WordText}, the spell colliding with {scene.AnObstacleToTheMission.WordText} and dissolving it into nothing.",
+                scene => $"Drawing symbols in the air, I conjure {scene.ASummonedCreature.WordText}, bidding it to aid us in our quest to {scene.ActionThatContributesToTheMission.WordText}.",
+                scene => $"Murmuring an eldritch verse, I manipulate the fabric of reality, bending {scene.ANaturalElement.WordText} to our will, clearing the path towards {scene.TheGoalOfTheMission.WordText}.",
+                scene => $"I focus my will, tapping into {scene.AMagicalArtifact.WordText}, its glow intensifying as I direct its power to {scene.AMagicalEffect.WordText}.",
+                scene => $"The ground trembles as I invoke {scene.ASpell.WordText}, summoning forces that lay dormant, to rise and {scene.ActionThatContributesToTheMission.WordText}.",
+                scene => $"In the language of the ancients, I speak {scene.ASpell.WordText}, shadows coalescing to whisper secrets of {scene.AMystery.WordText} to us.",
+                scene => $"I trace the runes of {scene.ASpell.WordText} in the air, a flash of light signifying the sealing of {scene.AnEnemyOfTheMission.WordText}, their power waning under the spell's might."
+            };
+            this.magicalExpositions.Add(SentencePurposeType.CastASpell, castASpell);
 
         }
     }

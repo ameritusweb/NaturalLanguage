@@ -80,7 +80,10 @@
         ProvideGoodNews = 77,
         ConveyRespect = 78,
         ExpressPersonalPeril = 79,
-        EndConversation = 80,
-        Other = 81 // For unspecified or custom sentence purposes
+        ExpressDetermination = 80,
+        Sing = 81,
+        CastASpell = 82,
+        EndConversation = 83,
+        Other = 84 // For unspecified or custom sentence purposes
     }
 }
