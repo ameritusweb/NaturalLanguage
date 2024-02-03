@@ -10,6 +10,7 @@
         public Dictionary<SentencePurposeType, List<Func<Scene, string>>> Expositions { get => expositions; }
         public Dictionary<SentencePurposeType, List<Func<MagicalScene, string>>> MagicalExpositions { get => magicalExpositions; }
         public Dictionary<SentencePurposeType, List<Func<Scene, Character, string>>> CharacterExpositions { get => characterExpositions; }
+        public List<(SentencePurposeType, SentencePurposeType)> PurposePairs { get => purposePairs; }
 
         public ExpositionCollection()
         {
@@ -234,7 +235,22 @@
                 scene => $"An inside source revealed that {scene.TheEnemy.WordText}'s next target is {scene.LocationOfTheMission.WordText}, exploiting {scene.AWeakness.WordText}.",
                 scene => $"Our analysis confirms that {scene.ASolution.WordText} to {scene.TheProblem.WordText} is feasible with the resources currently at {scene.ASaferLocation.WordText}.",
                 scene => $"Historical records suggest that {scene.APastEvent.WordText} could shed light on {scene.TheMystery.WordText}, hinting at parallels with our current situation.",
-                scene => $"Weather forecasts predict {scene.ANaturalPhenomenon.WordText} in {scene.LocationOfTheMission.WordText}, which could impact our mission timelines."
+                scene => $"Weather forecasts predict {scene.ANaturalPhenomenon.WordText} in {scene.LocationOfTheMission.WordText}, which could impact our mission timelines.",
+                scene => $"The {scene.ActionObjectThatContributesToTheMission.WordText} is key to our strategy and could significantly boost our efforts.",
+                scene => $"Our primary goal, {scene.TheGoalOfTheMission.WordText}, remains within reach, provided we stay focused and coordinated.",
+                scene => $"We've devised {scene.APlanToSucceedAtMission.WordText} to navigate the obstacles and secure a victory.",
+                scene => $"Currently, {scene.TheStatusOfTheMainCauseOfTheProblem.WordText} is exacerbating the situation, demanding our immediate attention.",
+                scene => $"We've identified {scene.AnEnemyOfTheMission.WordText} as a significant threat due to their strategic maneuvers against us.",
+                scene => $"Both {scene.ProtagonistsForTheMission.WordText} and {scene.AnImmediateDangerToTheMission.WordText} are at the forefront of this conflict, requiring our vigilance.",
+                scene => $"The {scene.TheMentalStateOfTheEnemy.WordText} suggests they might be planning a more aggressive approach soon.",
+                scene => $"We're witnessing {scene.TheImmediateEffectsOfTheProblem.WordText}, which underscores the urgency of addressing the root causes.",
+                scene => $"Revisiting {scene.APlanToSucceedAtMission.WordText}, it's clear we need to adapt our tactics to the evolving situation.",
+                scene => $"{scene.AnImmediateDangerToTheProtagonists.WordText} has emerged as a new threat, one that could jeopardize our entire operation.",
+                scene => $"Time is a luxury we don't have, with only {scene.TheTimeLeftToCompleteTheMission.WordText} to enact our strategy.",
+                scene => $"{scene.HelpfulEntitiesForTheMission.WordText} have offered their support, which could prove pivotal in the coming days.",
+                scene => $"The unfolding of {scene.TheMysteryUnfolding.WordText} may provide us with the leverage needed to turn the tide.",
+                scene => $"It's crucial we remember {scene.TheSurvivors.WordText}; their experiences and resilience could inspire our path forward.",
+                scene => $"Reflecting on {scene.TheAchievementsOfTheGroup.WordText} provides a beacon of hope and a reminder of what we're capable of achieving together."
             };
             this.expositions.Add(SentencePurposeType.ProvideInformation, provideInformation);
 
@@ -247,6 +263,18 @@
                 scene => $"What's the plan?",
                 scene => $"What's the status?",
                 scene => $"What are the main issues causing this {scene.AnImmediateDangerToTheMission}?",
+                scene => $"Can {scene.FriendsOfTheProtagonists.WordText} provide more insight into the current situation?",
+                scene => $"How exactly does {scene.ASkillOfTheProtagonists.WordText} play a role in our current strategy?",
+                scene => $"In what way can {scene.ASkillOfTheProtagonists.WordText} aid in {scene.ActionThatContributesToTheMission.WordText}?",
+                scene => $"Can someone explain how {scene.ActionThatContributesToTheMission.WordText} involves {scene.ActionObjectThatContributesToTheMission.WordText}?",
+                scene => $"What's the nature of {scene.ATrapForTheProtagonists.WordText}, and how can we avoid it?",
+                scene => $"Could you elaborate on {scene.AnObstacleToTheMission.WordText} and how it affects our mission?",
+                scene => $"How is {scene.TheChaosCausedByTheEnemy.WordText} impacting our operations? What's the best course of action?",
+                scene => $"What can we do to better understand {scene.TheEnemy.WordText} and their tactics?",
+                scene => $"How does {scene.ASkillOfTheProtagonists.WordText} equip us to deal with {scene.AnImmediateDangerToTheMission.WordText}?",
+                scene => $"Is there any further information on {scene.ACriticalClue.WordText} that we should be aware of?",
+                scene => $"What strategies are we considering to overcome {scene.AnOverwhelmingChallenge.WordText}?",
+                scene => $"How imminent is {scene.AnImmediateDangerToTheMission.WordText}, and what are our options for mitigation?"
             };
             this.expositions.Add(SentencePurposeType.SeekClarification, seekClarification);
 
@@ -259,7 +287,16 @@
                 scene => $"I think we should {scene.ActionThatContributesToTheMission.WordText} our {scene.ActionObjectThatContributesToTheMission.WordText}. We need to {scene.ActionThatContributesToSafety.WordText}. We don't want another {scene.ARelatedNegativePastEvent.WordText}.",
                 scene => $"Let's use the {scene.ActionThatContributesToTheMission.WordText} for {scene.ActionThatContributesToTheMission.WordText}",
                 scene => $"Agreed, we don't want to {scene.ActionThatDetractsFromTheMission.WordText}.",
-                scene => $"Emergency handled; we can't let this happen again."
+                scene => $"Emergency handled; we can't let this happen again.",
+                scene => $"In my opinion, facing {scene.TheEnemy.WordText} with {scene.AWeaponOfTheEnemy.WordText} in {scene.LocationOfTheEnemy.WordText} requires a careful approach. We must not underestimate them.",
+                scene => $"I believe that the situation of {scene.VictimsOfTheEnemy.WordText} in {scene.LocationOfTheVictim.WordText} demands our immediate attention. We can't just stand by.",
+                scene => $"Considering {scene.AnObstacleToTheMission.WordText} and its {scene.StatusOfTheObstacleToTheMission.WordText}, I'd say a reassessment of our current strategy is in order.",
+                scene => $"The chaos {scene.TheEnemy.WordText} has caused in {scene.LocationOfTheEnemy.WordText} makes me think; their unpredictability is both a strength and a potential weakness we can exploit.",
+                scene => $"{scene.TheMainCauseOfTheProblem.WordText} being at the heart of {scene.LocationOfTheMission.WordText} is no coincidence. It's a strategic point we need to focus on more.",
+                scene => $"From what I've seen, {scene.TheEnemy.WordText}'s presence in {scene.LocationOfTheMission.WordText} exposes a weakness — {scene.AWeakness.WordText}. It's something we could use to our advantage.",
+                scene => $"My take is, {scene.ASolution.WordText} could be the key to solving {scene.TheProblem.WordText}, especially if we can execute it from {scene.ASaferLocation.WordText}. It seems like the most logical step forward.",
+                scene => $"Reflecting on {scene.APastEvent.WordText}, it's clear to me that the underlying mystery {scene.TheMystery.WordText} still influences our current predicament more than we realize.",
+                scene => $"The impact of {scene.ANaturalPhenomenon.WordText} on {scene.LocationOfTheMission.WordText} shouldn't be underestimated. It could change the dynamics of our mission significantly."
             };
             this.expositions.Add(SentencePurposeType.OfferOpinion, offerOpinion);
 
@@ -283,7 +320,19 @@
                 scene => $"I promise to always remember the lessons learned from {scene.ARelatedNegativePastEvent.WordText} and use them to guide our actions.",
                 scene => $"I swear that {scene.TheLossesWeHaveSuffered.WordText} will not be in vain. We'll make things right, for them and for us.",
                 scene => $"I commit to using every resource at our disposal, including {scene.ASecretWeapon.WordText}, to ensure our victory against {scene.TheEnemy.WordText}.",
-                scene => $"I vow to stay true to our cause, even when faced with {scene.AnOverwhelmingChallenge.WordText}. Together, we are unstoppable."
+                scene => $"I vow to stay true to our cause, even when faced with {scene.AnOverwhelmingChallenge.WordText}. Together, we are unstoppable.",
+                scene => $"I promise we'll overcome {scene.AnObstacleToTheMission.WordText}. No matter what stands in our way, we'll find a path through it.",
+                scene => $"I vow to not rest until we've reached {scene.TheGoalOfTheMission.WordText}. It's more than just a mission; it's our destiny.",
+                scene => $"Trust me, {scene.APlanToSucceedAtMission.WordText} will lead us to victory. I've thought this through, and I won't let us fail.",
+                scene => $"I assure you, we'll address {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}. I'm committed to turning the tide in our favor.",
+                scene => $"You have my word that we'll counter {scene.TheMentalStateOfTheEnemy.WordText}. Understanding their mindset is the key to our success.",
+                scene => $"I guarantee we'll navigate through {scene.AnObstacleToTheMission.WordText} unscathed. Our resilience is unmatched.",
+                scene => $"I promise to keep us informed of any movements at {scene.LocationOfTheEnemy.WordText}. Staying one step ahead is crucial.",
+                scene => $"Rely on me to refine {scene.APlanToSucceedAtMission.WordText}. It's our blueprint to success, and I'll ensure it's foolproof.",
+                scene => $"I pledge to protect us from {scene.AnImmediateDangerToTheProtagonists.WordText}. Our safety is my top priority.",
+                scene => $"Count on me to coordinate with {scene.HelpfulEntitiesForTheMission.WordText}. Together, we'll strengthen our efforts.",
+                scene => $"I promise to honor the memory of {scene.TheSurvivors.WordText} by completing this mission. Their courage fuels our determination.",
+                scene => $"Our actions will add to {scene.TheAchievementsOfTheGroup.WordText}. I promise our names will be remembered for our bravery and solidarity."
             };
             this.expositions.Add(SentencePurposeType.MakeAPromise, makeAPromise);
 
@@ -336,7 +385,24 @@
                 scene => $"Take a moment, breathe. We've navigated through {scene.AnOverwhelmingChallenge.WordText} before. This will be no different.",
                 scene => $"Our resolve has seen us through darker times than this. {scene.TheEnemy.WordText} won't change that.",
                 scene => $"We've got a plan, remember? {scene.APlanToSucceedAtMission.WordText} hasn't failed us yet.",
-                scene => $"There's strength in our unity. As long as we stand together, {scene.AnImmediateDangerToTheMission.WordText} can't break us."
+                scene => $"There's strength in our unity. As long as we stand together, {scene.AnImmediateDangerToTheMission.WordText} can't break us.",
+                scene => $"Despite {scene.ThePhysicalStateOfTheProtagonists.WordText}, remember our resilience. We've faced tough times before and emerged stronger.",
+                scene => $"Even amidst {scene.TheChaosCausedByTheEnemy.WordText}, let's not lose sight of our ability to restore order. We've overcome similar chaos before.",
+                scene => $"Here in {scene.LocationOfTheMission.WordText}, our resolve is tested, but it's also where we'll make our stand and triumph.",
+                scene => $"Despite {scene.TheEnemyActions.WordText}, we have {scene.TheHeroesOfTheStory.WordText} among us. Their courage and wisdom will guide us through.",
+                scene => $"The presence of {scene.TheUnknownFactors.WordText} might unsettle us, but our adaptability has always been our greatest strength.",
+                scene => $"Looking at {scene.TheCurrentSituation.WordText}, it's easy to feel overwhelmed. Yet, it's just another chapter in our story—one we'll overcome together.",
+                scene => $"In {scene.AMomentOfJoy.WordText}, let's remember why we fight. These moments remind us there's light even in the darkest times.",
+                scene => $"Though {scene.TheBurdenCarriedByTheProtagonists.WordText} is heavy, it's our shared commitment that will see us through to the end.",
+                scene => $"Our focus remains on {scene.TheMissionObjective.WordText}. Every step we take is a step towards that goal, no matter the obstacles.",
+                scene => $"Learning of {scene.ATraitorInTheRanks.WordText} was a shock, but it has only strengthened our resolve. We'll move forward, more united than ever.",
+                scene => $"Every {scene.APositiveTurnOfEvents.WordText} is a testament to our perseverance. It's these victories that pave our path to success.",
+                scene => $"We may not all be in the limelight, but every effort, including those of {scene.TheUnsungHeroes.WordText}, brings us closer to our goal.",
+                scene => $"Despite {scene.TheLossesWeHaveSuffered.WordText}, we carry on, for our resolve is fortified by memories and the will to see justice prevail.",
+                scene => $"Facing {scene.TheInjusticeFaced.WordText} has never been easy, but it's our fight against such wrongs that defines us.",
+                scene => $"The unveiling of {scene.TheMysteryUnfolding.WordText} may bring new challenges, but together, we're more than capable of solving them.",
+                scene => $"Let's not forget {scene.TheAchievementsOfTheGroup.WordText}. Each victory, no matter how small, is a step towards our ultimate goal.",
+                scene => $"As we reflect on {scene.TheBeforeAndAfter.WordText}, let's take pride in our journey. We've grown, and we'll continue to face what comes with strength and unity."
             };
             this.expositions.Add(SentencePurposeType.Reassure, reassure);
 
@@ -356,7 +422,21 @@
                 scene => $"That clarifies a lot, thanks for the info.",
                 scene => $"Indeed, that's an interesting perspective.",
                 scene => $"Acknowledging your contribution to our strategy.",
-                scene => $"Duly noted, we'll adjust our plans accordingly."
+                scene => $"Duly noted, we'll adjust our plans accordingly.",
+                scene => $"I recognize that {scene.ActionThatDetractsFromTheMission.WordText} wasn't ideal, but let's focus on moving forward.",
+                scene => $"It's clear now that {scene.TheMainCauseOfTheProblem.WordText} is at the heart of our challenges. We must address this head-on.",
+                scene => $"Your efforts to {scene.ActionThatContributesToTheMission.WordText} and {scene.AnotherActionThatContributesToTheMission.WordText} have been pivotal to our progress.",
+                scene => $"Finding {scene.ACriticalClue.WordText} has shed light on {scene.TheImmediateEffectsOfTheProblem.WordText}, bringing us closer to a solution.",
+                scene => $"We've all witnessed {scene.TheEnemyActions.WordText}. It's crucial we learn from these encounters to better counter our adversary.",
+                scene => $"The revelation of {scene.TheMysteryUnfolding.WordText} has been a turning point for us all, offering new insights and directions.",
+                scene => $"The chaos caused by {scene.TheChaosCausedByTheEnemy.WordText} has tested us, yet here we stand, more united than ever.",
+                scene => $"We must never forget {scene.TheLossesWeHaveSuffered.WordText}. It fuels our resolve to push forward and honor their memory.",
+                scene => $"Understanding {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText} gives us a clearer perspective on our enemy's motives and tactics.",
+                scene => $"Let's not underestimate the safety {scene.ASaferLocation.WordText} provides us. It's a haven that allows us to regroup and strategize.",
+                scene => $"Maintaining {scene.TheIdealMentalStateForTheMission.WordText} amidst these trials speaks volumes of our resilience and determination.",
+                scene => $"The weight of {scene.TheBurdenCarriedByTheProtagonists.WordText} is something we all share. It's what makes this team so formidable.",
+                scene => $"With {scene.TheTimeLeftToCompleteTheMission.WordText} against us, every moment counts. Let's make them all matter.",
+                scene => $"The recent {scene.APositiveTurnOfEvents.WordText} has been a much-needed boost for our morale. Let's build on this momentum."
             };
             this.expositions.Add(SentencePurposeType.Acknowledge, acknowledge);
 
@@ -484,6 +564,21 @@
                 scene => $"Keep an eye out for any unexpected obstacles.",
                 scene => $"Let's make sure we're well-prepared for any surprises.",
                 scene => $"Stay focused!",
+                scene => $"Given the {scene.StatusOfTheMission.WordText}, it's crucial we act now to maintain our momentum.",
+                scene => $"At {scene.LocationOfTheMission.WordText}, where {scene.TheMainCauseOfTheProblem.WordText} has taken root, our efforts must be focused and deliberate.",
+                scene => $"In {scene.LocationOfTheMission.WordText}, facing {scene.TheEnemy.WordText} amidst {scene.TheChaosCausedByTheEnemy.WordText}, our priority is to establish order and safety.",
+                scene => $"As {scene.TimeOfDay.WordText} approaches, addressing {scene.TheImmediateEffectsOfTheProblem.WordText} cannot wait. Immediate action is required.",
+                scene => $"Considering {scene.TheMentalStateOfTheEnemy.WordText}, it's imperative we adjust our strategies to outmaneuver them effectively.",
+                scene => $"To {scene.ASaferLocation.WordText}, everyone. {scene.AnImmediateDangerToTheMission.WordText} is too great to ignore at our current position.",
+                scene => $"With only {scene.TheTimeLeftToCompleteTheMission.WordText} left and facing {scene.AnObstacleToTheMission.WordText}, we must intensify our efforts.",
+                scene => $"The {scene.StatusOfTheObstacleToTheMission.WordText} demands our immediate attention. Let's strategize our next steps carefully.",
+                scene => $"{scene.ProtagonistsForTheMission.WordText}, our focus must remain on achieving {scene.TheGoalOfTheMission.WordText}. Let's reassess our approach to ensure success.",
+                scene => $"The moment we hear {scene.TheSoundOfTheEnemy.WordText}, we must act, knowing what hinges on the success of our mission.",
+                scene => $"At {scene.TimeOfDay.WordText} in {scene.LocationOfTheMission.WordText}, we'll confront {scene.TheMysteryUnfolding.WordText}. Prepare yourselves.",
+                scene => $"Reflect on {scene.TheBeforeAndAfter.WordText}. Understanding our journey will guide our future actions.",
+                scene => $"Let's honor {scene.TheUnsungHeroes.WordText} by embodying their spirit and dedication in every task we undertake.",
+                scene => $"Our actions today will shape {scene.TheIdealFutureStateOfTheMission.WordText}. Let's proceed with that vision clearly in our minds.",
+                scene => $"Be vigilant. {scene.ATraitorInTheRanks.WordText} among us means trust must be earned, and precautions taken."
             };
             this.expositions.Add(SentencePurposeType.GiveADirective, giveADirective);
 
@@ -555,7 +650,29 @@
                 scene => $"I've been working on something that might just solve {scene.ACriticalClue.WordText}. Let me show you what I've got.",
                 scene => $"Looks like you could use some backup. Consider me in. Together, we'll overcome {scene.AnOverwhelmingChallenge.WordText}.",
                 scene => $"I've got some tools that are perfect for dealing with {scene.ATrapForTheProtagonists.WordText}. Let's put them to good use.",
-                scene => $"Facing {scene.AnImmediateDangerToTheMission.WordText} alone is too risky. Let me add my strength to yours; we're stronger together."
+                scene => $"Facing {scene.AnImmediateDangerToTheMission.WordText} alone is too risky. Let me add my strength to yours; we're stronger together.",
+                scene => $"I can provide support for {scene.VictimsOfTheEnemy.WordText}. Let's ensure they have everything they need to recover and fight back.",
+                scene => $"I've developed a strategy to counter {scene.AnEnemyOfTheMission.WordText} and their {scene.ASkillOfTheEnemy.WordText}. Let me share this with the team.",
+                scene => $"Let me focus on enhancing {scene.ASuccessFactorOfTheMission.WordText}. It's crucial for our mission's success, and I have a few ideas that could make a significant difference.",
+                scene => $"Considering {scene.ANegativeFactorThatNecessitatedTheMission.WordText} and our current location in {scene.LocationOfTheMission.WordText}, I can offer insights and resources to mitigate these challenges.",
+                scene => $"I understand what hinges on the success of our mission. Allow me to contribute my skills and knowledge to ensure {scene.WhatHingesOnTheSuccessOfTheMission.WordText} is preserved and advanced.",
+                scene => $"I've arranged for aid and shelter for {scene.VictimsOfTheEnemy.WordText} found at {scene.LocationOfTheVictim.WordText}. We'll ensure they're safe and supported through this ordeal.",
+                scene => $"Given {scene.TheMainCauseOfTheProblem.WordText} affecting {scene.LocationOfTheMission.WordText}, I propose a coordinated effort to address this issue directly at its source.",
+                scene => $"I have a potential solution for {scene.TheProblem.WordText}. Let's gather at {scene.ASaferLocation.WordText} to discuss how we can implement this effectively and ensure everyone's safety.",
+                scene => $"Reflecting on {scene.APastEvent.WordText}, it's clear we're facing a similar mystery here. I believe I can offer insights that might help us unravel {scene.TheMystery.WordText}.",
+                scene => $"With the impending {scene.ANaturalPhenomenon.WordText} threatening {scene.LocationOfTheMission.WordText}, I've begun coordinating emergency measures to mitigate the impact and protect our team.",
+                scene => $"Let me help us reach {scene.TheGoalOfTheMission.WordText}. I've got some ideas that could propel us forward.",
+                scene => $"I've been working on {scene.APlanToSucceedAtMission.WordText}. Allow me to fine-tune it with the team to ensure its success.",
+                scene => $"Given {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}, I can offer insights to better navigate our challenges.",
+                scene => $"Understanding {scene.TheMentalStateOfTheEnemy.WordText} is key. I can help devise tactics that exploit their weaknesses.",
+                scene => $"I've seen the {scene.TheImmediateEffectsOfTheProblem.WordText} first-hand. Let me assist in addressing these issues directly.",
+                scene => $"I can refine {scene.APlanToSucceedAtMission.WordText} with a fresh perspective, focusing on efficiency and effectiveness.",
+                scene => $"To combat {scene.AnImmediateDangerToTheProtagonists.WordText}, I propose a proactive approach that I'm ready to lead.",
+                scene => $"With only {scene.TheTimeLeftToCompleteTheMission.WordText} remaining, I can help us prioritize tasks to maximize our efforts.",
+                scene => $"{scene.HelpfulEntitiesForTheMission.WordText} have resources we haven't tapped into yet. I'll coordinate with them for support.",
+                scene => $"I have some thoughts on {scene.TheMysteryUnfolding.WordText} that could shed light on our situation. Let's discuss this further.",
+                scene => $"Supporting {scene.TheSurvivors.WordText} is something I can take on. Ensuring their well-being could offer us invaluable insights.",
+                scene => $"Leveraging {scene.TheAchievementsOfTheGroup.WordText}, I can help highlight our strengths and apply them to our current strategy."
             };
             this.expositions.Add(SentencePurposeType.OfferAssistance, offerAssistance);
 
@@ -1214,20 +1331,6 @@
                 scene => $"I acknowledge my role in the lack of progress in dealing with {scene.TheMainCauseOfTheProblem.WordText}.",
                 scene => $"I'm aware of the impact of my actions on the consequences of {scene.TheImmediateEffectsOfTheProblem.WordText}.",
                 scene => $"I recognize my part in the flaws in our handling of {scene.TheMysteryUnfolding.WordText}.",
-                scene => $"I take full responsibility for the oversight in our approach to {scene.TheIdealStrategyForTheMission.WordText}.",
-                scene => $"I acknowledge my role in the lack of progress in dealing with {scene.TheMainCauseOfTheProblem.WordText}.",
-                scene => $"I'm aware of the impact of my actions on the consequences of {scene.TheImmediateEffectsOfTheProblem.WordText}.",
-                scene => $"I recognize my part in the flaws in our handling of {scene.TheMysteryUnfolding.WordText}.",
-                scene => $"I take full responsibility for the oversight in our approach to {scene.TheIdealStrategyForTheMission.WordText}.",
-                scene => $"I acknowledge my role in the lack of progress in dealing with {scene.TheMainCauseOfTheProblem.WordText}.",
-                scene => $"I'm aware of the impact of my actions on the consequences of {scene.TheImmediateEffectsOfTheProblem.WordText}.",
-                scene => $"I recognize my part in the flaws in our handling of {scene.TheMysteryUnfolding.WordText}.",
-                scene => $"I take full responsibility for the oversight in our approach to {scene.TheIdealStrategyForTheMission.WordText}.",
-                scene => $"I acknowledge my role in the lack of progress in dealing with {scene.TheMainCauseOfTheProblem.WordText}.",
-                scene => $"I'm aware of the impact of my actions on the consequences of {scene.TheImmediateEffectsOfTheProblem.WordText}.",
-                scene => $"I recognize my part in the flaws in our handling of {scene.TheMysteryUnfolding.WordText}.",
-                scene => $"I take full responsibility for the oversight in our approach to {scene.TheIdealStrategyForTheMission.WordText}.",
-                scene => $"I acknowledge my role in the lack of progress in dealing with {scene.TheEnemy.WordText}."
             };
             this.expositions.Add(SentencePurposeType.AcceptResponsibility, acceptResponsibility);
 
@@ -1339,7 +1442,16 @@
                 scene => $"I can't wrap my head around {scene.TheMysteryUnfolding.WordText}. What are we missing?",
                 scene => $"The role of {scene.AnUnexpectedAlly.WordText} in this scenario is unclear. What's their endgame?",
                 scene => $"Why would {scene.TheEnemy.WordText} choose now to {scene.TheEnemyActions.WordText}? It doesn't add up.",
-                scene => $"The significance of {scene.TheBeforeAndAfter.WordText} escapes me. How does it change our perspective?"
+                scene => $"The significance of {scene.TheBeforeAndAfter.WordText} escapes me. How does it change our perspective?",
+                scene => $"I'm puzzled. How could {scene.ActionThatDetractsFromTheMission.WordText} possibly serve our goals? It seems counterintuitive.",
+                scene => $"I'm trying to wrap my head around this. We're supposed to {scene.ActionThatContributesToTheMission.WordText} and then {scene.AnotherActionThatContributesToTheMission.WordText}? How do these fit together?",
+                scene => $"The scale of {scene.TheLossesWeHaveSuffered.WordText} is overwhelming. How did we get to this point? What went wrong?",
+                scene => $"I'm struggling to understand {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}. What exactly are we up against?",
+                scene => $"Why are we heading towards {scene.ASaferLocation.WordText} when it feels like we're moving further from our mission? I'm lost.",
+                scene => $"Maintaining {scene.TheIdealMentalStateForTheMission.WordText} is easier said than done. How can we stay focused amid so much chaos?",
+                scene => $"I can't grasp the full weight of {scene.TheBurdenCarriedByTheProtagonists.WordText}. How are we expected to carry this and not falter?",
+                scene => $"With only {scene.TheTimeLeftToCompleteTheMission.WordText} left, the pressure is mounting. Are we sure about our current pace and direction?",
+                scene => $"After everything, {scene.APositiveTurnOfEvents.WordText} seems almost surreal. Is this really happening, or have we overlooked something?"
             };
             this.expositions.Add(SentencePurposeType.ExpressConfusion, expressConfusion);
 
@@ -1451,7 +1563,25 @@
                 scene => $"I must confess, the latest developments from {scene.TheEnemy.WordText} are beyond my comprehension. We're in uncharted waters now.",
                 scene => $"For the life of me, I can't decipher {scene.TheEnemy.WordText}'s motives. It's like they're speaking a language without words.",
                 scene => $"Facing {scene.TheEnemy.WordText}, I've come to realize how much I don't know. It's a humbling, if not frightening, admission.",
-                scene => $"The intricacies of {scene.TheMainCauseOfTheProblem.WordText} escape me. It seems we're dealing with forces more complex than anticipated."
+                scene => $"The intricacies of {scene.TheMainCauseOfTheProblem.WordText} escape me. It seems we're dealing with forces more complex than anticipated.",
+                scene => $"I must confess, I'm at a loss on how to overcome {scene.AnObstacleToTheMission.WordText}. I'm open to suggestions.",
+                scene => $"Honestly, I'm not entirely sure how {scene.ActionObjectThatContributesToTheMission.WordText} fits into our plan. Can someone enlighten me?",
+                scene => $"I admit, I'm unclear about the specifics of {scene.TheGoalOfTheMission.WordText}. Could we go over it once more?",
+                scene => $"As for {scene.APlanToSucceedAtMission.WordText}, I'm not sure I grasp all its nuances. A little help?",
+                scene => $"The truth is, I don't fully understand {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}. What exactly are we dealing with?",
+                scene => $"Regarding {scene.AnEnemyOfTheMission.WordText}, I'm embarrassed to say I know less than I should. What's their deal?",
+                scene => $"When it comes to {scene.ProtagonistsForTheMission.WordText} and {scene.AnImmediateDangerToTheMission.WordText}, I feel out of my depth. What are we facing?",
+                scene => $"I'm struggling to comprehend {scene.TheMentalStateOfTheEnemy.WordText}. Does anyone have insights?",
+                scene => $"The effects of {scene.TheImmediateEffectsOfTheProblem.WordText} are beyond me. Can someone explain the implications?",
+                scene => $"Where exactly is {scene.LocationOfTheEnemy.WordText}? I realize I don't have that information.",
+                scene => $"I'm ashamed to admit, I don't know how best to assist {scene.VictimsOfTheEnemy.WordText}. What's the best course of action?",
+                scene => $"Facing {scene.AnImmediateDangerToTheProtagonists.WordText}, I find myself unsure of the right approach. Thoughts?",
+                scene => $"With {scene.TheTimeLeftToCompleteTheMission.WordText} ticking away, I'm not sure of our best move. Guidance, please?",
+                scene => $"I'm not familiar with how {scene.HelpfulEntitiesForTheMission.WordText} could aid us. Can someone fill me in?",
+                scene => $"The unfolding of {scene.TheMysteryUnfolding.WordText} is something I haven't grasped yet. Can we discuss?",
+                scene => $"I have to admit, the scale of {scene.TheChaosCausedByTheEnemy.WordText} escapes me. How severe is it?",
+                scene => $"I'm not well-informed about {scene.TheSurvivors.WordText}. What should we know?",
+                scene => $"I'm ignorant of {scene.TheAchievementsOfTheGroup.WordText}. What have we accomplished so far?"
             };
             this.expositions.Add(SentencePurposeType.AdmitIgnorance, admitIgnorance);
 

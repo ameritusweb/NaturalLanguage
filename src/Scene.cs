@@ -227,5 +227,16 @@
         public StoryWord ACriticalDetailMissed { get; internal set; }
         
         public StoryWord AControversialDecisionMade { get; internal set; }
+
+        public static Scene GenerateWithPlaceholders()
+        {
+            Scene scene = new Scene();
+            var properties = scene.GetType().GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                properties[i].SetValue(scene, new StoryWord { WordText = $"$S{i}$" });
+            }
+            return scene;
+        }
     }
 }

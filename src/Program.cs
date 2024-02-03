@@ -7,8 +7,11 @@ namespace NaturalLanguageProcess
     {
         static void Main(string[] args)
         {
-            BirthOfLucifer birthOfLucifer = new BirthOfLucifer();
-            birthOfLucifer.Write();
+            ExpositionCollection expositionCollection = new ExpositionCollection();
+            ExpositionMatcher expositionMatcher = new ExpositionMatcher(expositionCollection);
+            expositionMatcher.FindMatchingPairs();
+            //BirthOfLucifer birthOfLucifer = new BirthOfLucifer();
+            //birthOfLucifer.Write();
             //ChildrenOfTheDmz childrenOfTheDmz = new ChildrenOfTheDmz();
             //childrenOfTheDmz.Write();
             //OrbOfTime orbOfTime = new OrbOfTime();
