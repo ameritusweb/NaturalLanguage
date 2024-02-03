@@ -29,6 +29,8 @@
             purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.OfferOpinion));
             purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.OfferAssistance));
             purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.Motivate));
+            purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.ExpressAgreement));
+            purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.Criticize));
             purposePairs.Add((SentencePurposeType.Motivate, SentencePurposeType.ExpressUncertainty));
             purposePairs.Add((SentencePurposeType.ExpressUncertainty, SentencePurposeType.Reassure));
             purposePairs.Add((SentencePurposeType.Reassure, SentencePurposeType.AcceptAChallenge));
@@ -50,17 +52,40 @@
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.DescribeASituation));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressSolidarity));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressCertainty));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.AskAQuestion));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressConcern));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.GiveADirective));
             purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressCertainty));
             purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.ExpressEmotion));
+            purposePairs.Add((SentencePurposeType.MakeAPromise, SentencePurposeType.AskAQuestion));
             purposePairs.Add((SentencePurposeType.ExpressEmotion, SentencePurposeType.Reassure));
             purposePairs.Add((SentencePurposeType.ExpressCertainty, SentencePurposeType.IssueAChallenge));
             purposePairs.Add((SentencePurposeType.IssueAChallenge, SentencePurposeType.RejectAnIdea));
             purposePairs.Add((SentencePurposeType.RejectAnIdea, SentencePurposeType.NarrateAnEvent));
             purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.ExpressJoy));
+            purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.ExpressEmotion));
+            purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.AskAQuestion));
             purposePairs.Add((SentencePurposeType.ExpressJoy, SentencePurposeType.ExpressGratitude));
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.GiveADirective));
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.ExpressUrgency));
+            purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.ExpressConcern));
             purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.MakeAPromise));
+            purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.ProvideInformation));
+            purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.AdmitIgnorance));
+            purposePairs.Add((SentencePurposeType.ExpressDisdain, SentencePurposeType.ExpressRegret));
+            purposePairs.Add((SentencePurposeType.ExpressDisdain, SentencePurposeType.ArgueAPoint));
+            purposePairs.Add((SentencePurposeType.ExpressDisdain, SentencePurposeType.Criticize));
+            purposePairs.Add((SentencePurposeType.IntroduceYourself, SentencePurposeType.AskAQuestion));
+            purposePairs.Add((SentencePurposeType.IntroduceYourself, SentencePurposeType.EngageInSmallTalk));
+            purposePairs.Add((SentencePurposeType.IntroduceYourself, SentencePurposeType.OfferAssistance));
+            purposePairs.Add((SentencePurposeType.TellAJoke, SentencePurposeType.ExpressAmazement));
+            purposePairs.Add((SentencePurposeType.TellAJoke, SentencePurposeType.ExpressJoy));
+            purposePairs.Add((SentencePurposeType.TellAJoke, SentencePurposeType.Quip));
+            purposePairs.Add((SentencePurposeType.ClarifyAStatement, SentencePurposeType.Acknowledge));
+            purposePairs.Add((SentencePurposeType.ClarifyAStatement, SentencePurposeType.ExpressConfusion));
+            purposePairs.Add((SentencePurposeType.Apologize, SentencePurposeType.ExpressGratitude));
+            purposePairs.Add((SentencePurposeType.Apologize, SentencePurposeType.Reassure));
         }
 
         private void Initialize()
@@ -466,6 +491,16 @@
                 scene => $"I think that's a good idea. We should {scene.ActionThatContributesToTheMission.WordText}.",
                 scene => $"I think that's a good idea. We should {scene.ActionThatContributesToTheMission.WordText} a {scene.ActionObjectThatContributesToTheMission.WordText} for the {scene.TimeOfDay.WordText}.",
                 scene => $"I agree, {scene.ActionThatContributesToTheMission.WordText} is crucial.",
+                scene => $"Absolutely, that's the course we need to take.",
+                scene => $"Your insight is spot on; it aligns perfectly with our goals.",
+                scene => $"That strategy aligns with our mission's objectives. Let's proceed.",
+                scene => $"Indeed, focusing on {scene.APriorityForTheMission.WordText} is essential for our success.",
+                scene => $"You've nailed it. {scene.TheGoalOfTheMission.WordText} is exactly what we should be aiming for.",
+                scene => $"Yes, that aligns with everything we've been working towards. {scene.ActionThatContributesToTheMission.WordText} will get us there.",
+                scene => $"Your perspective brings clarity. We should definitely incorporate {scene.ACriticalClue.WordText} into our plan.",
+                scene => $"Concur. Leveraging {scene.ActionObjectThatContributesToTheMission.WordText} could be our best move yet.",
+                scene => $"Right, taking action now is imperative. {scene.ActionThatContributesToTheMission.WordText} is our best next step.",
+                scene => $"Agreed, our priority should be to {scene.ActionThatContributesToTheMission.WordText}. It's crucial for navigating {scene.TheChaosCausedByTheEnemy.WordText}."
             };
             this.expositions.Add(SentencePurposeType.ExpressAgreement, expressAgreement);
 
@@ -495,7 +530,17 @@
                 scene => $"We have to stay strong and organized. We can't let the {scene.AnEnemyOfTheMission.WordText} win.",
                 scene => $"We have to stay strong and organized. We can't let the {scene.AnEnemyOfTheMission.WordText} win. We need to {scene.ActionThatContributesToTheMission.WordText}.",
                 scene => $"We must succeed.",
-                scene => $"We must succeed. We can't let the {scene.AnEnemyOfTheMission.WordText} win."
+                scene => $"We must succeed. We can't let the {scene.AnEnemyOfTheMission.WordText} win.",
+                scene => $"The time to act is now. We cannot falter in the face of {scene.AnEnemyOfTheMission.WordText}.",
+                scene => $"This is our moment to stand up against {scene.TheChaosCausedByTheEnemy.WordText}. We must rise to the occasion.",
+                scene => $"Let's prove to {scene.AnEnemyOfTheMission.WordText} that our resolve is unbreakable.",
+                scene => $"We face a critical point in our mission. It's do or die, and I choose to do.",
+                scene => $"Our backs are against the wall. It's time to show {scene.TheEnemy.WordText} what we're made of.",
+                scene => $"This challenge before us is not insurmountable. With unity, {scene.TheGoalOfTheMission.WordText} is within reach.",
+                scene => $"We've been underestimating our own strength. Let's take the fight to {scene.TheEnemy.WordText} and shift the tide.",
+                scene => $"The only way out is through. Let's confront {scene.AnImmediateDangerToTheMission.WordText} head-on.",
+                scene => $"It's a pivotal time for {scene.LocationOfTheMission.WordText}. Our actions now will define the future.",
+                scene => $"No more hesitations. It's time to challenge the status quo and make our mark."
             };
             this.expositions.Add(SentencePurposeType.IssueAChallenge, issueAChallenge);
 
@@ -1343,6 +1388,69 @@
                 scene => $"A lullaby for peace, in the midst of {scene.TheChaosCausedByTheEnemy.WordText},\n'Softly we tread, with hope ahead, in our hearts a tranquil beat.'"
             };
             this.expositions.Add(SentencePurposeType.Sing, sing);
+
+            var quip = new List<Func<Scene, string>>
+            {
+                scene => $"I've seen {scene.TheEnemy.WordText} pull off better tricks than that. They'll have to do better to catch us off guard.",
+                scene => $"I've faced {scene.AnEnemyOfTheMission.WordText} before, and trust me, they're not as scary as they think they are.",
+                scene => $"I've seen {scene.TheEnemy.WordText} try to intimidate us with their tactics. It's like watching a child throw a tantrum.",
+                scene => $"I've been through worse than {scene.TheChaosCausedByTheEnemy.WordText}. It'll take more than that to rattle me.",
+                scene => $"Oh, {scene.TheEnemy.WordText} thinks they're clever? I've seen more cunning in a game of hide-and-seek with a toddler.",
+                scene => $"So, {scene.AnEnemyOfTheMission.WordText} is trying to outsmart us again? I guess it's hard to teach an old dog new tricks.",
+                scene => $"Watching {scene.TheEnemy.WordText} attempt strategy is like watching a fish climb a tree. Amusing, but ultimately futile.",
+                scene => $"Ah, the old {scene.TheEnemy.WordText} playbook. I was hoping for a challenge, but I suppose nostalgia has its charms.",
+                scene => $"I've seen scarier faces on a plate of {scene.TheEnemy.WordText}'s cuisine. At least that had the potential to upset my stomach.",
+                scene => $"Their plan has all the subtlety of a sledgehammer. But then, what do you expect from {scene.TheEnemy.WordText}?",
+                scene => $"The only thing predictable about {scene.TheEnemy.WordText} is their predictability. Time for something new, perhaps?"
+            };
+            this.expositions.Add(SentencePurposeType.Quip, quip);
+
+            var admitIgnorance = new List<Func<Scene, string>>
+            {
+                scene => $"I'm not sure what to make of {scene.TheEnemy.WordText}'s latest move. It's unlike anything I've seen before.",
+                scene => $"I'm at a loss when it comes to understanding the motives behind {scene.TheEnemy.WordText}'s actions. It's a mystery to me.",
+                scene => $"I'm not sure how to interpret the significance of {scene.TheMainCauseOfTheProblem.WordText} in relation to our mission. It's a puzzle I can't solve.",
+                scene => $"Despite all my experience, {scene.TheEnemy.WordText}'s strategies leave me scratching my head. They're playing a different game.",
+                scene => $"I'd be lying if I said I understood {scene.TheEnemy.WordText}'s endgame. It's as if they're reading from a script we don't have.",
+                scene => $"The meaning behind {scene.TheMainCauseOfTheProblem.WordText} eludes me. It's like trying to read a book in the dark.",
+                scene => $"I must confess, the latest developments from {scene.TheEnemy.WordText} are beyond my comprehension. We're in uncharted waters now.",
+                scene => $"For the life of me, I can't decipher {scene.TheEnemy.WordText}'s motives. It's like they're speaking a language without words.",
+                scene => $"Facing {scene.TheEnemy.WordText}, I've come to realize how much I don't know. It's a humbling, if not frightening, admission.",
+                scene => $"The intricacies of {scene.TheMainCauseOfTheProblem.WordText} escape me. It seems we're dealing with forces more complex than anticipated."
+            };
+            this.expositions.Add(SentencePurposeType.AdmitIgnorance, admitIgnorance);
+
+            var endConversation = new List<Func<Scene, string>>
+            {
+                scene => $"I think we've covered everything for now. Let's regroup and continue this discussion later.",
+                scene => $"I need some time to process everything we've discussed. Let's reconvene when we have more information.",
+                scene => $"I think it's best if we take a break for now. We can resume our conversation when we have a clearer picture of the situation.",
+                scene => $"This has been productive, but let's pause here. We'll have fresh ideas after some rest.",
+                scene => $"Given the complexities we're facing, it might be wise to reflect on our discussion before proceeding further.",
+                scene => $"Let's call it a day and gather more insights. We can approach this with new perspectives tomorrow.",
+                scene => $"Our discussion has raised important points, but I suggest we halt here and consult with others before deciding our next move.",
+                scene => $"It seems we've reached a natural stopping point. Let's continue this dialogue once we've all had a chance to think things over.",
+                scene => $"We've delved deep into this matter. Let's reconvene once we've had time to consider the best path forward.",
+                scene => $"I believe we've touched on all pressing issues. Let's resume after we've each had time to evaluate our priorities."
+            };
+            this.expositions.Add(SentencePurposeType.EndConversation, endConversation);
+
+
+            var startConversation = new List<Func<Scene, string>>
+            {
+                scene => $"I think it's time we discussed our next steps. There's a lot to consider, and we need to be prepared for anything.",
+                scene => $"We need to address the challenges ahead. Let's talk about how we can overcome them and achieve our goal.",
+                scene => $"I believe it's important for us to have an open dialogue about the current situation. We need to be on the same page to move forward effectively.",
+                scene => $"Let's dive into the heart of the matter. We have critical decisions to make, and time isn't on our side.",
+                scene => $"The situation demands our immediate attention. Let's outline our strategy and assign responsibilities.",
+                scene => $"There are new developments that we need to discuss. Our approach must evolve with the changing circumstances.",
+                scene => $"I've gathered us here to brainstorm potential solutions to the obstacles we're facing. Every perspective is valuable.",
+                scene => $"It's crucial we align our efforts now more than ever. Let's discuss our collective strategy and ensure no effort is duplicated.",
+                scene => $"With recent events, it's imperative we reassess our position. Let's examine our options moving forward.",
+                scene => $"Our journey ahead is filled with uncertainty. Let's navigate these challenges together, starting with this conversation."
+            };
+            this.expositions.Add(SentencePurposeType.StartConversation, startConversation);
+
 
             var castASpell = new List<Func<MagicalScene, string>>
             {

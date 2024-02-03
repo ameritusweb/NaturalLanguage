@@ -84,6 +84,7 @@
         Sing = 81,
         CastASpell = 82,
         EndConversation = 83,
-        Other = 84 // For unspecified or custom sentence purposes
+        StartConversation = 84,
+        Other = 85 // For unspecified or custom sentence purposes
     }
 }
