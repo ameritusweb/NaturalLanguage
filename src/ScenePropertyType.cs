@@ -114,6 +114,9 @@
         APossibleProblemToAvoid,
         AMistakeMadeByTheProtagonists,
         ACriticalDetailMissed,
-        AControversialDecisionMade
+        AControversialDecisionMade,
+        ImportantOutcomeOfMission,
+        AnEnemyOfTheEnemy,
+        TheRootCauseOfTheProblem
     }
 }

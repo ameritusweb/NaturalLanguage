@@ -74,7 +74,7 @@ namespace NaturalLanguageProcess
                 }
             }
 
-            // File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
+            //File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
             // File.WriteAllLines("E:\\exposition\\pairs.txt", sentencePairs);
 
             return matchingPairs;

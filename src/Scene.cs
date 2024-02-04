@@ -228,6 +228,12 @@
         
         public StoryWord AControversialDecisionMade { get; set; }
 
+        public StoryWord ImportantOutcomeOfMission { get; set; }
+        
+        public StoryWord AnEnemyOfTheEnemy { get; set; }
+
+        public StoryWord TheRootCauseOfTheProblem { get; set; }
+
         public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
 
         public static Scene GenerateWithPlaceholders()
