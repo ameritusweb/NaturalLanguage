@@ -33,6 +33,7 @@
             purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.Irony));
             purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.Sarcasm));
             purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.InternalDialogue));
+            purposePairs.Add((SentencePurposeType.ProvideInformation, SentencePurposeType.MakeARequest));
             purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.Motivate));
             purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.ExpressAgreement));
             purposePairs.Add((SentencePurposeType.OfferOpinion, SentencePurposeType.Criticize));
@@ -51,6 +52,7 @@
             purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressConfusion));
             purposePairs.Add((SentencePurposeType.OfferAssistance, SentencePurposeType.ExpressDisbelief));
             purposePairs.Add((SentencePurposeType.ExpressConfusion, SentencePurposeType.GiveGuidance));
+            purposePairs.Add((SentencePurposeType.ExpressConfusion, SentencePurposeType.SeekClarification));
             purposePairs.Add((SentencePurposeType.GiveGuidance, SentencePurposeType.ExpressSolidarity));
             purposePairs.Add((SentencePurposeType.ExpressSolidarity, SentencePurposeType.WarnOfImpendingDanger));
             purposePairs.Add((SentencePurposeType.ExpressSolidarity, SentencePurposeType.ProvideInformation));
@@ -61,6 +63,8 @@
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.OfferAssistance));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.AskAQuestion));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressConcern));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressConfusion));
+            purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ExpressEmotion));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.GiveADirective));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.SeekClarification));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ElicitInformation));
@@ -82,6 +86,7 @@
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.GiveADirective));
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.ExpressUrgency));
             purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.ExpressConcern));
+            purposePairs.Add((SentencePurposeType.DescribeASituation, SentencePurposeType.MakeAnObservation));
             purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.MakeAPromise));
             purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.ProvideInformation));
             purposePairs.Add((SentencePurposeType.AskAQuestion, SentencePurposeType.AdmitIgnorance));
@@ -100,18 +105,24 @@
             purposePairs.Add((SentencePurposeType.Apologize, SentencePurposeType.Reassure));
             purposePairs.Add((SentencePurposeType.Suggest, SentencePurposeType.RejectAnIdea));
             purposePairs.Add((SentencePurposeType.Suggest, SentencePurposeType.ExpressAgreement));
+            purposePairs.Add((SentencePurposeType.Suggest, SentencePurposeType.ExpressUncertainty));
+            purposePairs.Add((SentencePurposeType.Suggest, SentencePurposeType.Analyze));
+            purposePairs.Add((SentencePurposeType.Suggest, SentencePurposeType.ArgueAPoint));
             purposePairs.Add((SentencePurposeType.ArgueAPoint, SentencePurposeType.ExpressAgreement));
             purposePairs.Add((SentencePurposeType.ArgueAPoint, SentencePurposeType.RefuteAnArgument));
             purposePairs.Add((SentencePurposeType.ExpressAgreement, SentencePurposeType.NarrateAnEvent));
             purposePairs.Add((SentencePurposeType.NarrateAnEvent, SentencePurposeType.ProvideGoodNews));
             purposePairs.Add((SentencePurposeType.ProvideGoodNews, SentencePurposeType.ExpressGratitude));
             purposePairs.Add((SentencePurposeType.ProvideGoodNews, SentencePurposeType.ExpressAmazement));
+            purposePairs.Add((SentencePurposeType.ProvideGoodNews, SentencePurposeType.ConveySurprise));
             purposePairs.Add((SentencePurposeType.MakeAnObservation, SentencePurposeType.DescribeASituation));
+            purposePairs.Add((SentencePurposeType.MakeAnObservation, SentencePurposeType.RevealSecrets));
             purposePairs.Add((SentencePurposeType.MakeARequest, SentencePurposeType.OfferAssistance));
             purposePairs.Add((SentencePurposeType.Hypothesize, SentencePurposeType.RejectAnIdea));
             purposePairs.Add((SentencePurposeType.Hypothesize, SentencePurposeType.ExpressUncertainty));
             purposePairs.Add((SentencePurposeType.Hypothesize, SentencePurposeType.ExpressAgreement));
             purposePairs.Add((SentencePurposeType.Hypothesize, SentencePurposeType.ExpressRealization));
+            purposePairs.Add((SentencePurposeType.Hypothesize, SentencePurposeType.Analyze));
             purposePairs.Add((SentencePurposeType.Irony, SentencePurposeType.ExpressAgreement));
             purposePairs.Add((SentencePurposeType.Sarcasm, SentencePurposeType.ExpressAgreement));
             purposePairs.Add((SentencePurposeType.Irony, SentencePurposeType.TellAJoke));
@@ -120,8 +131,10 @@
             purposePairs.Add((SentencePurposeType.ExpressRealization, SentencePurposeType.GiveADirective));
             purposePairs.Add((SentencePurposeType.ExpressConcern, SentencePurposeType.ShareAnExperience));
             purposePairs.Add((SentencePurposeType.ExpressUncertainty, SentencePurposeType.ShareAnExperience));
+            purposePairs.Add((SentencePurposeType.ExpressUncertainty, SentencePurposeType.ClarifyAStatement));
             purposePairs.Add((SentencePurposeType.WarnOfImpendingDanger, SentencePurposeType.ShareAnExperience));
             purposePairs.Add((SentencePurposeType.ShareAnExperience, SentencePurposeType.Suggest));
+            purposePairs.Add((SentencePurposeType.RevealSecrets, SentencePurposeType.ConveySurprise));
         }
 
         private void Initialize()
@@ -532,7 +545,43 @@
                 scene => $"Who are the {scene.HelpfulEntitiesForTheMission.WordText}, and how can they assist us in achieving our objectives?",
                 scene => $"Could someone elaborate on {scene.TheMysteryUnfolding.WordText}? How does it connect to our current situation?",
                 scene => $"What's the current situation regarding {scene.TheSurvivors.WordText}? How are they coping with recent events?",
-                scene => $"How do {scene.TheAchievementsOfTheGroup.WordText} influence our standing and morale among allies and adversaries?"
+                scene => $"How do {scene.TheAchievementsOfTheGroup.WordText} influence our standing and morale among allies and adversaries?",
+                scene => $"Can you explain how {scene.ActionThatContributesToSafety.WordText} actually helps us stay safe?",
+                scene => $"I'm curious, how does {scene.ActionThatDetractsFromTheMission.WordText} hinder our progress?",
+                scene => $"Could you elaborate on how {scene.AMomentOfJoy.WordText} came to be amidst all this chaos?",
+                scene => $"What exactly does {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText} mean in the context of our current situation?",
+                scene => $"Who is {scene.AnUnexpectedAlly.WordText}, and how did they come to be involved in our mission?",
+                scene => $"How does {scene.APastEventMirroringTheCurrentMission.WordText} relate to what we're facing now?",
+                scene => $"In light of {scene.APastEventMirroringTheCurrentMission.WordText}, what {scene.AnActionThatLedToSuccess.WordText} should we consider replicating?",
+                scene => $"What constitutes {scene.APositiveTurnOfEvents.WordText} for us in these circumstances?",
+                scene => $"Why is {scene.APriorityForTheMission.WordText} deemed so crucial at this juncture?",
+                scene => $"What was the reasoning behind {scene.ARejectedPlanOfTheMission.WordText}, and should we reconsider it?",
+                scene => $"Could you detail the impact of {scene.ARelatedNegativePastEvent.WordText} on our current strategy?",
+                scene => $"How do {scene.AThreatOfTheEnemy.WordText} and {scene.TheNeedsOfTheEnemy.WordText} align, and what does this mean for us?",
+                scene => $"Who suspects there's {scene.ATraitorInTheRanks.WordText}, and on what basis?",
+                scene => $"What specific features of {scene.ObjectYouAreLookingFor.WordText} are we looking for?",
+                scene => $"Regarding {scene.ObjectYouAreLookingFor.WordText}, how exactly does {scene.AWayToEscape.WordText} factor into our plan?",
+                scene => $"Has our {scene.PreparationForTheMission.WordText} adequately addressed the potential challenges ahead?",
+                scene => $"What's our current {scene.StatusOfTheMission.WordText}, and how close are we to achieving our objectives?",
+                scene => $"Can someone update me on the {scene.StatusOfTheObstacleToTheMission.WordText} and any progress in overcoming it?",
+                scene => $"Can you explain the significance of {scene.TheBeforeAndAfter.WordText} and how it impacts our mission?",
+                scene => $"What exactly is {scene.TheBurdenCarriedByTheProtagonists.WordText}, and how can we lighten it?",
+                scene => $"Could someone update me on {scene.TheCurrentSituation.WordText}? I need to understand our standing.",
+                scene => $"What are {scene.TheEnemyActions.WordText}? Knowing their moves could help us anticipate their next steps.",
+                scene => $"Regarding {scene.TheEnemyActions.WordText}, have we identified a weakness we can exploit?",
+                scene => $"Can you detail {scene.TheEnemyActions.WordText} and how {scene.TheHeroesOfTheStory.WordText} have responded?",
+                scene => $"What's our vision for {scene.TheIdealFutureStateOfTheMission.WordText}? I'm trying to align my efforts with our end goal.",
+                scene => $"What is considered {scene.TheIdealMentalStateForTheMission.WordText}, and how do we achieve it under current pressures?",
+                scene => $"Could you elaborate on {scene.TheImmediateEffectsOfTheProblem.WordText} and their implications for our strategy?",
+                scene => $"I'm still trying to grasp the full scope of {scene.TheInjusticeFaced.WordText}. Can anyone provide more context?",
+                scene => $"How do we intend to address {scene.TheLossesWeHaveSuffered.WordText} moving forward?",
+                scene => $"What precisely is {scene.TheMissionObjective.WordText}, and how are we prioritizing our actions to meet it?",
+                scene => $"What are {scene.TheNeedsOfTheEnemy.WordText}, and can we leverage this knowledge to our advantage?",
+                scene => $"How has {scene.ThePhysicalStateOfTheProtagonists.WordText} affected our capability to continue the mission?",
+                scene => $"What does {scene.TheSoundOfTheEnemy.WordText} signify, and should we be concerned about it?",
+                scene => $"Can someone clarify {scene.TheStatusOfTheMainCauseOfTheProblem.WordText} and what it means for our next steps?",
+                scene => $"Are there any {scene.TheUnknownFactors.WordText} we haven't considered that could change our approach?",
+                scene => $"Who are {scene.TheUnsungHeroes.WordText}, and how can we better recognize their contributions?"
             };
             this.expositions.Add(SentencePurposeType.SeekClarification, seekClarification);
 
@@ -648,7 +697,68 @@
                 scene => $"Historical patterns, such as {scene.APastEventMirroringTheCurrentMission.WordText}, offer valuable insights into our current predicament.",
                 scene => $"It's crucial we evaluate the {scene.TheMentalStateOfTheEnemy.WordText}. Understanding their motivations could reveal unexpected strategies.",
                 scene => $"Our data points to a correlation between {scene.TheImmediateEffectsOfTheProblem.WordText} and {scene.TheChaosCausedByTheEnemy.WordText}. Further investigation is warranted.",
-                scene => $"Reflection on {scene.ARelatedNegativePastEvent.WordText} has highlighted the importance of {scene.ASuccessFactorOfTheMission.WordText} in our strategic planning."
+                scene => $"Reflection on {scene.ARelatedNegativePastEvent.WordText} has highlighted the importance of {scene.ASuccessFactorOfTheMission.WordText} in our strategic planning.",
+                scene => $"Let's consider how {scene.ActionThatContributesToSafety.WordText} not only ensures our immediate safety but also strategically positions us for future success.",
+                scene => $"We need to carefully examine the repercussions of {scene.ActionThatDetractsFromTheMission.WordText} and ensure our efforts are aligned with our primary objectives.",
+                scene => $"It's crucial to understand the link between {scene.ActionThatDetractsFromTheMission.WordText} and {scene.AFateIfTheMissionFails.WordText}. Our actions now can either set us on a path to victory or lead to our downfall.",
+                scene => $"Reflecting on {scene.AMomentOfJoy.WordText} gives us a glimpse into the morale of our team. Such moments can be pivotal in sustaining our spirits amidst adversity.",
+                scene => $"Considering an alternative strategy, like {scene.AnAlternativeStrategy.WordText}, could offer us a fresh perspective on how to overcome current obstacles.",
+                scene => $"In analyzing {scene.AnEnemyOfTheMission.WordText}, it's vital to identify their weaknesses and predict their next moves based on their past behavior.",
+                scene => $"Understanding the tactics of {scene.AnEnemyOfTheMission.WordText} and their movements around {scene.LocationOfTheEnemy.WordText} is key to anticipating their strategies and countering effectively.",
+                scene => $"We must not underestimate {scene.AnImmediateDangerToTheMission.WordText}. Identifying its origins and potential impact is essential for our mission's survival.",
+                scene => $"The threat posed by {scene.AnImmediateDangerToTheProtagonists.WordText} requires immediate attention. We need to assess our vulnerabilities and strengthen our defenses.",
+                scene => $"Facing {scene.AnOverwhelmingChallenge.WordText} demands a comprehensive analysis of our capabilities and the formulation of a robust response strategy.",
+                scene => $"Delving into {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText} helps us understand the broader context of our conflict and tailor our approach accordingly.",
+                scene => $"The appearance of {scene.AnUnexpectedAlly.WordText} introduces new variables into our equation. Their potential contributions and motivations warrant a thorough analysis.",
+                scene => $"Reflecting on {scene.APastEvent.WordText} and its connection to {scene.TheMystery.WordText} could unveil patterns or insights critical for our current predicament.",
+                scene => $"Evaluating {scene.APlanToSucceedAtMission.WordText} in light of recent developments will ensure that our strategy remains robust and adaptive to changing circumstances.",
+                scene => $"Considering {scene.APriorityForTheMission.WordText} is fundamental in guiding our decision-making process and focusing our efforts where they are most needed.",
+                scene => $"The relationship between {scene.ASaferLocation.WordText} and {scene.AFateIfTheMissionFails.WordText} is a critical axis of our strategy, influencing both our defensive and offensive plans.",
+                scene => $"Exploring the implications of deploying {scene.ASecretWeapon.WordText} in {scene.LocationOfTheMission.WordText} could shift the balance of power in our favor.",
+                scene => $"The intersection of {scene.ASkillOfTheProtagonists.WordText} and {scene.ACriticalClue.WordText} could be the key to unlocking new avenues for progress.",
+                scene => $"Assessing {scene.AThreatOfTheEnemy.WordText} in conjunction with {scene.TheNeedsOfTheEnemy.WordText} provides insights into their motivations and potential weaknesses.",
+                scene => $"Let's consider the implications of having {scene.ATraitorInTheRanks.WordText}. How might this affect our trust and strategy moving forward?",
+                scene => $"We need to examine {scene.ATrapForTheProtagonists.WordText} more closely. There could be a way to turn it to our advantage or at least neutralize its threat.",
+                scene => $"Analyzing {scene.AWeaponOfTheEnemy.WordText} could provide us insights into {scene.TheEnemy.WordText}'s capabilities and intentions.",
+                scene => $"How have {scene.FriendsOfTheProtagonists.WordText} influenced our journey so far? Their support could be pivotal in ways we've yet to fully appreciate.",
+                scene => $"The role of {scene.HelpfulEntitiesForTheMission.WordText} in our mission merits further examination. Their contributions could be the key to our success.",
+                scene => $"We should analyze the relationship between {scene.ObjectThatAssistsTheMission.WordText} and {scene.AnEnemyOfTheMission.WordText}. Understanding this could reveal new strategies.",
+                scene => $"The connection between {scene.ObjectThatAssistsTheMission.WordText} and its location at {scene.LocationOfTheObjectThatAssistsTheMission.WordText} needs to be dissected further. There might be hidden aspects we've overlooked.",
+                scene => $"Our search for {scene.ObjectYouAreLookingFor.WordText} and {scene.AWayToEscape.WordText} demands a strategic analysis to ensure we're not missing a crucial piece of the puzzle.",
+                scene => $"What if the {scene.PossibleSolutionToConsider.WordText} we're considering is flawed? We need to scrutinize every angle before proceeding.",
+                scene => $"The balance between our {scene.PreparationForTheMission.WordText} and the looming {scene.AnImmediateDangerToTheMission.WordText} requires careful thought. Are we truly prepared?",
+                scene => $"How do {scene.ProtagonistsForTheMission.WordText} and our current position at {scene.ASaferLocation.WordText} align with our ultimate goals? This analysis could reveal if we're in the right place for action.",
+                scene => $"Examining the aspirations of {scene.ProtagonistsForTheMission.WordText} in relation to {scene.TheGoalOfTheMission.WordText} can shed light on our collective motivation and potential roadblocks.",
+                scene => $"The {scene.StatusOfTheObstacleToTheMission.WordText} presents an opportunity for in-depth analysis. Understanding its evolution could be critical.",
+                scene => $"Reflecting on {scene.TheAchievementsOfTheGroup.WordText} offers us valuable lessons. What have we done right, and how can we replicate those successes?",
+                scene => $"Considering {scene.TheBeforeAndAfter.WordText} gives us a clearer picture of our progress and the challenges that still lie ahead.",
+                scene => $"The weight of {scene.TheBurdenCarriedByTheProtagonists.WordText} deserves our attention. It's not just physical; it's the emotional and psychological toll that could affect our decision-making.",
+                scene => $"In evaluating {scene.TheBurdenCarriedByTheProtagonists.WordText}, incorporating {scene.AnotherActionThatContributesToTheMission.WordText} into our strategy might alleviate some of that weight.",
+                scene => $"Our current position, {scene.TheCurrentSituation.WordText}, requires a holistic analysis to navigate the complexities we face effectively.",
+                scene => $"The dynamics between {scene.TheEnemy.WordText} and {scene.AHiddenActionOfTheProtagonists.WordText} could unveil vulnerabilities we can exploit.",
+                scene => $"Understanding the dual role of {scene.AWeaponOfTheEnemy.WordText} in the hands of {scene.TheEnemy.WordText} can provide insights into their strategy and how to counteract it.",
+                scene => $"Let's analyze {scene.TheEnemyActions.WordText}. Identifying a weakness could give us the upper hand.",
+                scene => $"Examining {scene.TheEnemyActions.WordText} in the context of {scene.TheHeroesOfTheStory.WordText} might reveal new strategies for our advantage.",
+                scene => $"Understanding {scene.TheGoalOfTheMission.WordText} is crucial for aligning our efforts effectively.",
+                scene => $"Considering {scene.TheGoalOfTheMission.WordText} and its relevance to {scene.LocationOfTheMission.WordText} can offer insights into strategic advantages.",
+                scene => $"Reflecting on {scene.TheIdealFutureStateOfTheMission.WordText} helps us stay focused on what we're fighting for.",
+                scene => $"Analyzing {scene.TheIdealFutureStateOfTheMission.WordText} alongside {scene.APlanToSucceedAtMission.WordText} can refine our approach to ensure success.",
+                scene => $"Maintaining {scene.TheIdealMentalStateForTheMission.WordText} is key. How do our current strategies support this?",
+                scene => $"The injustice we've faced, {scene.TheInjusticeFaced.WordText}, requires careful thought. How do we address this moving forward?",
+                scene => $"Reflecting on {scene.TheLossesWeHaveSuffered.WordText} is painful but necessary. What lessons can we learn?",
+                scene => $"Given {scene.TheLossesWeHaveSuffered.WordText}, what {scene.PossibleSolutionToConsider.WordText} have we overlooked?",
+                scene => $"A deep dive into {scene.TheMissionObjective.WordText} might reveal aspects we haven't considered.",
+                scene => $"Unraveling {scene.TheMysteryUnfolding.WordText} could be the key to our next breakthrough.",
+                scene => $"Our current condition, {scene.ThePhysicalStateOfTheProtagonists.WordText}, demands a reassessment of our capabilities.",
+                scene => $"Analyzing the problem within the context of {scene.ASaferLocation.WordText} might reveal new solutions.",
+                scene => $"The implications of {scene.TheSoundOfTheEnemy.WordText} could tell us much about their next move.",
+                scene => $"What does {scene.TheStatusOfTheMainCauseOfTheProblem.WordText} tell us about our progress?",
+                scene => $"Understanding the experiences of {scene.TheSurvivors.WordText} offers invaluable insights into resilience.",
+                scene => $"With {scene.TheTimeLeftToCompleteTheMission.WordText} decreasing, we need a precise evaluation to prioritize our actions.",
+                scene => $"Exploring the actions of {scene.TheUnsungHeroes.WordText} in light of {scene.TheMysteryUnfolding.WordText} may reveal untapped resources.",
+                scene => $"The plight of {scene.VictimsOfTheEnemy.WordText} requires our immediate attention and understanding.",
+                scene => $"Assessing the condition of {scene.VictimsOfTheEnemy.WordText} at {scene.LocationOfTheVictim.WordText} can guide our rescue efforts.",
+                scene => $"What truly hinges on the success of our mission, {scene.WhatHingesOnTheSuccessOfTheMission.WordText}, must be our guiding principle."
             };
             this.expositions.Add(SentencePurposeType.Analyze, analyze);
 
@@ -1041,7 +1151,48 @@
                 scene => $"What about {scene.APlanToSucceedAtMission.WordText}? It could be our best shot.",
                 scene => $"Have we thought about {scene.AnUnexpectedAlly.WordText}? Their assistance could be crucial.",
                 scene => $"We might need to {scene.ActionThatContributesToTheMission.WordText} sooner rather than later.",
-                scene => $"It could be beneficial to {scene.ActionObjectThatContributesToTheMission.WordText} for added support."
+                scene => $"It could be beneficial to {scene.ActionObjectThatContributesToTheMission.WordText} for added support.",
+                scene => $"We should address {scene.AnImmediateDangerToTheMission.WordText} before it escalates further.",
+                scene => $"Let's not underestimate {scene.AnImmediateDangerToTheProtagonists.WordText}. Perhaps a more cautious approach is warranted.",
+                scene => $"To bypass {scene.AnObstacleToTheMission.WordText}, why not explore alternative strategies we haven't considered yet?",
+                scene => $"Given our knowledge of {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}, adapting our tactics could give us the upper hand.",
+                scene => $"Remember {scene.APastEventMirroringTheCurrentMission.WordText}? There might be valuable lessons there for us.",
+                scene => $"Reflecting on {scene.APastEventMirroringTheCurrentMission.WordText}, a similar approach could lead to {scene.APositiveTurnOfEvents.WordText} again.",
+                scene => $"Focusing on {scene.APriorityForTheMission.WordText} should be our first step; it's fundamental to our progress.",
+                scene => $"Considering {scene.ARelatedNegativePastEvent.WordText}, we should be wary of repeating history.",
+                scene => $"Moving to {scene.ASaferLocation.WordText} could be wise, especially if {scene.AFateIfTheMissionFails.WordText} is a real possibility.",
+                scene => $"Utilizing {scene.ASkillOfTheProtagonists.WordText} to uncover {scene.ACriticalClue.WordText} could be our best move right now.",
+                scene => $"Enhancing {scene.ASuccessFactorOfTheMission.WordText} should be our main focus to ensure mission success.",
+                scene => $"We need a plan that counters {scene.AThreatOfTheEnemy.WordText} while addressing {scene.TheNeedsOfTheEnemy.WordText}.",
+                scene => $"We should be vigilant for signs of {scene.ATraitorInTheRanks.WordText}; it could change our entire approach.",
+                scene => $"Maybe it's time to consider if what we're facing is {scene.ATrapForTheProtagonists.WordText} and plan accordingly.",
+                scene => $"Let's not forget to lean on {scene.FriendsOfTheProtagonists.WordText} for support. They've always come through for us.",
+                scene => $"Perhaps {scene.HelpfulEntitiesForTheMission.WordText} have insights we've overlooked. It's worth reaching out.",
+                scene => $"Finding and utilizing {scene.ObjectThatAssistsTheMission.WordText} could provide the edge we need against {scene.AnEnemyOfTheMission.WordText}.",
+                scene => $"Securing {scene.ObjectThatAssistsTheMission.WordText} from {scene.LocationOfTheObjectThatAssistsTheMission.WordText} might just turn the tide for us.",
+                scene => $"If we locate {scene.ObjectYouAreLookingFor.WordText}, it could open up {scene.AWayToEscape.WordText}, offering us a way out.",
+                scene => $"Ensuring the safety of {scene.ProtagonistsForTheMission.WordText} by relocating to {scene.ASaferLocation.WordText} could safeguard our efforts.",
+                scene => $"Aligning the efforts of {scene.ProtagonistsForTheMission.WordText} with achieving {scene.TheGoalOfTheMission.WordText} ensures we remain focused on what truly matters.",
+                scene => $"Given the {scene.StatusOfTheMission.WordText}, perhaps we should reassess our current strategy to ensure success.",
+                scene => $"Considering the {scene.StatusOfTheObstacleToTheMission.WordText}, maybe finding an alternate route could save us time and resources.",
+                scene => $"Reflecting on {scene.TheBeforeAndAfter.WordText}, suggesting a course of action that avoids past mistakes could prove beneficial.",
+                scene => $"In light of {scene.TheBurdenCarriedByTheProtagonists.WordText}, I suggest we distribute tasks more evenly to alleviate the pressure.",
+                scene => $"Given {scene.TheChaosCausedByTheEnemy.WordText}, deploying a more flexible and adaptive strategy could help us navigate through the turmoil.",
+                scene => $"Aware of {scene.TheEnemy.WordText} and their {scene.AWeaponOfTheEnemy.WordText}, suggesting a defensive posture might minimize our vulnerabilities.",
+                scene => $"Considering {scene.TheEnemyActions.WordText} and their apparent {scene.AWeakness.WordText}, perhaps exploiting this flaw could turn the tide in our favor.",
+                scene => $"To achieve {scene.TheGoalOfTheMission.WordText}, I suggest focusing our efforts on key objectives and rallying our allies for support.",
+                scene => $"Aiming for {scene.TheIdealFutureStateOfTheMission.WordText}, perhaps envisioning our steps towards this outcome could guide our path forward.",
+                scene => $"With the goal of achieving {scene.TheIdealMentalStateForTheMission.WordText}, maybe incorporating mindfulness and morale-boosting activities could strengthen our resolve.",
+                scene => $"Given {scene.TheImmediateEffectsOfTheProblem.WordText}, I suggest immediate action to mitigate these impacts and safeguard our mission.",
+                scene => $"Reflecting on {scene.TheLossesWeHaveSuffered.WordText}, suggesting ways to honor their memory might inspire greater dedication amongst us.",
+                scene => $"Considering {scene.TheMainCauseOfTheProblem.WordText}, perhaps a targeted approach to address this root issue could prevent further escalation.",
+                scene => $"Knowing {scene.TheMentalStateOfTheEnemy.WordText}, suggesting psychological tactics could give us an unexpected advantage.",
+                scene => $"To fulfill {scene.TheMissionObjective.WordText}, I propose that honing in on our specific skills and resources could expedite our progress.",
+                scene => $"In light of {scene.TheMysteryUnfolding.WordText}, suggesting a cautious approach to gather more information could unveil hidden opportunities or threats.",
+                scene => $"With only {scene.TheTimeLeftToCompleteTheMission.WordText} remaining, prioritizing tasks that directly contribute to overcoming {scene.AnObstacleToTheMission.WordText} seems prudent.",
+                scene => $"As {scene.TimeOfDay.WordText} approaches and we face {scene.TheImmediateEffectsOfTheProblem.WordText}, adjusting our schedule to maximize efficiency during this time could be key.",
+                scene => $"To support {scene.VictimsOfTheEnemy.WordText}, suggesting a dedicated team for their aid and recovery could demonstrate our commitment to their well-being.",
+                scene => $"Given what hinges on the success of our mission, {scene.WhatHingesOnTheSuccessOfTheMission.WordText}, proposing a united front and shared vision could be our best strategy."
             };
             this.expositions.Add(SentencePurposeType.Suggest, suggest);
 
@@ -1229,7 +1380,54 @@
                 scene => $"What a twist! {scene.TheMainCauseOfTheProblem.WordText} was right before our eyes.",
                 scene => $"Unbelievable! The {scene.AWeaponOfTheEnemy.WordText} was a decoy all along!",
                 scene => $"Shocking! To think {scene.TheChaosCausedByTheEnemy.WordText} could lead us here.",
-                scene => $"To see {scene.LocationOfTheMission.WordText} in peace again, it's nothing short of a miracle."
+                scene => $"To see {scene.LocationOfTheMission.WordText} in peace again, it's nothing short of a miracle.",
+                scene => $"I never expected {scene.ActionObjectThatContributesToTheMission.WordText} would play such a crucial role in our mission!",
+                scene => $"Seeing {scene.ActionThatContributesToSafety.WordText} in action was a revelation. It changed everything for us.",
+                scene => $"The way {scene.ActionThatContributesToTheMission.WordText} unfolded was completely unexpected. It's altered our path forward.",
+                scene => $"I was shocked to find out that {scene.ActionThatDetractsFromTheMission.WordText} had been happening right under our noses.",
+                scene => $"To think that {scene.ActionThatDetractsFromTheMission.WordText} was part of {scene.TheIdealStrategyForTheMission.WordText} all along... I'm speechless.",
+                scene => $"The possibility of {scene.AFateIfTheMissionFails.WordText} was always on my mind, but knowing {scene.ASuccessFactorOfTheMission.WordText} could prevent it was a surprise.",
+                scene => $"{scene.AMomentOfJoy.WordText} caught me off guard in the best way possible. It was a much-needed uplift.",
+                scene => $"The sudden appearance of {scene.HelpfulEntitiesForTheMission.WordText} amidst {scene.AnImmediateDangerToTheProtagonists.WordText} was something none of us saw coming.",
+                scene => $"Who would have thought {scene.AnObstacleToTheMission.WordText} would turn out to be a blessing in disguise?",
+                scene => $"I was taken aback by the complexity of {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}. It's not as straightforward as we thought.",
+                scene => $"The link between {scene.APastEvent.WordText} and the mystery we're facing now is astonishing.",
+                scene => $"To discover that {scene.APastEventMirroringTheCurrentMission.WordText} was a precursor to {scene.TheMysteryUnfolding.WordText} left me stunned.",
+                scene => $"Finding out our plan, {scene.APlanToSucceedAtMission.WordText}, actually worked was beyond surprising.",
+                scene => $"{scene.APositiveTurnOfEvents.WordText} in our favor was the shock we all needed. It's given us hope.",
+                scene => $"That {scene.APriorityForTheMission.WordText} would end up being so critical was a revelation to us all.",
+                scene => $"Learning about {scene.ARelatedNegativePastEvent.WordText} put everything into perspective. I had no idea.",
+                scene => $"The connection between {scene.ARelatedNegativePastEvent.WordText} and {scene.ActionThatDetractsFromTheMission.WordText} was a puzzle piece I didn't expect to fit.",
+                scene => $"The solution, {scene.ASolution.WordText}, to {scene.TheProblem.WordText} being right in front of us was a twist I didn't see coming.",
+                scene => $"Realizing that {scene.ASuccessFactorOfTheMission.WordText} was the key all along was a genuine surprise.",
+                scene => $"Uncovering the link between {scene.AThreatOfTheEnemy.WordText} and {scene.TheNeedsOfTheEnemy.WordText} was a startling revelation.",
+                scene => $"The realization that we had {scene.ATraitorInTheRanks.WordText} among us was shocking.",
+                scene => $"Falling into {scene.ATrapForTheProtagonists.WordText} was a twist none of us were prepared for.",
+                scene => $"The involvement of {scene.FriendsOfTheProtagonists.WordText} when we least expected it was a pleasant surprise.",
+                scene => $"Discovering the {scene.LocationOfTheEnemy.WordText} was not where we thought, was a game-changer.",
+                scene => $"I can't believe {scene.LocationOfTheEnemy.WordText} was their hideout all along. Seeing {scene.AnEnemyOfTheMission.WordText} there was the last thing I expected.",
+                scene => $"This {scene.ObjectThatAssistsTheMission.WordText} is a game changer. I never thought such a thing could exist!",
+                scene => $"Finding {scene.ObjectYouAreLookingFor.WordText} here and discovering {scene.AWayToEscape.WordText} was completely unexpected. It's almost like fate.",
+                scene => $"All our {scene.PreparationForTheMission.WordText} didn't prepare me for this. The twist in our plan is astonishing!",
+                scene => $"The {scene.StatusOfTheMission.WordText} has taken a turn I never saw coming. It's nothing short of miraculous.",
+                scene => $"The {scene.TheAchievementsOfTheGroup.WordText} are astounding. We've come so far, yet the journey feels just as fresh.",
+                scene => $"Seeing the {scene.TheBeforeAndAfter.WordText} with my own eyes is surreal. It's hard to believe it's the same place.",
+                scene => $"The {scene.TheCurrentSituation.WordText} has me at a loss for words. How did things change so quickly?",
+                scene => $"Achieving {scene.TheGoalOfTheMission.WordText} so suddenly was the last thing I expected. It's like a dream.",
+                scene => $"To think, {scene.TheHeroesOfTheStory.WordText} and {scene.ProtagonistsForTheMission.WordText} were among us all this time. That's incredible!",
+                scene => $"Never did I imagine our mission would cultivate {scene.TheIdealMentalStateForTheMission.WordText}. This is a pleasant surprise.",
+                scene => $"The {scene.TheImmediateEffectsOfTheProblem.WordText} are more profound than I feared. It's shocking to witness firsthand.",
+                scene => $"I was unprepared for {scene.TheInjusticeFaced.WordText}. The reality is more jarring than the stories.",
+                scene => $"The {scene.TheLossesWeHaveSuffered.WordText} hit harder than I expected. It's a sobering reality.",
+                scene => $"To see {scene.TheMentalStateOfTheEnemy.WordText} with my own eyes... It's not what I anticipated.",
+                scene => $"The unraveling of {scene.TheMysteryUnfolding.WordText} has left me speechless. The truth is stranger than fiction.",
+                scene => $"Our {scene.ThePhysicalStateOfTheProtagonists.WordText} is a testament to our journey. I never realized the toll until now.",
+                scene => $"Learning about {scene.TheStatusOfTheMainCauseOfTheProblem.WordText} was a wake-up call. The situation is more dire than we thought.",
+                scene => $"The revelation of {scene.TheUnknownFactors.WordText} throws everything we thought we knew into question.",
+                scene => $"Discovering the identity of {scene.TheUnsungHeroes.WordText} and achieving {scene.TheMissionObjective.WordText} has been an unexpected journey.",
+                scene => $"The moment at {scene.TimeOfDay.WordText}, when we found {scene.TheSurvivors.WordText} and envisioned {scene.TheIdealFutureStateOfTheMission.WordText}, was unlike anything I've experienced.",
+                scene => $"To think that {scene.VictimsOfTheEnemy.WordText} were right under our noses, and {scene.AnEnemyOfTheMission.WordText} was behind it all along...",
+                scene => $"Hearing about {scene.VictimsOfTheEnemy.WordText} and their ordeal at {scene.LocationOfTheVictim.WordText} was a shock. We must act swiftly."
             };
             this.expositions.Add(SentencePurposeType.ConveySurprise, conveySurprise);
 
@@ -1570,7 +1768,24 @@
                 scene => $"In striving for {scene.TheIdealMentalStateForTheMission.WordText}, our shared optimism and support are our greatest assets.",
                 scene => $"The {scene.TheBurdenCarriedByTheProtagonists.WordText} becomes lighter when shared among us all, a symbol of our unwavering support for one another.",
                 scene => $"With {scene.TheTimeLeftToCompleteTheMission.WordText} ticking away, our unity becomes not just our strategy, but our sanctuary.",
-                scene => $"{scene.APositiveTurnOfEvents.WordText} is not just a stroke of luck; it's a testament to what we can achieve when we stand together."
+                scene => $"{scene.APositiveTurnOfEvents.WordText} is not just a stroke of luck; it's a testament to what we can achieve when we stand together.",
+                scene => $"Together, we can {scene.ActionThatContributesToSafety.WordText}. Unity is our shield against adversity.",
+                scene => $"Let's cherish {scene.AMomentOfJoy.WordText} as a reminder of what we're fighting for. In joy, we find our strength.",
+                scene => $"Facing {scene.AnImmediateDangerToTheProtagonists.WordText}, we stand united, undivided in the face of peril.",
+                scene => $"Our commitment to {scene.APlanToSucceedAtMission.WordText} embodies our collective resolve. Together, we are unstoppable.",
+                scene => $"In understanding {scene.AThreatOfTheEnemy.WordText} and {scene.TheNeedsOfTheEnemy.WordText}, we solidify our bond, prepared to confront what lies ahead.",
+                scene => $"Even with {scene.ATraitorInTheRanks.WordText} among us, our unity remains unshaken. We trust in the strength of our collective purpose.",
+                scene => $"With the enemy at {scene.LocationOfTheEnemy.WordText}, our solidarity becomes our fortress. We face the threat as one.",
+                scene => $"Here, in {scene.LocationOfTheMission.WordText}, we find common ground, a place where our spirits converge in pursuit of a shared goal.",
+                scene => $"As we seek {scene.ObjectYouAreLookingFor.WordText} and {scene.AWayToEscape.WordText}, let us remember that our greatest asset is each other.",
+                scene => $"Our {scene.PreparationForTheMission.WordText} has not just prepared us for the challenge ahead but has also woven us tightly together.",
+                scene => $"We celebrate {scene.TheAchievementsOfTheGroup.WordText} not as individuals, but as a testament to what we can accomplish together.",
+                scene => $"In facing {scene.TheCurrentSituation.WordText}, let's draw closer, for it's our unity that will see us through these times.",
+                scene => $"Against {scene.TheInjusticeFaced.WordText}, our collective outrage fuels our resolve to seek justice and change.",
+                scene => $"Understanding {scene.TheMentalStateOfTheEnemy.WordText} reinforces our empathy and unity, reminding us of the power of our shared humanity.",
+                scene => $"Our {scene.ThePhysicalStateOfTheProtagonists.WordText} may vary, but in spirit, we are all equal, all enduring, all resilient.",
+                scene => $"Let's navigate {scene.TheUnknownFactors.WordText} with a shared sense of purpose, for together, no mystery is too deep to unravel.",
+                scene => $"We honor {scene.TheUnsungHeroes.WordText}, whose silent sacrifices have paved the way for our journey, binding us in gratitude and respect."
             };
             this.expositions.Add(SentencePurposeType.ExpressSolidarity, expressSolidarity);
 
@@ -1703,6 +1918,46 @@
                 scene => $"Can anyone teach me how to {scene.ASkillOfTheProtagonists.WordText}? I think it's crucial for our mission.",
                 scene => $"I need some help planning the {scene.PreparationForTheMission.WordText}. Any ideas?",
                 scene => $"Can anyone share insights on {scene.TheEnemy.WordText}? Understanding them could be key.",
+                scene => $"Can we find a way to avoid {scene.ActionThatDetractsFromTheMission.WordText}? It's crucial we stay focused on our objectives.",
+                scene => $"Could we take a moment to celebrate {scene.AMomentOfJoy.WordText}? It's important to acknowledge our victories, no matter how small.",
+                scene => $"I need someone to look into {scene.AnEnemyOfTheMission.WordText}. Understanding their motives could be key to our success.",
+                scene => $"We must address {scene.AnImmediateDangerToTheProtagonists.WordText} immediately. Can anyone devise a plan to keep us safe?",
+                scene => $"The {scene.AnObstacleToTheMission.WordText} is proving challenging with its current {scene.StatusOfTheObstacleToTheMission.WordText}. Can we brainstorm solutions together?",
+                scene => $"Facing {scene.AnOverwhelmingChallenge.WordText} is daunting. Any ideas on how we can overcome this together?",
+                scene => $"We need a strategy to counter {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}. Who has insights on this?",
+                scene => $"Could {scene.AnUnexpectedAlly.WordText} offer us the support we need at this crucial juncture? Let's reach out for assistance.",
+                scene => $"Remembering {scene.APastEvent.WordText} might hold clues to unraveling {scene.TheMystery.WordText}. Can anyone delve into this further?",
+                scene => $"Our mission hinges on {scene.APlanToSucceedAtMission.WordText}. I'm requesting extra resources to ensure its success. Who can contribute?",
+                scene => $"Let's capitalize on {scene.APositiveTurnOfEvents.WordText}. How can we adjust our strategy to maintain this momentum?",
+                scene => $"Given that {scene.APriorityForTheMission.WordText} is at stake, I'm asking for volunteers to take on extra tasks. Who's with me?",
+                scene => $"Can we take a moment to reflect on {scene.ARelatedNegativePastEvent.WordText} and ensure we don't repeat the same mistakes?",
+                scene => $"We need a solution for {scene.TheProblem.WordText} that ensures our safety in {scene.ASaferLocation.WordText}. Who has ideas?",
+                scene => $"It's imperative we uncover {scene.ATraitorInTheRanks.WordText}. Can anyone investigate discreetly?",
+                scene => $"Navigating {scene.ATrapForTheProtagonists.WordText} will be tricky. I need a team to devise a countermeasure.",
+                scene => $"Let's not forget the support from {scene.FriendsOfTheProtagonists.WordText}. How can we ensure their efforts are not in vain?",
+                scene => $"I'm calling on {scene.HelpfulEntitiesForTheMission.WordText} for assistance. Their expertise could be exactly what we need right now.",
+                scene => $"With the {scene.StatusOfTheMission.WordText} being as it is, I'm requesting an all-hands meeting to reassess our approach. When can we convene?",
+                scene => $"Can we dedicate some time to recognize {scene.TheAchievementsOfTheGroup.WordText}? It's vital for morale.",
+                scene => $"Can you document {scene.TheBeforeAndAfter.WordText}? We need to remember where we started and how far we've come.",
+                scene => $"I need help sharing {scene.TheBurdenCarriedByTheProtagonists.WordText}. It's too heavy for one person to bear alone.",
+                scene => $"Please, give me an update on {scene.TheCurrentSituation.WordText}. I need to understand our position clearly.",
+                scene => $"I'm asking for strategies to counter {scene.TheEnemyActions.WordText}. How can {scene.TheHeroesOfTheStory.WordText} best respond?",
+                scene => $"Could you focus on achieving {scene.TheGoalOfTheMission.WordText}? It's critical for our success.",
+                scene => $"Help me envision {scene.TheIdealFutureStateOfTheMission.WordText}. What steps do we need to take to realize this vision?",
+                scene => $"I need guidance on maintaining {scene.TheIdealMentalStateForTheMission.WordText} amidst these challenges.",
+                scene => $"Can someone address {scene.TheInjusticeFaced.WordText}? It's time we took a stand.",
+                scene => $"Let's have a moment of silence for {scene.TheLossesWeHaveSuffered.WordText}. Then, let's discuss how we can prevent more.",
+                scene => $"I request insight into {scene.TheMentalStateOfTheEnemy.WordText}. Understanding their mindset could be key to our strategy.",
+                scene => $"Who can clarify {scene.TheMissionObjective.WordText} for everyone? It's essential that we're all aligned.",
+                scene => $"I'm curious about {scene.TheMysteryUnfolding.WordText}. Can anyone shed light on this?",
+                scene => $"We need to assess {scene.ThePhysicalStateOfTheProtagonists.WordText}. Are we fit to continue, or do we need to regroup?",
+                scene => $"Could you investigate {scene.TheSoundOfTheEnemy.WordText}? Knowing more could help us anticipate their next move.",
+                scene => $"I ask for updates on {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}. It's vital for our next steps.",
+                scene => $"Let's reach out to {scene.TheSurvivors.WordText}. They might need our help or have information.",
+                scene => $"How much {scene.TheTimeLeftToCompleteTheMission.WordText} do we have? Time management is crucial now.",
+                scene => $"Does anyone have information on {scene.TheUnknownFactors.WordText}? Uncertainty could undermine our efforts.",
+                scene => $"I want to hear more about {scene.TheUnsungHeroes.WordText}. Their stories inspire us all.",
+                scene => $"It's important to discuss what hinges on the success of our mission. {scene.WhatHingesOnTheSuccessOfTheMission.WordText} must be our focus."
             };
             this.expositions.Add(SentencePurposeType.MakeARequest, makeARequest);
 
@@ -1816,7 +2071,30 @@
                 scene => $"The status of {scene.TheStatusOfTheMainCauseOfTheProblem.WordText} was a constant concern, a riddle wrapped in the enigma of our mission.",
                 scene => $"Facing {scene.AnImmediateDangerToTheProtagonists.WordText}, we found strength in {scene.HelpfulEntitiesForTheMission.WordText}, allies in the truest sense.",
                 scene => $"As the mystery of {scene.TheMysteryUnfolding.WordText} unraveled, we stood at the precipice of understanding, ready to confront the unknown.",
-                scene => $"Our collective efforts, {scene.TheAchievementsOfTheGroup.WordText}, became the bedrock upon which our hopes were built, a testament to what we could accomplish together."
+                scene => $"Our collective efforts, {scene.TheAchievementsOfTheGroup.WordText}, became the bedrock upon which our hopes were built, a testament to what we could accomplish together.",
+                scene => $"In a decisive moment, our team's {scene.ActionThatContributesToSafety.WordText} shielded us from harm, a critical step towards ensuring our mission's success.",
+                scene => $"The shadow of {scene.AFateIfTheMissionFails.WordText} loomed over us, tempered only by the strength found in {scene.ASuccessFactorOfTheMission.WordText}, our beacon of hope.",
+                scene => $"Amidst the chaos, {scene.AMomentOfJoy.WordText} emerged, a rare and fleeting respite that buoyed our spirits and strengthened our resolve.",
+                scene => $"Facing {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}, we were reminded of our shared purpose and the formidable adversaries standing in our path.",
+                scene => $"Echoes of {scene.APastEvent.WordText} intertwined with {scene.TheMystery.WordText}, guiding our steps and informing our strategies.",
+                scene => $"Then came {scene.APositiveTurnOfEvents.WordText}, shifting the tide in our favor and opening new pathways to victory.",
+                scene => $"With {scene.ASolution.WordText} at hand, we confronted {scene.TheProblem.WordText}, armed with knowledge and a plan to overcome.",
+                scene => $"Our mission's cornerstone remained {scene.ASuccessFactorOfTheMission.WordText}, a principle that guided every decision and action.",
+                scene => $"The balance of power was further complicated by {scene.AThreatOfTheEnemy.WordText} and {scene.TheNeedsOfTheEnemy.WordText}, elements that demanded our constant vigilance.",
+                scene => $"Whispers of {scene.ATraitorInTheRanks.WordText} sowed seeds of doubt, challenging our unity and trust.",
+                scene => $"We found ourselves ensnared in {scene.ATrapForTheProtagonists.WordText}, a cunning ploy designed to exploit our weaknesses.",
+                scene => $"Throughout our ordeal, {scene.FriendsOfTheProtagonists.WordText} stood by us, their support unwavering in the face of adversity.",
+                scene => $"The quest for {scene.ObjectYouAreLookingFor.WordText} led us to discover {scene.AWayToEscape.WordText}, a means to evade capture and continue our fight.",
+                scene => $"Our {scene.PreparationForTheMission.WordText} proved invaluable, laying the groundwork for the challenges we would face.",
+                scene => $"As the {scene.StatusOfTheMission.WordText} evolved, so too did our understanding of what was required to succeed.",
+                scene => $"The narrative of {scene.TheBeforeAndAfter.WordText} captured the essence of our journey, a tale of transformation and tenacity.",
+                scene => $"Each of us bore {scene.TheBurdenCarriedByTheProtagonists.WordText}, a testament to the sacrifices made in pursuit of our goal.",
+                scene => $"{scene.TheCurrentSituation.WordText} painted a stark picture, one that highlighted both our progress and the hurdles yet to overcome.",
+                scene => $"In the clash between {scene.TheEnemyActions.WordText} and {scene.TheHeroesOfTheStory.WordText}, the lines between heroism and survival blurred.",
+                scene => $"Striving for {scene.TheIdealMentalStateForTheMission.WordText}, we sought to maintain focus and clarity amidst the turmoil.",
+                scene => $"Confronted with {scene.TheInjusticeFaced.WordText}, our resolve hardened, fueling our commitment to rectify the wrongs inflicted.",
+                scene => $"The {scene.ThePhysicalStateOfTheProtagonists.WordText} bore the scars of battle, each mark a reminder of the ordeals faced and the resilience required to endure.",
+                scene => $"Amidst it all, {scene.TheUnknownFactors.WordText} lingered as a constant reminder of the unpredictability of our quest and the mysteries that still lay unsolved."
             };
             this.expositions.Add(SentencePurposeType.NarrateAnEvent, narrateAnEvent);
 
@@ -1835,7 +2113,23 @@
                 scene => $"When I highlighted the {scene.TheIdealMentalStateForTheMission.WordText}, it was to motivate, not to imply any lack of resolve among us.",
                 scene => $"Discussing {scene.TheBurdenCarriedByTheProtagonists.WordText} was meant to acknowledge our shared responsibility, not to assign blame.",
                 scene => $"My reference to {scene.TheTimeLeftToCompleteTheMission.WordText} was to convey urgency, not to suggest we are running out of options.",
-                scene => $"The phrase '{scene.APositiveTurnOfEvents.WordText}' was intended to boost morale, recognizing our small victories amidst challenges."
+                scene => $"The phrase '{scene.APositiveTurnOfEvents.WordText}' was intended to boost morale, recognizing our small victories amidst challenges.",
+                scene => $"To be clear, by {scene.ActionObjectThatContributesToTheMission.WordText}, I mean the tools that will directly aid us in securing our objective.",
+                scene => $"What I meant regarding {scene.ActionThatContributesToSafety.WordText} is the specific strategies we've implemented to protect ourselves and the mission.",
+                scene => $"When I mentioned {scene.AFateIfTheMissionFails.WordText}, it was to emphasize the critical importance of {scene.ASuccessFactorOfTheMission.WordText} in avoiding that outcome.",
+                scene => $"Clarifying my point about {scene.AnEnemyOfTheMission.WordText}, they pose a significant threat due to their strategic capabilities and resources.",
+                scene => $"The term {scene.AnImmediateDangerToTheProtagonists.WordText} refers to the most pressing threats we currently face, requiring immediate attention.",
+                scene => $"Addressing {scene.AnOverwhelmingChallenge.WordText} involves leveraging all available resources and strategies we've discussed.",
+                scene => $"By {scene.AnUnexpectedAlly.WordText}, I was referring to newfound support that was not initially anticipated but has since become pivotal.",
+                scene => $"Reflecting on {scene.APastEvent.WordText}, its relevance lies in the lessons learned that are applicable to our current strategy.",
+                scene => $"Drawing parallels with {scene.APastEventMirroringTheCurrentMission.WordText}, I pointed out {scene.AnActionThatLedToSuccess.WordText} as a key factor for success, something we plan to replicate with {scene.APlanToSucceedAtMission.WordText}.",
+                scene => $"The essence of prioritizing {scene.APriorityForTheMission.WordText} is to focus our efforts on what will most effectively advance our mission.",
+                scene => $"My reference to {scene.AThreatOfTheEnemy.WordText} alongside {scene.TheNeedsOfTheEnemy.WordText} was to highlight the enemy's motivations and how they might use such threats to their advantage.",
+                scene => $"The mention of {scene.ATraitorInTheRanks.WordText} was to caution us about potential internal threats that could undermine our efforts.",
+                scene => $"By {scene.ATrapForTheProtagonists.WordText}, I implied the strategic setups we need to be wary of, ones that could significantly hinder our progress.",
+                scene => $"Regarding {scene.AWeaponOfTheEnemy.WordText}, it's crucial to understand its strategic importance to {scene.AnEnemyOfTheMission.WordText} and how it could alter the conflict's dynamics.",
+                scene => $"The role of {scene.FriendsOfTheProtagonists.WordText} in our strategy is to provide us with the necessary support and resources, complementing our efforts towards the mission.",
+                scene => $"When I spoke of {scene.HelpfulEntitiesForTheMission.WordText}, it was to acknowledge those who offer us crucial assistance, resources, or information that propels us closer to our goals."
             };
             this.expositions.Add(SentencePurposeType.ClarifyAStatement, clarifyAStatement);
 
@@ -1966,7 +2260,26 @@
                 scene => $"Significant progress has been made concerning {scene.TheStatusOfTheMainCauseOfTheProblem.WordText}, bringing us one step closer to resolution.",
                 scene => $"Amidst {scene.AnImmediateDangerToTheProtagonists.WordText}, {scene.HelpfulEntitiesForTheMission.WordText} have emerged as invaluable allies, ensuring our safety.",
                 scene => $"The unraveling of {scene.TheMysteryUnfolding.WordText} has revealed unexpected allies and resources, bolstering our mission.",
-                scene => $"Celebrating {scene.TheAchievementsOfTheGroup.WordText}, we're reminded of our resilience and the impact of our collective efforts."
+                scene => $"Celebrating {scene.TheAchievementsOfTheGroup.WordText}, we're reminded of our resilience and the impact of our collective efforts.",
+                scene => $"The latest {scene.ActionThatContributesToSafety.WordText} measures have been a success, ensuring our safety as we move forward.",
+                scene => $"Despite the risk of {scene.AFateIfTheMissionFails.WordText}, our {scene.ASuccessFactorOfTheMission.WordText} has placed us on the path to victory.",
+                scene => $"There's a reason to celebrate; {scene.AMomentOfJoy.WordText} has just happened, uplifting everyone's spirits.",
+                scene => $"We've found a weakness in {scene.AnUmbrellaTermThatDescribesTheNatureOfTheEnemy.WordText}, a crucial step towards our advantage.",
+                scene => $"After revisiting {scene.APastEvent.WordText}, we've uncovered {scene.TheMystery.WordText}, shedding light on a path forward.",
+                scene => $"A breakthrough in {scene.ASolution.WordText} has finally addressed {scene.TheProblem.WordText}, marking a significant turning point.",
+                scene => $"Our focus on {scene.ASuccessFactorOfTheMission.WordText} is paying off, bringing us closer to our goal.",
+                scene => $"We've managed to neutralize {scene.AThreatOfTheEnemy.WordText} by addressing {scene.TheNeedsOfTheEnemy.WordText}, easing tensions significantly.",
+                scene => $"Good news: {scene.ATrapForTheProtagonists.WordText} has been dismantled, clearing a major obstacle for us.",
+                scene => $"{scene.FriendsOfTheProtagonists.WordText} have come through for us, offering unexpected support at a critical time.",
+                scene => $"We've located {scene.ObjectYouAreLookingFor.WordText} and discovered {scene.AWayToEscape.WordText}, providing a clear path forward.",
+                scene => $"Our {scene.PreparationForTheMission.WordText} has been spot on, setting us up perfectly for the challenges ahead.",
+                scene => $"The {scene.StatusOfTheMission.WordText} is now positive, a testament to our hard work and dedication.",
+                scene => $"Looking at {scene.TheBeforeAndAfter.WordText}, it's clear we've made incredible progress.",
+                scene => $"In light of {scene.TheCurrentSituation.WordText}, we're in a much better position than anticipated.",
+                scene => $"Achieving {scene.TheIdealMentalStateForTheMission.WordText} among the team has boosted our morale and efficiency.",
+                scene => $"We've made strides in addressing {scene.TheInjusticeFaced.WordText}, bringing hope to those affected.",
+                scene => $"The {scene.ThePhysicalStateOfTheProtagonists.WordText} has greatly improved, readying us for the next phase of our mission.",
+                scene => $"Thanks to new intelligence, {scene.TheUnknownFactors.WordText} are now within our grasp, offering new opportunities."
             };
             this.expositions.Add(SentencePurposeType.ProvideGoodNews, provideGoodNews);
 
