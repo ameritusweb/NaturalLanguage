@@ -2,8 +2,6 @@
 {
     public class Scene
     {
-        public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
-
         public StoryWord ObjectYouAreLookingFor { get; set; }
 
         public StoryWord ObjectThatAssistsTheMission { get; set; }
@@ -134,7 +132,7 @@
 
         public StoryWord ARejectedPlanOfTheMission { get; set; }
 
-        public StoryWord WhatHingesOnTheSuccessOfTheMission { get; set; }
+        public StoryWord WhatTheSuccessOfTheMissionHingesOn { get; set; }
 
         public StoryWord ASkillOfTheEnemy { get; set; }
 
@@ -214,21 +212,23 @@
         
         public StoryWord ASecretHidingSpot { get; set; }
         
-        public StoryWord ATrapForTheProtagonists { get; internal set; }
+        public StoryWord ATrapForTheProtagonists { get; set; }
         
-        public StoryWord ASafeApproach { get; internal set; }
+        public StoryWord ASafeApproach { get; set; }
         
-        public StoryWord AnActionThatLedToSuccess { get; internal set; }
+        public StoryWord AnActionThatLedToSuccess { get; set; }
         
-        public StoryWord AnActionToUncoverSecrets { get; internal set; }
+        public StoryWord AnActionToUncoverSecrets { get; set; }
         
-        public StoryWord APossibleProblemToAvoid { get; internal set; }
+        public StoryWord APossibleProblemToAvoid { get; set; }
         
-        public StoryWord AMistakeMadeByTheProtagonists { get; internal set; }
+        public StoryWord AMistakeMadeByTheProtagonists { get; set; }
         
-        public StoryWord ACriticalDetailMissed { get; internal set; }
+        public StoryWord ACriticalDetailMissed { get; set; }
         
-        public StoryWord AControversialDecisionMade { get; internal set; }
+        public StoryWord AControversialDecisionMade { get; set; }
+
+        public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
 
         public static Scene GenerateWithPlaceholders()
         {

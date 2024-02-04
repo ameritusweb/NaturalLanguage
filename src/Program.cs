@@ -7,9 +7,10 @@ namespace NaturalLanguageProcess
     {
         static void Main(string[] args)
         {
+            StoryGenerator storyGenerator = new StoryGenerator();
+            Dialogue dialogue = new Dialogue(storyGenerator);
             ExpositionCollection expositionCollection = new ExpositionCollection();
-            ExpositionMatcher expositionMatcher = new ExpositionMatcher(expositionCollection);
-            expositionMatcher.FindMatchingPairs();
+            expositionCollection.CreateDialogue(dialogue);
             //BirthOfLucifer birthOfLucifer = new BirthOfLucifer();
             //birthOfLucifer.Write();
             //ChildrenOfTheDmz childrenOfTheDmz = new ChildrenOfTheDmz();

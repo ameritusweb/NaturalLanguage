@@ -48,7 +48,7 @@
                 TheChaosCausedByTheEnemy = new StoryWord { WordText = "Divided families and destroyed communities" },
                 TheEnemy = new StoryWord { WordText = "The leaders unwilling to seek peace" },
                 TheSoundOfTheEnemy = new StoryWord { WordText = "Propaganda broadcasts across the DMZ" },
-                WhatHingesOnTheSuccessOfTheMission = new StoryWord { WordText = "The possibility of a future without war" },
+                WhatTheSuccessOfTheMissionHingesOn = new StoryWord { WordText = "The possibility of a future without war" },
                 AWeaponAgainstTheEnemy = new StoryWord { WordText = "The truth of the ancient peace treaty" },
                 ActionThatContributesToTheMission = new StoryWord { WordText = "Deciphering the ancient map" },
                 AnotherActionThatContributesToTheMission = new StoryWord { WordText = "Creating symbols of peace visible from both sides" },

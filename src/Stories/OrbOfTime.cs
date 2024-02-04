@@ -68,7 +68,7 @@
                 AnImmediateDangerToTheMission = new StoryWord { WordText = "Collapsing Time Gates" },
                 AFateIfTheMissionFails = new StoryWord { WordText = "End of Continuity" },
                 ARejectedPlanOfTheMission = new StoryWord { WordText = "Direct Assault on the Time Devourer" },
-                WhatHingesOnTheSuccessOfTheMission = new StoryWord { WordText = "Existence Itself" },
+                WhatTheSuccessOfTheMissionHingesOn = new StoryWord { WordText = "Existence Itself" },
                 ASkillOfTheEnemy = new StoryWord { WordText = "Temporal Manipulation" },
                 HowTheEnemyCouldTriggerFailureOfTheMission = new StoryWord { WordText = "Seizing the Orb" },
                 LocationOfTheVictim = new StoryWord { WordText = "The Void of Forgotten Times" },

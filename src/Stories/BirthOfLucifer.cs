@@ -71,7 +71,7 @@
                 AnImmediateDangerToTheProtagonists = new StoryWord { WordText = "Banishment" },
                 AFateIfTheMissionFails = new StoryWord { WordText = "Eternal Damnation" },
                 ARejectedPlanOfTheMission = new StoryWord { WordText = "Open Rebellion" },
-                WhatHingesOnTheSuccessOfTheMission = new StoryWord { WordText = "The Future of Creation" },
+                WhatTheSuccessOfTheMissionHingesOn = new StoryWord { WordText = "The Future of Creation" },
                 ASkillOfTheEnemy = new StoryWord { WordText = "Creation" },
                 HowTheEnemyCouldTriggerFailureOfTheMission = new StoryWord { WordText = "Absolute Power" },
                 LocationOfTheVictim = new StoryWord { WordText = "The Garden" },

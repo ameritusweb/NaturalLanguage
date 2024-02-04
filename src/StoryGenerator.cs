@@ -147,5 +147,10 @@ namespace NaturalLanguageProcess
                 Resolution: Z is exonerated, and M faces consequences for the unfounded accusations, restoring Z's reputation.
              */
         }
+
+        public StoryWord GenerateControversialDecision()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -31,7 +31,7 @@
                 TheChaosCausedByTheEnemy = new StoryWord { WordText = "Control over the wasteland, hindering recovery efforts" },
                 TheEnemy = new StoryWord { WordText = "Scorcher patrols" },
                 TheSoundOfTheEnemy = new StoryWord { WordText = "Roar of engine-powered vehicles" },
-                WhatHingesOnTheSuccessOfTheMission = new StoryWord { WordText = "The future of human settlements" },
+                WhatTheSuccessOfTheMissionHingesOn = new StoryWord { WordText = "The future of human settlements" },
                 AWeaponAgainstTheEnemy = new StoryWord { WordText = "Stealth and knowledge of the land" },
 
                 // Filling in the missing properties

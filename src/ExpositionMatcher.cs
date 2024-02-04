@@ -11,8 +11,9 @@ namespace NaturalLanguageProcess
             this.expositionCollection = expositionCollection;
         }
 
-        public List<(SentencePurposeType, int, SentencePurposeType, int)> FindMatchingPairs()
+        public Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> FindMatchingPairs()
         {
+            Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs = new Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>>();
             var sceneWithPlaceholders = Scene.GenerateWithPlaceholders();
             var sceneProperties = typeof(Scene).GetProperties();
             Dictionary<string, string> scenePropertyNames = new Dictionary<string, string>();
@@ -52,6 +53,14 @@ namespace NaturalLanguageProcess
                                 {
                                     sentencePairs.Add($"{ReplacePlaceholders(sceneWithPlaceholders, firstSentence)} || {ReplacePlaceholders(sceneWithPlaceholders, secondSentence)}");
                                     matchedPairs.Add((pair.Item1, i, pair.Item2, j));
+                                    if (matchingPairs.ContainsKey((pair.Item1, i)))
+                                    {
+                                        matchingPairs[(pair.Item1, i)].Add((pair.Item2, j));
+                                    }
+                                    else
+                                    {
+                                        matchingPairs.Add((pair.Item1, i), new List<(SentencePurposeType, int)> { (pair.Item2, j) });
+                                    }
                                     found = true;
                                 }
                             }
@@ -65,10 +74,10 @@ namespace NaturalLanguageProcess
                 }
             }
 
-            File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
-            File.WriteAllLines("E:\\exposition\\pairs.txt", sentencePairs);
+            // File.WriteAllLines("E:\\exposition\\unmatched.txt", unmatched.ToList().OrderBy(x => x));
+            // File.WriteAllLines("E:\\exposition\\pairs.txt", sentencePairs);
 
-            return matchedPairs;
+            return matchingPairs;
         }
 
         private string ReplacePlaceholders(Scene scene, string sentence)

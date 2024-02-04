@@ -22,7 +22,9 @@ namespace NaturalLanguageProcess
         private Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word> NounCombinations = new Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word>();
         private Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word> VerbCombinations = new Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word>();
         private Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word> AdjectiveCombinations = new Dictionary<(VividVisualImageryType, VividEmotionalEvocationType, VividAuditoryImageryType), Word>();
-        private Dictionary<string, StoryWord> StoryWords { get; set; } = new Dictionary<string, StoryWord>();
+        private Dictionary<string, StoryWord> storyWords { get; set; } = new Dictionary<string, StoryWord>();
+
+        public Dictionary<string, StoryWord> StoryWords => storyWords;
         
         public void CreateGroups()
         {
@@ -368,6 +370,16 @@ namespace NaturalLanguageProcess
                 {
                     break;
                 }
+            }
+        }
+
+        public void LoadStoryWords()
+        {
+            var story = File.ReadAllText("E:\\alphabet\\storywords.json");
+            var storyList = JsonConvert.DeserializeObject<List<StoryWord>>(story);
+            foreach (var storyWord in storyList)
+            {
+                storyWords.Add(storyWord.WordText, storyWord);
             }
         }
 
