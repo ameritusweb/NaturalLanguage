@@ -1,8 +1,16 @@
-﻿namespace NaturalLanguageProcess
+﻿using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
+
+namespace NaturalLanguageProcess
 {
     public class ScenePropertyCollection
     {
         private Dictionary<ScenePropertyType, List<string>> scenePropertyMap;
+
+        public Dictionary<ScenePropertyType, List<string>> ScenePropertyMap => this.scenePropertyMap;
 
         public ScenePropertyCollection()
         {
@@ -5201,6 +5209,31 @@
                     "The Cybernetic Revolt is Starting",
                     "The Virtual Reality is Corrupting",
                     "The Neon Streets are Rioting",
+                }},
+                { ScenePropertyType.ASecretOfTheEnemy, new List<string>() {
+                    "Ancient Pact with Dark Forces",
+                    "True Heritage of Forgotten Royalty",
+                    "Hidden Weakness or Vulnerability",
+                    "Possession of Prototype Weapon/Device",
+                    "Secret Alliance with Aliens",
+                    "Originating from the Future",
+                    "Double Agent with Unexpected Loyalties",
+                    "Driven by a Personal Vendetta",
+                    "Member of a Secret Society",
+                    "Motivated by Forbidden Love",
+                    "Acts as a Secret Benefactor",
+                    "Seeks an Undiscovered Powerful Artifact",
+                    "Is a Secret Heir to a Dynasty",
+                    "Bound by a Malevolent Curse",
+                    "Made a Pact with Demonic Entity",
+                    "Holds a Map to Hidden Treasure",
+                    "Knows Location of a Lost Civilization",
+                    "Architect of the Dystopian Society",
+                    "Controls the Only Cure to an Epidemic",
+                    "Powers Share Origin with Hero",
+                    "Secret Identity is Close to Hero",
+                    "Uploaded Consciousness into the Net",
+                    "Original Creator of a Rogue AI",
                 }},
                 { ScenePropertyType.TheSurvivors, new List<string>() {
                     "The Last Wizards of the Old Order",

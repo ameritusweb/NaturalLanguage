@@ -234,6 +234,8 @@
 
         public StoryWord TheRootCauseOfTheProblem { get; set; }
 
+        public StoryWord ASecretOfTheEnemy { get; set; }
+
         public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
 
         public static Scene GenerateWithPlaceholders()

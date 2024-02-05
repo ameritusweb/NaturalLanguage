@@ -117,6 +117,7 @@
         AControversialDecisionMade,
         ImportantOutcomeOfMission,
         AnEnemyOfTheEnemy,
-        TheRootCauseOfTheProblem
+        TheRootCauseOfTheProblem,
+        ASecretOfTheEnemy
     }
 }
