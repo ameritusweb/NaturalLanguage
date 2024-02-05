@@ -7,8 +7,7 @@ namespace NaturalLanguageProcess
     {
         static void Main(string[] args)
         {
-            StoryGenerator storyGenerator = new StoryGenerator();
-            Dialogue dialogue = new Dialogue(storyGenerator, SentencePurposeType.WarnOfImpendingDanger);
+            Dialogue dialogue = new Dialogue(SentencePurposeType.WarnOfImpendingDanger);
             ExpositionCollection expositionCollection = new ExpositionCollection();
             expositionCollection.CreateDialogue(dialogue);
             //BirthOfLucifer birthOfLucifer = new BirthOfLucifer();

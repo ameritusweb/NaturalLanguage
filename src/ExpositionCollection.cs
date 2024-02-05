@@ -28,7 +28,8 @@
             var matchingPairs = expositionMatcher.FindMatchingPairs();
             dialogue.PopulateScene();
             dialogue.PopulateCharacters();
-            for (int i = 0; i < 100; ++i)
+            List<string> ourDialogue = new List<string>();
+            for (int i = 0; i < 1000; ++i)
             {
                 dialogue.Reinitialize(dialogue.BeginPurpose);
                 while (dialogue.HasNext())
@@ -40,7 +41,11 @@
                     }
                 }
                 var sentences = dialogue.Sentences;
+                ourDialogue.AddRange(sentences);
+                ourDialogue.Add("");
             }
+
+            File.WriteAllLines("E:\\exposition\\dialogue.txt", ourDialogue);
         }
 
         private string Lookup(SentencePurposeType purpose, int index, Scene scene, Character character)

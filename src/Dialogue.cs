@@ -2,7 +2,6 @@
 {
     public class Dialogue
     {
-        private StoryGenerator storyGenerator;
         private ScenePropertyCollection scenePropertyCollection;
         private CharacterPropertyCollection characterPropertyCollection;
         private Random random;
@@ -18,9 +17,8 @@
 
         public SentencePurposeType BeginPurpose { get; set; }
 
-        public Dialogue(StoryGenerator storyGenerator, SentencePurposeType beginPurpose)
+        public Dialogue(SentencePurposeType beginPurpose)
         {
-            this.storyGenerator = storyGenerator;
             this.scenePropertyCollection = new ScenePropertyCollection();
             this.characterPropertyCollection = new CharacterPropertyCollection();
             this.random = new Random();
@@ -224,10 +222,20 @@
             var options = matchingPairs[key];
             List<string> probables = options.Select(o => lookup(o.Item1, o.Item2, scene, character)).ToList();
             int randomProb = random.Next(probables.Count);
+            int secondOption = random.Next(probables.Count);
             string selectedContinuation = probables[randomProb];
             if (!this.sentences.Any())
             {
                 this.sentences.Add(keySentence);
+            }
+            if (this.sentences.Contains(selectedContinuation))
+            {
+                selectedContinuation = probables[secondOption];
+                if (this.sentences.Contains(selectedContinuation))
+                {
+                    Reinitialize(BeginPurpose);
+                    return;
+                }
             }
             this.sentences.Add(selectedContinuation);
             this.sentencePurposes.Add(options[randomProb].Item1);
