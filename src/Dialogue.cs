@@ -10,6 +10,7 @@
         private Scene scene;
         private List<Character> characters;
         private List<SentencePurposeType> sentencePurposes;
+        private List<int> selectedIndices;
 
         public Scene Scene => scene;
         public List<Character> Characters => characters;
@@ -27,6 +28,15 @@
             this.characters = new List<Character>();
             this.BeginPurpose = beginPurpose;
             this.sentencePurposes = new List<SentencePurposeType>();
+            this.selectedIndices = new List<int>();
+        }
+
+        public void Reinitialize(SentencePurposeType beginPurpose)
+        {
+            this.BeginPurpose = beginPurpose;
+            this.sentences.Clear();
+            this.sentencePurposes.Clear();
+            this.selectedIndices.Clear();
         }
 
         public void PopulateCharacters()
@@ -177,22 +187,51 @@
             return this.sentences.Count < 10;
         }
 
-        public void Next(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs, Func<SentencePurposeType, int, Scene, Character, string> lookup)
+        public bool Next(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs, Func<SentencePurposeType, int, Scene, Character, string> lookup)
         {
             if (this.sentencePurposes.Any())
             {
-
+                var sentencePurpose = this.sentencePurposes.Last();
+                var keyOptions = matchingPairs.Keys.Where(k => k.Item1 == sentencePurpose && k.Item2 == this.selectedIndices.Last()).ToList();
+                if (!keyOptions.Any())
+                {
+                    return false;
+                }
+                InternalChooseNext(matchingPairs, lookup, keyOptions, sentencePurpose);
             } else
             {
                 var sentencePurpose = this.BeginPurpose;
-                var scene = this.scene;
-                var character = this.characters[random.Next(this.characters.Count)];
                 var keyOptions = matchingPairs.Keys.Where(k => k.Item1 == sentencePurpose).ToList();
-                var key = (sentencePurpose, random.Next(keyOptions.Count));
-                var keySentence = lookup(key.Item1, key.Item2, scene, character);
-                var options = matchingPairs[key];
-                List<string> probables = options.Select(o => lookup(o.Item1, o.Item2, scene, character)).ToList();
+                if (!keyOptions.Any())
+                {
+                    return false;
+                }
+                InternalChooseNext(matchingPairs, lookup, keyOptions, sentencePurpose);
             }
+            return true;
+        }
+
+        private void InternalChooseNext(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs, Func<SentencePurposeType, int, Scene, Character, string> lookup, List<(SentencePurposeType, int)> keyOptions, SentencePurposeType sentencePurpose)
+        {
+            var scene = this.scene;
+            var character = this.characters[random.Next(this.characters.Count)];
+            var key = !this.selectedIndices.Any() ? (sentencePurpose, keyOptions[random.Next(keyOptions.Count)].Item2) : (sentencePurpose, this.selectedIndices.Last());
+            var keySentence = lookup(key.Item1, key.Item2, scene, character);
+            if (!matchingPairs.ContainsKey(key))
+            {
+
+            }
+            var options = matchingPairs[key];
+            List<string> probables = options.Select(o => lookup(o.Item1, o.Item2, scene, character)).ToList();
+            int randomProb = random.Next(probables.Count);
+            string selectedContinuation = probables[randomProb];
+            if (!this.sentences.Any())
+            {
+                this.sentences.Add(keySentence);
+            }
+            this.sentences.Add(selectedContinuation);
+            this.sentencePurposes.Add(options[randomProb].Item1);
+            this.selectedIndices.Add(options[randomProb].Item2);
         }
     }
 }
