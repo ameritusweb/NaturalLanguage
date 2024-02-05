@@ -9,10 +9,15 @@
         private List<string> sentences;
         private Scene scene;
         private List<Character> characters;
+        private List<SentencePurposeType> sentencePurposes;
+
+        public Scene Scene => scene;
+        public List<Character> Characters => characters;
+        public List<string> Sentences => sentences;
 
         public SentencePurposeType BeginPurpose { get; set; }
 
-        public Dialogue(StoryGenerator storyGenerator)
+        public Dialogue(StoryGenerator storyGenerator, SentencePurposeType beginPurpose)
         {
             this.storyGenerator = storyGenerator;
             this.scenePropertyCollection = new ScenePropertyCollection();
@@ -20,6 +25,8 @@
             this.random = new Random();
             this.sentences = new List<string>();
             this.characters = new List<Character>();
+            this.BeginPurpose = beginPurpose;
+            this.sentencePurposes = new List<SentencePurposeType>();
         }
 
         public void PopulateCharacters()
@@ -43,7 +50,6 @@
             scene.ACriticalClue = GetRandomStoryWord(ScenePropertyType.ACriticalClue);
             scene.ACriticalDetailMissed = GetRandomStoryWord(ScenePropertyType.ACriticalDetailMissed);
             scene.ActionObjectThatContributesToTheMission = GetRandomStoryWord(ScenePropertyType.ActionObjectThatContributesToTheMission);
-            scene.ActionThatContributesToSafety = GetRandomStoryWord(ScenePropertyType.ActionThatContributesToSafety);
             scene.ActionThatContributesToTheMission = GetRandomStoryWord(ScenePropertyType.ActionThatContributesToTheMission);
             scene.ActionThatDetractsFromTheMission = GetRandomStoryWord(ScenePropertyType.ActionThatDetractsFromTheMission);
             scene.AFateIfTheMissionFails = GetRandomStoryWord(ScenePropertyType.AFateIfTheMissionFails);
@@ -72,7 +78,6 @@
             scene.APlaceToCommunicate = GetRandomStoryWord(ScenePropertyType.APlaceToCommunicate);
             scene.APlanToSucceedAtMission = GetRandomStoryWord(ScenePropertyType.APlanToSucceedAtMission);
             scene.APositiveTurnOfEvents = GetRandomStoryWord(ScenePropertyType.APositiveTurnOfEvents);
-            scene.APossibleProblemToAvoid = GetRandomStoryWord(ScenePropertyType.APossibleProblemToAvoid);
             scene.APriorityForTheMission = GetRandomStoryWord(ScenePropertyType.APriorityForTheMission);
             scene.ARejectedPlanOfTheMission = GetRandomStoryWord(ScenePropertyType.ARejectedPlanOfTheMission);
             scene.ARelatedNegativePastEvent = GetRandomStoryWord(ScenePropertyType.ARelatedNegativePastEvent);
@@ -169,12 +174,25 @@
 
         public bool HasNext()
         {
-            throw new NotImplementedException();
+            return this.sentences.Count < 10;
         }
 
-        public void Next(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs)
+        public void Next(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs, Func<SentencePurposeType, int, Scene, Character, string> lookup)
         {
-            throw new NotImplementedException();
+            if (this.sentencePurposes.Any())
+            {
+
+            } else
+            {
+                var sentencePurpose = this.BeginPurpose;
+                var scene = this.scene;
+                var character = this.characters[random.Next(this.characters.Count)];
+                var keyOptions = matchingPairs.Keys.Where(k => k.Item1 == sentencePurpose).ToList();
+                var key = (sentencePurpose, random.Next(keyOptions.Count));
+                var keySentence = lookup(key.Item1, key.Item2, scene, character);
+                var options = matchingPairs[key];
+                List<string> probables = options.Select(o => lookup(o.Item1, o.Item2, scene, character)).ToList();
+            }
         }
     }
 }

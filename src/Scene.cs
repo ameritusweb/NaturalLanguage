@@ -88,8 +88,6 @@
 
         public StoryWord AHiddenActionOfTheProtagonists { get; set; }
 
-        public StoryWord ActionThatContributesToSafety { get; set; }
-
         public StoryWord TheDeedsOrActionsOfTheEnemy { get; set; }
 
         public StoryWord AThreatOfTheEnemy { get; set; }
@@ -219,8 +217,6 @@
         public StoryWord AnActionThatLedToSuccess { get; set; }
         
         public StoryWord AnActionToUncoverSecrets { get; set; }
-        
-        public StoryWord APossibleProblemToAvoid { get; set; }
         
         public StoryWord AMistakeMadeByTheProtagonists { get; set; }
         
