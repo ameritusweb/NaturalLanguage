@@ -1,12 +1,14 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace NaturalLanguageProcess
+﻿namespace NaturalLanguageProcess
 {
     public class Dialogue
     {
         private StoryGenerator storyGenerator;
         private ScenePropertyCollection scenePropertyCollection;
+        private CharacterPropertyCollection characterPropertyCollection;
         private Random random;
+        private List<string> sentences;
+        private Scene scene;
+        private List<Character> characters;
 
         public SentencePurposeType BeginPurpose { get; set; }
 
@@ -14,12 +16,29 @@ namespace NaturalLanguageProcess
         {
             this.storyGenerator = storyGenerator;
             this.scenePropertyCollection = new ScenePropertyCollection();
+            this.characterPropertyCollection = new CharacterPropertyCollection();
             this.random = new Random();
+            this.sentences = new List<string>();
+            this.characters = new List<Character>();
         }
 
-        public Scene PopulateScene()
+        public void PopulateCharacters()
         {
-            Scene scene = new Scene();
+            int numberOfCharacters = random.Next(2, 5);
+            for (int i = 0; i < numberOfCharacters; i++)
+            {
+                Character character = new Character();
+                character.Skill = GetRandomStoryWord(CharacterPropertyType.Skill);
+                character.MentalState = GetRandomStoryWord(CharacterPropertyType.MentalState);
+                character.Role = GetRandomStoryWord(CharacterPropertyType.Role);
+                character.Name = GetRandomStoryWord(CharacterPropertyType.Name).WordText;
+                characters.Add(character);
+            }
+        }
+
+        public void PopulateScene()
+        {
+            this.scene = new Scene();
             scene.AControversialDecisionMade = GetRandomStoryWord(ScenePropertyType.AControversialDecisionMade);
             scene.ACriticalClue = GetRandomStoryWord(ScenePropertyType.ACriticalClue);
             scene.ACriticalDetailMissed = GetRandomStoryWord(ScenePropertyType.ACriticalDetailMissed);
@@ -136,12 +155,26 @@ namespace NaturalLanguageProcess
             scene.TypeOfMission = GetRandomStoryWord(ScenePropertyType.TypeOfMission);
             scene.VictimsOfTheEnemy = GetRandomStoryWord(ScenePropertyType.VictimsOfTheEnemy);
             scene.WhatTheSuccessOfTheMissionHingesOn = GetRandomStoryWord(ScenePropertyType.WhatTheSuccessOfTheMissionHingesOn);
-            return scene;
         }
 
         private StoryWord GetRandomStoryWord(ScenePropertyType scenePropertyType)
         {
             return new StoryWord() { WordText = scenePropertyCollection.ScenePropertyMap[scenePropertyType][random.Next(scenePropertyCollection.ScenePropertyMap[scenePropertyType].Count)] };
+        }
+
+        private StoryWord GetRandomStoryWord(CharacterPropertyType characterPropertyType)
+        {
+            return new StoryWord() { WordText = characterPropertyCollection.CharacterPropertyMap[characterPropertyType][random.Next(characterPropertyCollection.CharacterPropertyMap[characterPropertyType].Count)] };
+        }
+
+        public bool HasNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Next(Dictionary<(SentencePurposeType, int), List<(SentencePurposeType, int)>> matchingPairs)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -26,7 +26,11 @@
         {
             ExpositionMatcher expositionMatcher = new ExpositionMatcher(this);
             var matchingPairs = expositionMatcher.FindMatchingPairs();
-
+            dialogue.PopulateScene();
+            while (dialogue.HasNext())
+            {
+                dialogue.Next(matchingPairs);
+            }
         }
 
         private void InitializePurposePairs()
