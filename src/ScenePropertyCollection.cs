@@ -8,6 +8,17 @@ using System.Text;
 using System.Threading;
 using System;
 using System.Collections;
+using System.Diagnostics.Metrics;
+using System.Net.Sockets;
+using System.Diagnostics;
+using Newtonsoft.Json.Linq;
+using static System.Reflection.Metadata.BlobBuilder;
+using System.Drawing;
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
+using System.Threading.Channels;
+using System.Timers;
+using System.Xml.Linq;
 
 namespace NaturalLanguageProcess
 {
@@ -71,6 +82,54 @@ namespace NaturalLanguageProcess
                     "Launching a Satellite to Spy on the Enemy Base",
                     "Creating a Synthetic Identity to Infiltrate a Secure Facility",
                     "Designing a Contingency Plan for an AI Takeover",
+                }
+            },
+                { ScenePropertyType.TheEffectsOfTheActionObjectThatContributesToTheMission, new List<string>() {
+                    "Seals the Dark Portal",
+                    "Revives the Fallen Hero",
+                    "Unveils the Hidden Realm",
+                    "Restores Balance to the Elemental Forces",
+                    "Breaks the Ancient Curse",
+                    "Repairs the Space-Time Fabric",
+                    "Neutralizes the Alien Toxin",
+                    "Hacks into the Enemy's Defense Network",
+                    "Shields the Colony from Cosmic Radiation",
+                    "Initiates the Terraforming Process",
+                    "Reveals the Culprit's Identity",
+                    "Decrypts the Secret Message",
+                    "Exposes the Conspiracy",
+                    "Traces the Source of the Threat",
+                    "Disarms the Bomb",
+                    "Mends a Broken Relationship",
+                    "Uncovers a Forgotten Memory",
+                    "Bridges the Distance Between Lovers",
+                    "Solves the Misunderstanding",
+                    "Reveals True Feelings",
+                    "Uncovers an Ancient Secret",
+                    "Changes the Course of a Battle",
+                    "Reveals the Location of a Lost Treasure",
+                    "Restores the Rightful Heir to the Throne",
+                    "Deciphers an Old Manuscript",
+                    "Banishes the Evil Spirit",
+                    "Protects the Innocents from the Haunting",
+                    "Reveals the True Form of the Monster",
+                    "Closes the Gateway to the Underworld",
+                    "Purifies the Cursed Land",
+                    "Navigates the Uncharted Territory",
+                    "Finds the Way Out of the Maze",
+                    "Overcomes the Natural Obstacle",
+                    "Discovers the Lost Civilization",
+                    "Rescues the Captured Companions",
+                    "Awakens the Sleeping Guardians",
+                    "Summons the Legendary Beast for Aid",
+                    "Lights the Unquenchable Flame",
+                    "Reveals the Path to the Sacred Temple",
+                    "Conjures the Shield Protecting the Kingdom",
+                    "Restores the Failing Life Support System",
+                    "Deactivates the Rogue AI",
+                    "Prevents the Meteor Impact",
+                    "Reverses the Genetic Mutation",
+                    "Blocks the Mind Control Signal",
                 }
             },
                 { ScenePropertyType.ObjectYouAreLookingFor, new List<string>() {

@@ -116,6 +116,7 @@
         ImportantOutcomeOfMission,
         AnEnemyOfTheEnemy,
         TheRootCauseOfTheProblem,
-        ASecretOfTheEnemy
+        ASecretOfTheEnemy,
+        TheEffectsOfTheActionObjectThatContributesToTheMission
     }
 }

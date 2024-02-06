@@ -232,6 +232,8 @@
 
         public StoryWord ASecretOfTheEnemy { get; set; }
 
+        public StoryWord TheEffectsOfTheActionObjectThatContributesToTheMission { get; set; }
+
         public Dictionary<string, string> Placeholders { get; set; } = new Dictionary<string, string>();
 
         public static Scene GenerateWithPlaceholders()
