@@ -26,23 +26,26 @@
         {
             ExpositionMatcher expositionMatcher = new ExpositionMatcher(this);
             var matchingPairs = expositionMatcher.FindMatchingPairs();
-            dialogue.PopulateScene();
-            dialogue.PopulateCharacters();
+            
             List<string> ourDialogue = new List<string>();
             for (int i = 0; i < 1000; ++i)
             {
-                dialogue.Reinitialize(dialogue.BeginPurpose);
-                while (dialogue.HasNext())
-                {
-                    bool cont = dialogue.Next(matchingPairs, (SentencePurposeType purpose, int index, Scene scene, Character character) => Lookup(purpose, index, scene, character));
-                    if (!cont)
+                dialogue.PopulateScene();
+                dialogue.PopulateCharacters();
+                for (int j = 0; j < 1000;  ++j) {
+                    dialogue.Reinitialize(dialogue.BeginPurpose);
+                    while (dialogue.HasNext())
                     {
-                        break;
+                        bool cont = dialogue.Next(matchingPairs, (SentencePurposeType purpose, int index, Scene scene, Character character) => Lookup(purpose, index, scene, character));
+                        if (!cont)
+                        {
+                            break;
+                        }
                     }
+                    var sentences = dialogue.Sentences;
+                    ourDialogue.AddRange(sentences);
+                    ourDialogue.Add("");
                 }
-                var sentences = dialogue.Sentences;
-                ourDialogue.AddRange(sentences);
-                ourDialogue.Add("");
             }
 
             File.WriteAllLines("E:\\exposition\\dialogue.txt", ourDialogue);
@@ -192,6 +195,8 @@
             purposePairs.Add((SentencePurposeType.IssueAChallenge, SentencePurposeType.NarrateAnEvent));
             purposePairs.Add((SentencePurposeType.Analyze, SentencePurposeType.NarrateAnEvent));
             purposePairs.Add((SentencePurposeType.ExpressDetermination, SentencePurposeType.NarrateAnEvent));
+            purposePairs.Add((SentencePurposeType.ElicitInformation, SentencePurposeType.ProvideInformation));
+            purposePairs.Add((SentencePurposeType.ExpressPersonalPeril, SentencePurposeType.OfferAssistance));
         }
 
         private void Initialize()
